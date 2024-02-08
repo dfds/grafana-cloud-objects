@@ -1,0 +1,51 @@
+name: Grafana Cloud resources
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - .github/**
+      - .gitignore
+      - LICENSE
+      - README.md
+      - renovate.json
+
+  workflow_dispatch:
+
+concurrency: terragrunt
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_CORE_DEPLOY_PRIME_CORE_AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_CORE_DEPLOY_PRIME_CORE_AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  deploy-to-grafana-cloud:
+    runs-on: ubuntu-latest
+    container:
+      image: dfdsdk/prime-pipeline:0.6.37
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Deploy resources to Grafana Cloud sandbox environment
+        env:
+          TF_VAR_grafana_url: ${{ secrets.GRAFANA_CLOUD_URL_FOR_SANDBOX }}
+          TF_VAR_grafana_auth: ${{ secrets.GRAFANA_CLOUD_SERVICE_ACCOUNT_TOKEN_FOR_SANDBOX }}
+        run: terragrunt run-all apply --terragrunt-working-dir ./environments/sandbox --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
+
+      - name: Deploy resources to Grafana Cloud demo environment
+        env:
+          TF_VAR_grafana_url: ${{ secrets.GRAFANA_CLOUD_URL_FOR_DEMO }}
+          TF_VAR_grafana_auth: ${{ secrets.GRAFANA_CLOUD_SERVICE_ACCOUNT_TOKEN_FOR_DEMO }}
+        run: terragrunt run-all apply --terragrunt-working-dir ./environments/demo --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
+
+      - name: Send alert if job fails
+        if: failure()
+        uses: dfds/shared-workflows/.github/actions/automation-slack-notifier@master
+        with:
+          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+          slack_message: "Configure Grafana Cloud environment failed."

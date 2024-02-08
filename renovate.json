@@ -1,0 +1,36 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "branchPrefix": "feature/renovate/",
+    "username": "devex-sa",
+    "onboarding": false,
+    "platform": "github",
+    "repositories": [
+        "dfds/grafana-cloud-objects"
+    ],
+    "packageRules": [
+        {
+            "matchUpdateTypes": [
+                "pin",
+                "digest",
+                "patch",
+                "lockFileMaintenance"
+            ],
+            "stabilityDays": 0,
+            "automerge": true,
+            "automergeType": "branch",
+            "matchCurrentVersion": "!/^0/",
+            "ignoreTests": true
+        },
+        {
+            "matchUpdateTypes": [
+                "minor",
+                "major"
+            ],
+            "stabilityDays": 5,
+            "automerge": false,
+            "automergeType": "branch",
+            "matchCurrentVersion": "!/^0/",
+            "ignoreTests": true
+        }
+    ]
+}
