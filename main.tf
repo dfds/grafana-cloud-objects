@@ -8,12 +8,20 @@ locals {
 }
 
 module "ce_folder" {
-  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_folder?ref=0.2.0"
-  title  = var.folder_title
+  #checkov:skip=CKV_TF_1:We rely on release tags
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_folder?ref=0.3.1"
+  #source = "../../../../../../terraform-grafana-cloud//grafana_folder" # Support for local development
+  title = var.folder_title
 }
 
 module "dashboards" {
-  source      = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=0.2.0"
+  #checkov:skip=CKV_TF_1:We rely on release tags
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=0.3.1"
+  #source      = "../../../../../../terraform-grafana-cloud//grafana_dashboard" # Support for local development
   folder      = module.ce_folder.id
   config_json = local.json_data
+}
+
+output "dashboard_uid" {
+  value = module.dashboards.uid
 }
