@@ -36,3 +36,4 @@ terraform.rc
 #  Terraform/Terragrunt directories
 **/.terraform/*
 **/.terragrunt-cache/*
+.terraform.lock.hcl
