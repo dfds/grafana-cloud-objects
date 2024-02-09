@@ -617,8 +617,8 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "etcd-0",
-                    "value": "etcd-0"
+                    "text": "hellman",
+                    "value": "hellman"
                 },
                 "datasource": {
                     "type": "prometheus",

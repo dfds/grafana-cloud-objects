@@ -431,8 +431,8 @@
             {
                 "current": {
                     "selected": true,
-                    "text": "qa",
-                    "value": "qa"
+                    "text": "hellman",
+                    "value": "hellman"
                 },
                 "definition": "label_values(cluster)",
                 "hide": 0,

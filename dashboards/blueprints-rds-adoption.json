@@ -486,8 +486,8 @@
             {
                 "current": {
                     "selected": true,
-                    "text": "qa",
-                    "value": "qa"
+                    "text": "hellman",
+                    "value": "hellman"
                 },
                 "datasource": {
                     "type": "prometheus",
