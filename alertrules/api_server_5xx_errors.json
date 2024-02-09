@@ -1,0 +1,86 @@
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "API server 5xx errors alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "cbeff883-8f55-4d33-8295-5f6e1b0e3fc8",
+                    "title": "API server 5xx errors alert",
+                    "condition": "A",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                25
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "B"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "avg"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "A",
+                                "type": "classic_conditions"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 600,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "(sum by (code) (code_resource:apiserver_request_total:rate5m{code=~\"5..\"}) / sum by (code) (code_resource:apiserver_request_total:rate5m)) * 100",
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "Rel {{code}}",
+                                "maxDataPoints": 43200,
+                                "refId": "B"
+                            }
+                        }
+                    ],
+                    "dashboardUid": "4IxKHWtMz",
+                    "panelId": 7,
+                    "noDataState": "OK",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "159",
+                        "__dashboardUid__": "4IxKHWtMz",
+                        "__panelId__": "7",
+                        "message": "Too many Kubernetes API requests returned  5xx errors in the last 5 minutes."
+                    },
+                    "labels": {
+                        "rule_uid": "cbeff883-8f55-4d33-8295-5f6e1b0e3fc8"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}
