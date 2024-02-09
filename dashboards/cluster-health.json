@@ -421,7 +421,11 @@
     ],
     "refresh": "1m",
     "schemaVersion": 39,
-    "tags": [],
+    "tags": [
+        "AWS",
+        "EKS",
+        "Kubernetes"
+    ],
     "templating": {
         "list": [
             {
