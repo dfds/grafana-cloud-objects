@@ -1,0 +1,430 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "datasource",
+                    "uid": "grafana"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "target": {
+                    "limit": 100,
+                    "matchAny": false,
+                    "tags": [],
+                    "type": "dashboard"
+                },
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 193,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+        {
+            "alert": {
+                "alertRuleTags": {},
+                "conditions": [
+                    {
+                        "evaluator": {
+                            "params": [
+                                0
+                            ],
+                            "type": "gt"
+                        },
+                        "operator": {
+                            "type": "and"
+                        },
+                        "query": {
+                            "params": [
+                                "E",
+                                "5m",
+                                "now"
+                            ]
+                        },
+                        "reducer": {
+                            "params": [],
+                            "type": "avg"
+                        },
+                        "type": "query"
+                    }
+                ],
+                "executionErrorState": "alerting",
+                "for": "15m",
+                "frequency": "1m",
+                "handler": 1,
+                "message": "Sockets used per node has reached an unusually high level.",
+                "name": "Sockets used per node alert",
+                "noDataState": "no_data",
+                "notifications": []
+            },
+            "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unitScale": true
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "24-hour moving average + 2 moving σ "
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "red",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "24-hour moving average"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "blue",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "24-hour + 2σ "
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "orange",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "24-hour moving average - 2 moving σ "
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "orange",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "current"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "blue",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "24-hour moving average - 3 moving σ "
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "orange",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "24-hour moving average + 3 moving σ "
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "red",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "bollinger band - 3 moving σ "
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "orange",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "bollinger band + 3 moving σ "
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "red",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 16,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 2,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "exemplar": true,
+                    "expr": "avg_over_time(avg(node_sockstat_sockets_used{cluster=\"$cluster\"})[24h:1m]) + 3 * stddev_over_time(avg(node_sockstat_sockets_used{cluster=\"$cluster\"})[24h:1m])",
+                    "instant": false,
+                    "interval": "",
+                    "legendFormat": "bollinger band + 3 moving σ ",
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "exemplar": true,
+                    "expr": "avg_over_time(avg(node_sockstat_sockets_used{cluster=\"$cluster\"})[24h:1m])",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "legendFormat": "moving average",
+                    "refId": "B"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "exemplar": true,
+                    "expr": "avg(node_sockstat_sockets_used{cluster=\"$cluster\"})",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "legendFormat": "current",
+                    "refId": "D"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "exemplar": true,
+                    "expr": "avg_over_time(avg(node_sockstat_sockets_used{cluster=\"$cluster\"})[24h:1m]) - 3 * stddev_over_time(avg(node_sockstat_sockets_used{cluster=\"$cluster\"})[24h:1m])",
+                    "hide": false,
+                    "instant": false,
+                    "interval": "",
+                    "legendFormat": "bollinger band - 3 moving σ ",
+                    "refId": "C"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "exemplar": true,
+                    "expr": "avg(node_sockstat_sockets_used{cluster=\"$cluster\"}) - (avg_over_time(avg(node_sockstat_sockets_used{cluster=\"$cluster\"})[24h:1m]) + 3 * stddev_over_time(avg(node_sockstat_sockets_used{cluster=\"$cluster\"})[24h:1m]))",
+                    "hide": true,
+                    "instant": false,
+                    "interval": "",
+                    "legendFormat": "alert",
+                    "refId": "E"
+                }
+            ],
+            "thresholds": [
+                {
+                    "colorMode": "critical",
+                    "op": "gt",
+                    "value": 0,
+                    "visible": true
+                }
+            ],
+            "title": "Sockets used per node",
+            "transformations": [],
+            "type": "timeseries"
+        }
+    ],
+    "refresh": "",
+    "revision": 1,
+    "schemaVersion": 39,
+    "tags": [
+        "AWS",
+        "EKS",
+        "Kubernetes",
+        "Nodes"
+    ],
+    "templating": {
+        "list": [
+            {
+                "current": {
+                    "selected": false,
+                    "text": "grafanacloud-dfdssandbox-prom",
+                    "value": "grafanacloud-prom"
+                },
+                "hide": 0,
+                "includeAll": false,
+                "multi": false,
+                "name": "datasource",
+                "options": [],
+                "query": "prometheus",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "type": "datasource"
+            },
+            {
+                "current": {
+                    "selected": true,
+                    "text": "hellman",
+                    "value": "hellman"
+                },
+                "datasource": {
+                    "type": "prometheus",
+                    "uid": "${datasource}"
+                },
+                "definition": "label_values(cluster)",
+                "hide": 0,
+                "includeAll": false,
+                "multi": false,
+                "name": "cluster",
+                "options": [],
+                "query": {
+                    "qryType": 1,
+                    "query": "label_values(cluster)",
+                    "refId": "PrometheusVariableQueryEditor-VariableQuery"
+                },
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 0,
+                "type": "query"
+            }
+        ]
+    },
+    "time": {
+        "from": "now-2d",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Node Sockets Used",
+    "uid": "GGodmXAVz",
+    "version": 1,
+    "weekStart": ""
+}
