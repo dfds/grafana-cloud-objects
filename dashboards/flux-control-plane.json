@@ -296,7 +296,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\",namespace=\"$namespace\",pod=~\".*-controller-.*\"}[1m]))",
+                    "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\",namespace=\"$namespace\",pod=~\".*-controller-.*\"}[5m]))",
                     "interval": "",
                     "legendFormat": "requests",
                     "range": true,
@@ -550,7 +550,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\",namespace=\"$namespace\"}[1m]))",
+                    "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\",namespace=\"$namespace\"}[5m]))",
                     "hide": false,
                     "interval": "",
                     "legendFormat": "total",
@@ -563,7 +563,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\",namespace=\"$namespace\",code!~\"2..\"}[1m]))",
+                    "expr": "sum(rate(rest_client_requests_total{cluster=\"$cluster\",namespace=\"$namespace\",code!~\"2..\"}[5m]))",
                     "hide": false,
                     "interval": "",
                     "legendFormat": "errors",
@@ -665,7 +665,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "rate(process_cpu_seconds_total{cluster=\"$cluster\",namespace=\"$namespace\",pod=~\".*-controller-.*\"}[1m])",
+                    "expr": "rate(process_cpu_seconds_total{cluster=\"$cluster\",namespace=\"$namespace\",pod=~\".*-controller-.*\"}[5m])",
                     "interval": "",
                     "legendFormat": "{{pod}}",
                     "range": true,
@@ -767,7 +767,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "rate(go_memstats_alloc_bytes_total{cluster=\"$cluster\",namespace=\"$namespace\",pod=~\".*-controller-.*\"}[1m])",
+                    "expr": "rate(go_memstats_alloc_bytes_total{cluster=\"$cluster\",namespace=\"$namespace\",pod=~\".*-controller-.*\"}[5m])",
                     "hide": false,
                     "interval": "",
                     "legendFormat": "{{pod}}",
@@ -996,7 +996,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"kustomization\",result!=\"error\"}[1m])) by (controller)",
+                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"kustomization\",result!=\"error\"}[5m])) by (controller)",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "successful reconciliations ",
@@ -1009,7 +1009,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"kustomization\",result=\"error\"}[1m])) by (controller)",
+                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"kustomization\",result=\"error\"}[5m])) by (controller)",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "failed reconciliations ",
@@ -1112,7 +1112,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"gitrepository\",result!=\"error\"}[1m]))",
+                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"gitrepository\",result!=\"error\"}[5m]))",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "successful git pulls",
@@ -1125,7 +1125,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"gitrepository\",result=\"error\"}[1m]))",
+                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"gitrepository\",result=\"error\"}[5m]))",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "failed git pulls",
@@ -1380,7 +1380,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"helmrelease\",result!=\"error\"}[1m])) by (controller)",
+                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"helmrelease\",result!=\"error\"}[5m])) by (controller)",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "successful reconciliations ",
@@ -1393,7 +1393,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"helmrelease\",result=\"error\"}[1m])) by (controller)",
+                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"helmrelease\",result=\"error\"}[5m])) by (controller)",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "failed reconciliations ",
@@ -1496,7 +1496,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"helmchart\",result!=\"error\"}[1m])) by (controller)",
+                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"helmchart\",result!=\"error\"}[5m])) by (controller)",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "successful chart pulls",
@@ -1509,7 +1509,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"helmchart\",result=\"error\"}[1m])) by (controller)",
+                    "expr": "sum(increase(controller_runtime_reconcile_total{cluster=\"$cluster\",controller=\"helmchart\",result=\"error\"}[5m])) by (controller)",
                     "format": "time_series",
                     "interval": "",
                     "legendFormat": "failed chart pulls",
@@ -1622,6 +1622,6 @@
     "timezone": "",
     "title": "Flux Control Plane",
     "uid": "flux-control-plane",
-    "version": 2,
+    "version": 3,
     "weekStart": ""
 }
