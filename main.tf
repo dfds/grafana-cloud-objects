@@ -29,8 +29,8 @@ module "dashboards" {
 
 module "alerts" {
   #checkov:skip=CKV_TF_1:We rely on release tags
-  # source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_alert?ref=0.3.2"
-  source          = "../../../../../../terraform-grafana-cloud//grafana_alert" # Support for local development
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_alert?ref=0.3.2"
+  # source          = "../../../../../../terraform-grafana-cloud//grafana_alert" # Support for local development
   folder          = module.ce_folder.uid
   alertrule_files = local.alertrule_files
 }
