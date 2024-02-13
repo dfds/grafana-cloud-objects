@@ -3,33 +3,17 @@
     "groups": [
         {
             "orgId": 1,
-            "name": "Backup Validation Failure alert",
+            "name": "API server 5xx errors alert",
             "folder": "General Alerting",
             "interval": "1m",
             "rules": [
                 {
-                    "uid": "d80bb8e3-3dd8-44ad-8357-572318f92b84",
-                    "title": "Backup Validation Failure alert",
-                    "condition": "B",
+                    "uid": "cbeff883-8f55-4d33-8295-5f6e1b0e3fc8",
+                    "title": "API server 5xx errors alert",
+                    "condition": "A",
                     "data": [
                         {
                             "refId": "A",
-                            "relativeTimeRange": {
-                                "from": 300,
-                                "to": 0
-                            },
-                            "datasourceUid": "grafanacloud-prom",
-                            "model": {
-                                "expr": "rate(velero_backup_validation_failure_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ",
-                                "interval": "",
-                                "intervalMs": 1000,
-                                "legendFormat": "",
-                                "maxDataPoints": 43200,
-                                "refId": "A"
-                            }
-                        },
-                        {
-                            "refId": "B",
                             "relativeTimeRange": {
                                 "from": 0,
                                 "to": 0
@@ -40,7 +24,7 @@
                                     {
                                         "evaluator": {
                                             "params": [
-                                                0
+                                                25
                                             ],
                                             "type": "gt"
                                         },
@@ -49,34 +33,50 @@
                                         },
                                         "query": {
                                             "params": [
-                                                "A"
+                                                "B"
                                             ]
                                         },
                                         "reducer": {
-                                            "type": "last"
+                                            "type": "avg"
                                         }
                                     }
                                 ],
                                 "intervalMs": 1000,
                                 "maxDataPoints": 43200,
-                                "refId": "B",
+                                "refId": "A",
                                 "type": "classic_conditions"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 600,
+                                "to": 0
+                            },
+                            "datasourceUid": "prometheus",
+                            "model": {
+                                "expr": "(sum by (code) (code_resource:apiserver_request_total:rate5m{code=~\"5..\"}) / sum by (code) (code_resource:apiserver_request_total:rate5m)) * 100",
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "Rel {{code}}",
+                                "maxDataPoints": 43200,
+                                "refId": "B"
                             }
                         }
                     ],
-                    "dasboardUid": "YAniUGC",
-                    "panelId": 32,
-                    "noDataState": "NoData",
+                    "dasboardUid": "4IxKHWtMz",
+                    "panelId": 7,
+                    "noDataState": "OK",
                     "execErrState": "Alerting",
                     "for": "5m",
                     "annotations": {
-                        "__alertId__": "181",
-                        "__dashboardUid__": "YAniUGC",
-                        "__panelId__": "32",
-                        "message": "Validation of a velero backup has failed.  Please use the Velero CLI to retrieve the logs to assist in investigation of the issue."
+                        "__alertId__": "159",
+                        "__dashboardUid__": "4IxKHWtMz",
+                        "__panelId__": "7",
+                        "message": "Too many Kubernetes API requests returned  5xx errors in the last 5 minutes."
                     },
                     "labels": {
-                        "rule_uid": "d80bb8e3-3dd8-44ad-8357-572318f92b84"
+                        "rule_uid": "cbeff883-8f55-4d33-8295-5f6e1b0e3fc8"
                     },
                     "isPaused": false
                 }
