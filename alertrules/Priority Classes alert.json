@@ -18,7 +18,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(kube_pod_info{priority_class=~\"system.*\",namespace!~\"kube-system|monitoring|flux-system|nvidia-device-plugin\"}) OR on() vector(0)",
                                 "format": "time_series",
@@ -35,7 +35,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(kube_pod_info{priority_class=~\"service-critical\",namespace!~\"kube-system|velero\"}) OR on() vector(0)",
                                 "format": "time_series",
@@ -53,7 +53,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(kube_pod_info{priority_class=~\"cluster-monitoring\",namespace!~\"kube-system|monitoring|fluentd\"}) OR on() vector(0)",
                                 "format": "time_series",
@@ -71,7 +71,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(kube_pod_info{priority_class=~\"selfservice\",namespace!~\"selfservice|selfservice-herald-vbqkr|developerautomation-xavgy\"}) OR on() vector(0)",
                                 "format": "time_series",

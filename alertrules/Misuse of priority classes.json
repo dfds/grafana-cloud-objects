@@ -18,7 +18,7 @@
                                 "from": 3600,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(kube_pod_info{priority_class=\"selfservice\", namespace!=\"selfservice\", namespace!=\"selfservice-herald-vbqkr\", namespace!=\"developerautomation-xavgy\", namespace!=\"velero\"}) by (pririty_class, namespace)",
                                 "format": "time_series",

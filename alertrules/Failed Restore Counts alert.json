@@ -18,7 +18,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "rate(velero_restore_failed_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ",
                                 "interval": "",
@@ -34,7 +34,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "rate(velero_restore_partial_failure_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ",
                                 "interval": "",

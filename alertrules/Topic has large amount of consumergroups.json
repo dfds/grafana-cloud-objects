@@ -18,7 +18,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "datasource": {
                                     "type": "prometheus",

@@ -18,7 +18,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "rate(velero_backup_validation_failure_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ",
                                 "interval": "",

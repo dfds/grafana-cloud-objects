@@ -53,7 +53,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(up{pod=~\"fluentd.*\"}) by (service) - sum(up{pod=~\"fluentd.*\"}) by (service)",
                                 "format": "time_series",

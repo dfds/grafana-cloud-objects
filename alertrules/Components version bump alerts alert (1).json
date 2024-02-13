@@ -18,7 +18,7 @@
                                 "from": 10,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(count by (image) (kube_pod_container_info{namespace=\"kube-system\", container=\"aws-node\"})) - 2",
                                 "format": "time_series",
@@ -35,7 +35,7 @@
                                 "from": 10,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(count by (image) (kube_pod_container_info{namespace=\"kube-system\", container=\"kube-proxy\"})) - 1",
                                 "format": "time_series",
@@ -52,7 +52,7 @@
                                 "from": 10,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(count by (image) (kube_pod_container_info{namespace=\"kube-system\", container=\"coredns\"})) - 1",
                                 "format": "time_series",
@@ -69,7 +69,7 @@
                                 "from": 10,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "count(count by (kubelet_version) (kube_node_info)) - 2",
                                 "format": "time_series",

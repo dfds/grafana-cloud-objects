@@ -53,7 +53,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "sum by (daemonset) (kube_daemonset_status_desired_number_scheduled{namespace=\"kube-system\", daemonset=\"kube-proxy\"}) - sum by (daemonset) (kube_daemonset_status_number_available{namespace=\"kube-system\", daemonset=\"kube-proxy\"})",
                                 "format": "time_series",

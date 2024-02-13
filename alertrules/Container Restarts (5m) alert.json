@@ -18,7 +18,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "sum (rate(kube_pod_container_status_restarts_total{namespace=\"logcollect\", container=\"cloudwatchlogs-collector\"}[5m]) * 60 * 5) by (container)",
                                 "format": "time_series",
