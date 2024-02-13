@@ -1,1 +1,86 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Restore Validation Failure alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"a7ee5231-ac93-4e57-8991-8a18a8abe37f","title":"Restore Validation Failure alert","condition":"B","data":[{"refId":"A","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"rate(velero_restore_validation_failed_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ","interval":"","intervalMs":1000,"legendFormat":"","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"last"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"B","type":"classic_conditions"}}],"dasboardUid":"YAniUGC","panelId":33,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"182","__dashboardUid__":"YAniUGC","__panelId__":"33","message":"Validation of a velero restore has failed.  Please use the Velero CLI to retrieve the logs to assist in investigation of the issue."},"labels":{"rule_uid":"a7ee5231-ac93-4e57-8991-8a18a8abe37f"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Restore Validation Failure alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "a7ee5231-ac93-4e57-8991-8a18a8abe37f",
+                    "title": "Restore Validation Failure alert",
+                    "condition": "B",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "prometheus",
+                            "model": {
+                                "expr": "rate(velero_restore_validation_failed_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ",
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "B",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "YAniUGC",
+                    "panelId": 33,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "182",
+                        "__dashboardUid__": "YAniUGC",
+                        "__panelId__": "33",
+                        "message": "Validation of a velero restore has failed.  Please use the Velero CLI to retrieve the logs to assist in investigation of the issue."
+                    },
+                    "labels": {
+                        "rule_uid": "a7ee5231-ac93-4e57-8991-8a18a8abe37f"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

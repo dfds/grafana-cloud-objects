@@ -1,1 +1,88 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Misuse of priority classes","folder":"General Alerting","interval":"1m","rules":[{"uid":"add33528-1eaa-4d5d-af5b-3de4b93f5a42","title":"Misuse of priority classes","condition":"B","data":[{"refId":"A","relativeTimeRange":{"from":3600,"to":0},"datasourceUid":"prometheus","model":{"expr":"count(kube_pod_info{priority_class=\"selfservice\", namespace!=\"selfservice\", namespace!=\"selfservice-herald-vbqkr\", namespace!=\"developerautomation-xavgy\", namespace!=\"velero\"}) by (pririty_class, namespace)","format":"time_series","interval":"","intervalFactor":1,"intervalMs":1000,"legendFormat":"Selfservice priority class","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0.5],"type":"gt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"avg"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"B","type":"classic_conditions"}}],"dasboardUid":"W8nct6zGz","panelId":6,"noDataState":"OK","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"175","__dashboardUid__":"W8nct6zGz","__panelId__":"6","message":"Misuse of priority classes detected"},"labels":{"rule_uid":"add33528-1eaa-4d5d-af5b-3de4b93f5a42"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Misuse of priority classes",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "add33528-1eaa-4d5d-af5b-3de4b93f5a42",
+                    "title": "Misuse of priority classes",
+                    "condition": "B",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 3600,
+                                "to": 0
+                            },
+                            "datasourceUid": "prometheus",
+                            "model": {
+                                "expr": "count(kube_pod_info{priority_class=\"selfservice\", namespace!=\"selfservice\", namespace!=\"selfservice-herald-vbqkr\", namespace!=\"developerautomation-xavgy\", namespace!=\"velero\"}) by (pririty_class, namespace)",
+                                "format": "time_series",
+                                "interval": "",
+                                "intervalFactor": 1,
+                                "intervalMs": 1000,
+                                "legendFormat": "Selfservice priority class",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0.5
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "avg"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "B",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "W8nct6zGz",
+                    "panelId": 6,
+                    "noDataState": "OK",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "175",
+                        "__dashboardUid__": "W8nct6zGz",
+                        "__panelId__": "6",
+                        "message": "Misuse of priority classes detected"
+                    },
+                    "labels": {
+                        "rule_uid": "add33528-1eaa-4d5d-af5b-3de4b93f5a42"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

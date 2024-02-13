@@ -1,1 +1,91 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Kafka-exporter up alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"e64ff644-e9ac-4077-8337-4a56bf57097f","title":"Kafka-exporter up alert","condition":"B","data":[{"refId":"A","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"datasource":{"type":"prometheus","uid":"prometheus"},"exemplar":true,"expr":"up{job=\"kafka-exporter\"}","interval":"","intervalMs":1000,"legendFormat":"{{job}}","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0.5],"type":"lt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"avg"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"B","type":"classic_conditions"}}],"dasboardUid":"CoYn_3-nk","panelId":2,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"167","__dashboardUid__":"CoYn_3-nk","__panelId__":"2","message":"Kafka-exporter metrics cannot be scraped either because it is down or the scrape timeout is excided"},"labels":{"rule_uid":"e64ff644-e9ac-4077-8337-4a56bf57097f"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Kafka-exporter up alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "e64ff644-e9ac-4077-8337-4a56bf57097f",
+                    "title": "Kafka-exporter up alert",
+                    "condition": "B",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "prometheus",
+                            "model": {
+                                "datasource": {
+                                    "type": "prometheus",
+                                    "uid": "prometheus"
+                                },
+                                "exemplar": true,
+                                "expr": "up{job=\"kafka-exporter\"}",
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "{{job}}",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0.5
+                                            ],
+                                            "type": "lt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "avg"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "B",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "CoYn_3-nk",
+                    "panelId": 2,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "167",
+                        "__dashboardUid__": "CoYn_3-nk",
+                        "__panelId__": "2",
+                        "message": "Kafka-exporter metrics cannot be scraped either because it is down or the scrape timeout is excided"
+                    },
+                    "labels": {
+                        "rule_uid": "e64ff644-e9ac-4077-8337-4a56bf57097f"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

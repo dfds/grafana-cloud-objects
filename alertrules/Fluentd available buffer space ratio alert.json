@@ -1,1 +1,87 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Fluentd available buffer space ratio alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"e3f65059-6c23-4670-b2b8-f812a008cad5","title":"Fluentd available buffer space ratio alert","condition":"A","data":[{"refId":"A","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[25],"type":"lt"},"operator":{"type":"and"},"query":{"params":["B"]},"reducer":{"type":"avg"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"A","type":"classic_conditions"}},{"refId":"B","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"fluentd_output_status_buffer_available_space_ratio","format":"time_series","intervalFactor":1,"intervalMs":1000,"legendFormat":"{{pod}}","maxDataPoints":43200,"refId":"B"}}],"dasboardUid":"70pnQaxZz","panelId":10,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"164","__dashboardUid__":"70pnQaxZz","__panelId__":"10","message":"Available buffer space is below 25% for at least one fluentd pod."},"labels":{"rule_uid":"e3f65059-6c23-4670-b2b8-f812a008cad5"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Fluentd available buffer space ratio alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "e3f65059-6c23-4670-b2b8-f812a008cad5",
+                    "title": "Fluentd available buffer space ratio alert",
+                    "condition": "A",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                25
+                                            ],
+                                            "type": "lt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "B"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "avg"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "A",
+                                "type": "classic_conditions"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "prometheus",
+                            "model": {
+                                "expr": "fluentd_output_status_buffer_available_space_ratio",
+                                "format": "time_series",
+                                "intervalFactor": 1,
+                                "intervalMs": 1000,
+                                "legendFormat": "{{pod}}",
+                                "maxDataPoints": 43200,
+                                "refId": "B"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "70pnQaxZz",
+                    "panelId": 10,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "164",
+                        "__dashboardUid__": "70pnQaxZz",
+                        "__panelId__": "10",
+                        "message": "Available buffer space is below 25% for at least one fluentd pod."
+                    },
+                    "labels": {
+                        "rule_uid": "e3f65059-6c23-4670-b2b8-f812a008cad5"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

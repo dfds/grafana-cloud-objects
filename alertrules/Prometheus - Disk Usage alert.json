@@ -1,1 +1,91 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Prometheus - Disk Usage alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"f2f1253d-615b-4fe9-9330-531bc5c4e031","title":"Prometheus - Disk Usage alert","condition":"A","data":[{"refId":"A","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[429496729600],"type":"gt"},"operator":{"type":"and"},"query":{"params":["B"]},"reducer":{"type":"last"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"A","type":"classic_conditions"}},{"refId":"B","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"datasource":{"type":"prometheus","uid":"prometheus"},"editorMode":"code","expr":"kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=\"prometheus-monitoring-kube-prometheus-prometheus-db-prometheus-monitoring-kube-prometheus-prometheus-0\"}-kubelet_volume_stats_available_bytes{persistentvolumeclaim=\"prometheus-monitoring-kube-prometheus-prometheus-db-prometheus-monitoring-kube-prometheus-prometheus-0\"}","intervalMs":1000,"legendFormat":"Usage","maxDataPoints":43200,"range":true,"refId":"B"}}],"dasboardUid":"ipAB0iB4z","panelId":6,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"179","__dashboardUid__":"ipAB0iB4z","__panelId__":"6","message":"Prometheus disk usage reaching capacity."},"labels":{"rule_uid":"f2f1253d-615b-4fe9-9330-531bc5c4e031"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Prometheus - Disk Usage alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "f2f1253d-615b-4fe9-9330-531bc5c4e031",
+                    "title": "Prometheus - Disk Usage alert",
+                    "condition": "A",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                429496729600
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "B"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "A",
+                                "type": "classic_conditions"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "prometheus",
+                            "model": {
+                                "datasource": {
+                                    "type": "prometheus",
+                                    "uid": "prometheus"
+                                },
+                                "editorMode": "code",
+                                "expr": "kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=\"prometheus-monitoring-kube-prometheus-prometheus-db-prometheus-monitoring-kube-prometheus-prometheus-0\"}-kubelet_volume_stats_available_bytes{persistentvolumeclaim=\"prometheus-monitoring-kube-prometheus-prometheus-db-prometheus-monitoring-kube-prometheus-prometheus-0\"}",
+                                "intervalMs": 1000,
+                                "legendFormat": "Usage",
+                                "maxDataPoints": 43200,
+                                "range": true,
+                                "refId": "B"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "ipAB0iB4z",
+                    "panelId": 6,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "179",
+                        "__dashboardUid__": "ipAB0iB4z",
+                        "__panelId__": "6",
+                        "message": "Prometheus disk usage reaching capacity."
+                    },
+                    "labels": {
+                        "rule_uid": "f2f1253d-615b-4fe9-9330-531bc5c4e031"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}
