@@ -1,1 +1,198 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Priority Classes alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"eecf4258-4c13-4ff6-a614-24254d8fb5af","title":"Priority Classes alert","condition":"E","data":[{"refId":"A","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"count(kube_pod_info{priority_class=~\"system.*\",namespace!~\"kube-system|monitoring|flux-system|nvidia-device-plugin\"}) OR on() vector(0)","format":"time_series","intervalFactor":2,"intervalMs":1000,"legendFormat":"system*","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"count(kube_pod_info{priority_class=~\"service-critical\",namespace!~\"kube-system|velero\"}) OR on() vector(0)","format":"time_series","interval":"","intervalFactor":2,"intervalMs":1000,"legendFormat":"service-critical","maxDataPoints":43200,"refId":"B"}},{"refId":"C","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"count(kube_pod_info{priority_class=~\"cluster-monitoring\",namespace!~\"kube-system|monitoring|fluentd\"}) OR on() vector(0)","format":"time_series","interval":"","intervalFactor":2,"intervalMs":1000,"legendFormat":"cluster-monitoring","maxDataPoints":43200,"refId":"C"}},{"refId":"D","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"count(kube_pod_info{priority_class=~\"selfservice\",namespace!~\"selfservice|selfservice-herald-vbqkr|developerautomation-xavgy\"}) OR on() vector(0)","format":"time_series","interval":"","intervalFactor":2,"intervalMs":1000,"legendFormat":"selfservice","maxDataPoints":43200,"refId":"D"}},{"refId":"E","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"last"}},{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"or"},"query":{"params":["B"]},"reducer":{"type":"last"}},{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"or"},"query":{"params":["C"]},"reducer":{"type":"last"}},{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"or"},"query":{"params":["D"]},"reducer":{"type":"last"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"E","type":"classic_conditions"}}],"dasboardUid":"axdphXDZz","panelId":10,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"154","__dashboardUid__":"axdphXDZz","__panelId__":"10","message":"Unauthorised Use of Reserved Priority Classes"},"labels":{"rule_uid":"eecf4258-4c13-4ff6-a614-24254d8fb5af"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Priority Classes alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "eecf4258-4c13-4ff6-a614-24254d8fb5af",
+                    "title": "Priority Classes alert",
+                    "condition": "E",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "count(kube_pod_info{priority_class=~\"system.*\",namespace!~\"kube-system|monitoring|flux-system|nvidia-device-plugin\"}) OR on() vector(0)",
+                                "format": "time_series",
+                                "intervalFactor": 2,
+                                "intervalMs": 1000,
+                                "legendFormat": "system*",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "count(kube_pod_info{priority_class=~\"service-critical\",namespace!~\"kube-system|velero\"}) OR on() vector(0)",
+                                "format": "time_series",
+                                "interval": "",
+                                "intervalFactor": 2,
+                                "intervalMs": 1000,
+                                "legendFormat": "service-critical",
+                                "maxDataPoints": 43200,
+                                "refId": "B"
+                            }
+                        },
+                        {
+                            "refId": "C",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "count(kube_pod_info{priority_class=~\"cluster-monitoring\",namespace!~\"kube-system|monitoring|fluentd\"}) OR on() vector(0)",
+                                "format": "time_series",
+                                "interval": "",
+                                "intervalFactor": 2,
+                                "intervalMs": 1000,
+                                "legendFormat": "cluster-monitoring",
+                                "maxDataPoints": 43200,
+                                "refId": "C"
+                            }
+                        },
+                        {
+                            "refId": "D",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "count(kube_pod_info{priority_class=~\"selfservice\",namespace!~\"selfservice|selfservice-herald-vbqkr|developerautomation-xavgy\"}) OR on() vector(0)",
+                                "format": "time_series",
+                                "interval": "",
+                                "intervalFactor": 2,
+                                "intervalMs": 1000,
+                                "legendFormat": "selfservice",
+                                "maxDataPoints": 43200,
+                                "refId": "D"
+                            }
+                        },
+                        {
+                            "refId": "E",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    },
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "or"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "B"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    },
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "or"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "C"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    },
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "or"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "D"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "E",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "axdphXDZz",
+                    "panelId": 10,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "154",
+                        "__dashboardUid__": "axdphXDZz",
+                        "__panelId__": "10",
+                        "message": "Unauthorised Use of Reserved Priority Classes"
+                    },
+                    "labels": {
+                        "rule_uid": "eecf4258-4c13-4ff6-a614-24254d8fb5af"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

@@ -1,1 +1,86 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Backup Validation Failure alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"d80bb8e3-3dd8-44ad-8357-572318f92b84","title":"Backup Validation Failure alert","condition":"B","data":[{"refId":"A","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"rate(velero_backup_validation_failure_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ","interval":"","intervalMs":1000,"legendFormat":"","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"last"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"B","type":"classic_conditions"}}],"dasboardUid":"YAniUGC","panelId":32,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"181","__dashboardUid__":"YAniUGC","__panelId__":"32","message":"Validation of a velero backup has failed.  Please use the Velero CLI to retrieve the logs to assist in investigation of the issue."},"labels":{"rule_uid":"d80bb8e3-3dd8-44ad-8357-572318f92b84"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Backup Validation Failure alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "d80bb8e3-3dd8-44ad-8357-572318f92b84",
+                    "title": "Backup Validation Failure alert",
+                    "condition": "B",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "rate(velero_backup_validation_failure_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ",
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "B",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "YAniUGC",
+                    "panelId": 32,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "181",
+                        "__dashboardUid__": "YAniUGC",
+                        "__panelId__": "32",
+                        "message": "Validation of a velero backup has failed.  Please use the Velero CLI to retrieve the logs to assist in investigation of the issue."
+                    },
+                    "labels": {
+                        "rule_uid": "d80bb8e3-3dd8-44ad-8357-572318f92b84"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

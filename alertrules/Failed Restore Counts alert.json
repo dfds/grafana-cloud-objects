@@ -1,1 +1,121 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Failed Restore Counts alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"d489cd0d-896c-4d16-9abb-355d37f2c4a6","title":"Failed Restore Counts alert","condition":"C","data":[{"refId":"A","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"rate(velero_restore_failed_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ","interval":"","intervalMs":1000,"legendFormat":"","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"rate(velero_restore_partial_failure_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ","interval":"","intervalMs":1000,"legendFormat":"","maxDataPoints":43200,"refId":"B"}},{"refId":"C","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"last"}},{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"or"},"query":{"params":["B"]},"reducer":{"type":"last"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"C","type":"classic_conditions"}}],"dasboardUid":"YAniUGC","panelId":28,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"180","__dashboardUid__":"YAniUGC","__panelId__":"28","message":"A Velero restore to the cluster has failed.  Please use the Velero CLI to retrieve the backup logs to assist in investigation of the issue."},"labels":{"rule_uid":"d489cd0d-896c-4d16-9abb-355d37f2c4a6"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Failed Restore Counts alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "d489cd0d-896c-4d16-9abb-355d37f2c4a6",
+                    "title": "Failed Restore Counts alert",
+                    "condition": "C",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "rate(velero_restore_failed_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ",
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "rate(velero_restore_partial_failure_total{schedule=~\"velero-hellman-cluster-backup\"}[24h:])  ",
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "",
+                                "maxDataPoints": 43200,
+                                "refId": "B"
+                            }
+                        },
+                        {
+                            "refId": "C",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    },
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "or"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "B"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "C",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "YAniUGC",
+                    "panelId": 28,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "180",
+                        "__dashboardUid__": "YAniUGC",
+                        "__panelId__": "28",
+                        "message": "A Velero restore to the cluster has failed.  Please use the Velero CLI to retrieve the backup logs to assist in investigation of the issue."
+                    },
+                    "labels": {
+                        "rule_uid": "d489cd0d-896c-4d16-9abb-355d37f2c4a6"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

@@ -1,1 +1,89 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Container Restarts (5m) alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"eecbadc3-04e9-49ea-9f9c-d9cda5d3773b","title":"Container Restarts (5m) alert","condition":"B","data":[{"refId":"A","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"expr":"sum (rate(kube_pod_container_status_restarts_total{namespace=\"logcollect\", container=\"cloudwatchlogs-collector\"}[5m]) * 60 * 5) by (container)","format":"time_series","instant":false,"interval":"","intervalFactor":1,"intervalMs":1000,"legendFormat":"{{ container }}","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[2],"type":"gt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"max"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"B","type":"classic_conditions"}}],"dasboardUid":"fxisR13Zz","panelId":4,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"155","__dashboardUid__":"fxisR13Zz","__panelId__":"4","message":""},"labels":{"rule_uid":"eecbadc3-04e9-49ea-9f9c-d9cda5d3773b"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Container Restarts (5m) alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "eecbadc3-04e9-49ea-9f9c-d9cda5d3773b",
+                    "title": "Container Restarts (5m) alert",
+                    "condition": "B",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "sum (rate(kube_pod_container_status_restarts_total{namespace=\"logcollect\", container=\"cloudwatchlogs-collector\"}[5m]) * 60 * 5) by (container)",
+                                "format": "time_series",
+                                "instant": false,
+                                "interval": "",
+                                "intervalFactor": 1,
+                                "intervalMs": 1000,
+                                "legendFormat": "{{ container }}",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                2
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "max"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "B",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "fxisR13Zz",
+                    "panelId": 4,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "155",
+                        "__dashboardUid__": "fxisR13Zz",
+                        "__panelId__": "4",
+                        "message": ""
+                    },
+                    "labels": {
+                        "rule_uid": "eecbadc3-04e9-49ea-9f9c-d9cda5d3773b"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

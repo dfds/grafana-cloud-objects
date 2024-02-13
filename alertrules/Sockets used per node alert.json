@@ -1,1 +1,93 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Sockets used per node alert","folder":"General Alerting","interval":"1m","rules":[{"uid":"e5600b97-49cc-4daa-9016-5bae3c84a365","title":"Sockets used per node alert","condition":"A","data":[{"refId":"A","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"and"},"query":{"params":["E"]},"reducer":{"type":"avg"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"A","type":"classic_conditions"}},{"refId":"E","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"datasource":{"type":"prometheus","uid":"prometheus"},"editorMode":"code","exemplar":true,"expr":"avg(node_sockstat_sockets_used{}) - (avg_over_time(avg(node_sockstat_sockets_used{})[24h:1m]) + 3 * stddev_over_time(avg(node_sockstat_sockets_used{})[24h:1m]))","instant":false,"interval":"","intervalMs":1000,"legendFormat":"alert","maxDataPoints":43200,"refId":"E"}}],"dasboardUid":"GGodmXAVz","panelId":2,"noDataState":"NoData","execErrState":"Alerting","for":"15m","annotations":{"__alertId__":"174","__dashboardUid__":"GGodmXAVz","__panelId__":"2","message":"Sockets used per node has reached an unusually high level."},"labels":{"rule_uid":"e5600b97-49cc-4daa-9016-5bae3c84a365"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Sockets used per node alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "e5600b97-49cc-4daa-9016-5bae3c84a365",
+                    "title": "Sockets used per node alert",
+                    "condition": "A",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "E"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "avg"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "A",
+                                "type": "classic_conditions"
+                            }
+                        },
+                        {
+                            "refId": "E",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "datasource": {
+                                    "type": "prometheus",
+                                    "uid": "prometheus"
+                                },
+                                "editorMode": "code",
+                                "exemplar": true,
+                                "expr": "avg(node_sockstat_sockets_used{}) - (avg_over_time(avg(node_sockstat_sockets_used{})[24h:1m]) + 3 * stddev_over_time(avg(node_sockstat_sockets_used{})[24h:1m]))",
+                                "instant": false,
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "alert",
+                                "maxDataPoints": 43200,
+                                "refId": "E"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "GGodmXAVz",
+                    "panelId": 2,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "15m",
+                    "annotations": {
+                        "__alertId__": "174",
+                        "__dashboardUid__": "GGodmXAVz",
+                        "__panelId__": "2",
+                        "message": "Sockets used per node has reached an unusually high level."
+                    },
+                    "labels": {
+                        "rule_uid": "e5600b97-49cc-4daa-9016-5bae3c84a365"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

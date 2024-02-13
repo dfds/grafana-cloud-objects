@@ -53,7 +53,7 @@
                                 "from": 600,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "(sum by (code) (code_resource:apiserver_request_total:rate5m{code=~\"5..\"}) / sum by (code) (code_resource:apiserver_request_total:rate5m)) * 100",
                                 "interval": "",

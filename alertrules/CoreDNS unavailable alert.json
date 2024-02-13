@@ -53,7 +53,7 @@
                                 "from": 300,
                                 "to": 0
                             },
-                            "datasourceUid": "prometheus",
+                            "datasourceUid": "grafanacloud-prom",
                             "model": {
                                 "expr": "sum by (deployment) (kube_deployment_spec_replicas{namespace=\"kube-system\", deployment=\"coredns\"}) - sum by (deployment) (kube_deployment_status_replicas_available{namespace=\"kube-system\", deployment=\"coredns\"})",
                                 "format": "time_series",

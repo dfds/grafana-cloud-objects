@@ -1,1 +1,87 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"SSL expiry alert","folder":"General Alerting","interval":"1h","rules":[{"uid":"ed7bcdc2-07d7-4c4e-9cdd-e6580fb69fce","title":"SSL expiry alert","condition":"B","data":[{"refId":"A","relativeTimeRange":{"from":3600,"to":0},"datasourceUid":"prometheus","model":{"exemplar":true,"expr":"probe_ssl_earliest_cert_expiry{} - time()","interval":"","intervalMs":1000,"legendFormat":"{{ instance }}","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[2592000],"type":"lt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"avg"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"B","type":"classic_conditions"}}],"dasboardUid":"bXDq_ZNnz","panelId":192,"noDataState":"NoData","execErrState":"Alerting","for":"1h","annotations":{"__alertId__":"177","__dashboardUid__":"bXDq_ZNnz","__panelId__":"192","message":""},"labels":{"rule_uid":"ed7bcdc2-07d7-4c4e-9cdd-e6580fb69fce"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "SSL expiry alert",
+            "folder": "General Alerting",
+            "interval": "1h",
+            "rules": [
+                {
+                    "uid": "ed7bcdc2-07d7-4c4e-9cdd-e6580fb69fce",
+                    "title": "SSL expiry alert",
+                    "condition": "B",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 3600,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "exemplar": true,
+                                "expr": "probe_ssl_earliest_cert_expiry{} - time()",
+                                "interval": "",
+                                "intervalMs": 1000,
+                                "legendFormat": "{{ instance }}",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                2592000
+                                            ],
+                                            "type": "lt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "avg"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "B",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "bXDq_ZNnz",
+                    "panelId": 192,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "1h",
+                    "annotations": {
+                        "__alertId__": "177",
+                        "__dashboardUid__": "bXDq_ZNnz",
+                        "__panelId__": "192",
+                        "message": ""
+                    },
+                    "labels": {
+                        "rule_uid": "ed7bcdc2-07d7-4c4e-9cdd-e6580fb69fce"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

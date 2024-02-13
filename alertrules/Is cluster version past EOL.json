@@ -1,1 +1,92 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"Is cluster version past EOL","folder":"General Alerting","interval":"1m","rules":[{"uid":"ebdbc94a-a7e2-44ed-8bca-60dcc7f9e988","title":"Is cluster version past EOL","condition":"B","data":[{"refId":"A","relativeTimeRange":{"from":60,"to":0},"datasourceUid":"prometheus","model":{"datasource":{"type":"prometheus","uid":"prometheus"},"expr":"eks_version_exporter_is_past_eol","format":"time_series","instant":false,"intervalFactor":1,"intervalMs":1000,"legendFormat":"is_outdated","maxDataPoints":43200,"refId":"A"}},{"refId":"B","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0.9],"type":"gt"},"operator":{"type":"and"},"query":{"params":["A"]},"reducer":{"type":"last"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"B","type":"classic_conditions"}}],"dasboardUid":"YMBzktpGz","panelId":16,"noDataState":"NoData","execErrState":"Alerting","for":"5m","annotations":{"__alertId__":"162","__dashboardUid__":"YMBzktpGz","__panelId__":"16","message":"Current cluster version is past EOL"},"labels":{"rule_uid":"ebdbc94a-a7e2-44ed-8bca-60dcc7f9e988"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Is cluster version past EOL",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "ebdbc94a-a7e2-44ed-8bca-60dcc7f9e988",
+                    "title": "Is cluster version past EOL",
+                    "condition": "B",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 60,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "datasource": {
+                                    "type": "prometheus",
+                                    "uid": "prometheus"
+                                },
+                                "expr": "eks_version_exporter_is_past_eol",
+                                "format": "time_series",
+                                "instant": false,
+                                "intervalFactor": 1,
+                                "intervalMs": 1000,
+                                "legendFormat": "is_outdated",
+                                "maxDataPoints": 43200,
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0.9
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "last"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "B",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "YMBzktpGz",
+                    "panelId": 16,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "162",
+                        "__dashboardUid__": "YMBzktpGz",
+                        "__panelId__": "16",
+                        "message": "Current cluster version is past EOL"
+                    },
+                    "labels": {
+                        "rule_uid": "ebdbc94a-a7e2-44ed-8bca-60dcc7f9e988"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}

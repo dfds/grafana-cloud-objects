@@ -1,1 +1,91 @@
-{"apiVersion":1,"groups":[{"orgId":1,"name":"NodeNotReady","folder":"General Alerting","interval":"1m","rules":[{"uid":"c9a6b483-1488-4fe5-a790-1ff7445436bb","title":"NodeNotReady","condition":"A","data":[{"refId":"A","relativeTimeRange":{"from":0,"to":0},"datasourceUid":"__expr__","model":{"conditions":[{"evaluator":{"params":[0],"type":"gt"},"operator":{"type":"and"},"query":{"params":["E"]},"reducer":{"type":"avg"}}],"intervalMs":1000,"maxDataPoints":43200,"refId":"A","type":"classic_conditions"}},{"refId":"E","relativeTimeRange":{"from":300,"to":0},"datasourceUid":"prometheus","model":{"datasource":{"type":"prometheus","uid":"prometheus"},"editorMode":"code","expr":"sum(kube_node_status_condition{condition=\"Ready\",status!=\"true\"})","intervalMs":1000,"legendFormat":"__auto","maxDataPoints":43200,"range":true,"refId":"E"}}],"dasboardUid":"KbpocXAVk","panelId":3,"noDataState":"NoData","execErrState":"Alerting","for":"1m","annotations":{"__alertId__":"173","__dashboardUid__":"KbpocXAVk","__panelId__":"3","message":"One or more nodes are in a NotReady state"},"labels":{"rule_uid":"c9a6b483-1488-4fe5-a790-1ff7445436bb"},"isPaused":false}]}]}
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "NodeNotReady",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "c9a6b483-1488-4fe5-a790-1ff7445436bb",
+                    "title": "NodeNotReady",
+                    "condition": "A",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "datasourceUid": "__expr__",
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "E"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "avg"
+                                        }
+                                    }
+                                ],
+                                "intervalMs": 1000,
+                                "maxDataPoints": 43200,
+                                "refId": "A",
+                                "type": "classic_conditions"
+                            }
+                        },
+                        {
+                            "refId": "E",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "datasource": {
+                                    "type": "prometheus",
+                                    "uid": "prometheus"
+                                },
+                                "editorMode": "code",
+                                "expr": "sum(kube_node_status_condition{condition=\"Ready\",status!=\"true\"})",
+                                "intervalMs": 1000,
+                                "legendFormat": "__auto",
+                                "maxDataPoints": 43200,
+                                "range": true,
+                                "refId": "E"
+                            }
+                        }
+                    ],
+                    "dasboardUid": "KbpocXAVk",
+                    "panelId": 3,
+                    "noDataState": "NoData",
+                    "execErrState": "Alerting",
+                    "for": "1m",
+                    "annotations": {
+                        "__alertId__": "173",
+                        "__dashboardUid__": "KbpocXAVk",
+                        "__panelId__": "3",
+                        "message": "One or more nodes are in a NotReady state"
+                    },
+                    "labels": {
+                        "rule_uid": "c9a6b483-1488-4fe5-a790-1ff7445436bb"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}
