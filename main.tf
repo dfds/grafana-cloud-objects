@@ -9,14 +9,14 @@ locals {
 
 module "ce_folder" {
   #checkov:skip=CKV_TF_1:We rely on release tags
-  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_folder?ref=0.4.0"
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_folder?ref=0.5.0"
   #source = "../../../../../../terraform-grafana-cloud//grafana_folder" # Support for local development
   title = var.folder_title
 }
 
 module "dashboards" {
   #checkov:skip=CKV_TF_1:We rely on release tags
-  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=0.4.0"
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=0.5.0"
   #source      = "../../../../../../terraform-grafana-cloud//grafana_dashboard" # Support for local development
   folder      = module.ce_folder.id
   config_json = local.json_data
