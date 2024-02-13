@@ -18,7 +18,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 59,
+    "id": 187,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -235,6 +235,7 @@
             "fieldConfig": {
                 "defaults": {
                     "custom": {
+                        "align": "auto",
                         "cellOptions": {
                             "type": "color-text"
                         },
@@ -1399,6 +1400,7 @@
             {
                 "allValue": ".*",
                 "current": {
+                    "selected": true,
                     "text": [
                         "All"
                     ],
@@ -1407,7 +1409,8 @@
                     ]
                 },
                 "datasource": {
-                    "uid": "Prometheus"
+                    "type": "prometheus",
+                    "uid": "${datasource}"
                 },
                 "definition": "",
                 "hide": 0,
@@ -1429,13 +1432,17 @@
             {
                 "allValue": ".*",
                 "current": {
-                    "text": "All",
+                    "selected": true,
+                    "text": [
+                        "All"
+                    ],
                     "value": [
                         "$__all"
                     ]
                 },
                 "datasource": {
-                    "uid": "Prometheus"
+                    "type": "prometheus",
+                    "uid": "${datasource}"
                 },
                 "definition": "",
                 "hide": 0,
@@ -1457,7 +1464,7 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "grafanacloud-dfdssandbox-prom",
+                    "text": "grafanacloud-dfdsdemo-prom",
                     "value": "grafanacloud-prom"
                 },
                 "hide": 0,
@@ -1473,7 +1480,7 @@
             },
             {
                 "current": {
-                    "selected": true,
+                    "selected": false,
                     "text": "hellman",
                     "value": "hellman"
                 },
@@ -1532,6 +1539,6 @@
     "timezone": "browser",
     "title": "Goldpinger",
     "uid": "D4EyPQTWk",
-    "version": 5,
+    "version": 2,
     "weekStart": ""
 }

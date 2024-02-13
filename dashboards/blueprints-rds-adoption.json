@@ -18,7 +18,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 62,
+    "id": 185,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -347,7 +347,7 @@
                         "uid": "prometheus"
                     },
                     "editorMode": "code",
-                    "expr": "(sum(blueprints_aws_rds_db_total{cluster=\"$cluster\"})) / (sum(aws_rds_db_total{cluster=\"$cluster\"}) / 100)",
+                    "expr": "(sum(blueprints_aws_rds_db_total)) / (sum(aws_rds_db_total) / 100)",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -469,7 +469,7 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "grafanacloud-dfdssandbox-prom",
+                    "text": "grafanacloud-dfdsdemo-prom",
                     "value": "grafanacloud-prom"
                 },
                 "hide": 0,
@@ -485,7 +485,7 @@
             },
             {
                 "current": {
-                    "selected": true,
+                    "selected": false,
                     "text": "hellman",
                     "value": "hellman"
                 },
@@ -520,6 +520,6 @@
     "timezone": "",
     "title": "Blueprints RDS Adoption",
     "uid": "a9c79f60-fdde-4e66-9009-b3863c3e0eda",
-    "version": 3,
+    "version": 1,
     "weekStart": ""
 }

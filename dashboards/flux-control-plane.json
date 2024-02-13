@@ -18,7 +18,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 144,
+    "id": 182,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -1537,7 +1537,8 @@
                     "value": "flux-system"
                 },
                 "datasource": {
-                    "uid": "${DS_PROMETHEUS}"
+                    "type": "prometheus",
+                    "uid": "${datasource}"
                 },
                 "definition": "workqueue_work_duration_seconds_count",
                 "hide": 0,
@@ -1558,7 +1559,7 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "grafanacloud-dfdssandbox-prom",
+                    "text": "grafanacloud-dfdsdemo-prom",
                     "value": "grafanacloud-prom"
                 },
                 "hide": 0,
@@ -1574,7 +1575,7 @@
             },
             {
                 "current": {
-                    "selected": true,
+                    "selected": false,
                     "text": "hellman",
                     "value": "hellman"
                 },
