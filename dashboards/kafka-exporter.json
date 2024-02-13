@@ -11,96 +11,24 @@
                 "hide": true,
                 "iconColor": "rgba(0, 211, 255, 1)",
                 "name": "Annotations & Alerts",
+                "target": {
+                    "limit": 100,
+                    "matchAny": false,
+                    "tags": [],
+                    "type": "dashboard"
+                },
                 "type": "dashboard"
             }
         ]
     },
+    "description": "A dashboard for monitoring kafka-exporter",
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 27,
+    "id": 186,
     "links": [],
     "liveNow": false,
     "panels": [
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "$datasource"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "mappings": [],
-                    "max": 100,
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "yellow",
-                                "value": 50
-                            },
-                            {
-                                "color": "orange",
-                                "value": 75
-                            },
-                            {
-                                "color": "red",
-                                "value": 90
-                            }
-                        ]
-                    },
-                    "unit": "percent",
-                    "unitScale": true
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
-                "y": 0
-            },
-            "id": 4,
-            "options": {
-                "displayMode": "gradient",
-                "maxVizHeight": 300,
-                "minVizHeight": 16,
-                "minVizWidth": 8,
-                "namePlacement": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "mean"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "sizing": "auto",
-                "valueMode": "color"
-            },
-            "pluginVersion": "10.4.0-65875",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "$datasource"
-                    },
-                    "editorMode": "code",
-                    "expr": "(sum by (tag, subnetid) (aws_subnet_exporter_max_hosts{tag=~\".*eu.*\", cluster=\"$cluster\"}) - sum by(tag, subnetid) (aws_subnet_exporter_available_ip{tag=~\".*eu.*\", cluster=\"$cluster\"})) / sum by(tag, subnetid) (aws_subnet_exporter_max_hosts{tag=~\".*eu.*\", cluster=\"$cluster\"}) * 100",
-                    "interval": "",
-                    "legendFormat": "subnet:{{tag}}",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Subnet ip usage",
-            "type": "bargauge"
-        },
         {
             "alert": {
                 "alertRuleTags": {},
@@ -108,9 +36,9 @@
                     {
                         "evaluator": {
                             "params": [
-                                500
+                                150
                             ],
-                            "type": "lt"
+                            "type": "gt"
                         },
                         "operator": {
                             "type": "and"
@@ -118,7 +46,7 @@
                         "query": {
                             "params": [
                                 "A",
-                                "1h",
+                                "5m",
                                 "now"
                             ]
                         },
@@ -133,16 +61,16 @@
                 "for": "5m",
                 "frequency": "1m",
                 "handler": 1,
-                "message": "One or more subnets has a low count of available IP's < 500.",
-                "name": "Subnet IP usage alert",
-                "noDataState": "ok",
+                "message": "A topic has large amount of consumergroups. This might be due to someone creating unique consumergroups and hence eventually taking down the exporter for everybody, due to long request times.",
+                "name": "Topic has large amount of consumergroups",
+                "noDataState": "no_data",
                 "notifications": []
             },
             "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
             },
-            "description": "",
+            "description": "Amount of consumergroups per topic",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -170,38 +98,178 @@
                         "scaleDistribution": {
                             "type": "linear"
                         },
-                        "showPoints": "never",
+                        "showPoints": "auto",
                         "spanNulls": false,
                         "stacking": {
                             "group": "A",
                             "mode": "none"
                         },
                         "thresholdsStyle": {
-                            "mode": "line+area"
+                            "mode": "off"
                         }
                     },
                     "mappings": [],
-                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "red",
+                                "color": "green",
                                 "value": null
                             },
                             {
-                                "color": "transparent",
-                                "value": 500
+                                "color": "red",
+                                "value": 80
                             }
                         ]
                     },
-                    "unit": "short",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 9,
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 0
+            },
+            "id": 4,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "exemplar": true,
+                    "expr": "count(kafka_consumergroup_lag{cluster=\"$cluster\"}) by (topic)",
+                    "interval": "",
+                    "legendFormat": "{{topic}}",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [
+                {
+                    "colorMode": "critical",
+                    "op": "gt",
+                    "value": 150,
+                    "visible": true
+                }
+            ],
+            "title": "Topic consumergroups",
+            "type": "timeseries"
+        },
+        {
+            "alert": {
+                "alertRuleTags": {},
+                "conditions": [
+                    {
+                        "evaluator": {
+                            "params": [
+                                0.5
+                            ],
+                            "type": "lt"
+                        },
+                        "operator": {
+                            "type": "and"
+                        },
+                        "query": {
+                            "params": [
+                                "A",
+                                "5m",
+                                "now"
+                            ]
+                        },
+                        "reducer": {
+                            "params": [],
+                            "type": "avg"
+                        },
+                        "type": "query"
+                    }
+                ],
+                "executionErrorState": "alerting",
+                "for": "5m",
+                "frequency": "1m",
+                "handler": 1,
+                "message": "Kafka-exporter metrics cannot be scraped either because it is down or the scrape timeout is excided",
+                "name": "Kafka-exporter up alert",
+                "noDataState": "no_data",
+                "notifications": []
+            },
+            "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+            },
+            "description": "Can Prometheus scrape metrics from kafka-exporter",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unitScale": true
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
                 "w": 12,
                 "x": 0,
                 "y": 8
@@ -215,47 +283,43 @@
                     "showLegend": true
                 },
                 "tooltip": {
-                    "mode": "multi",
+                    "mode": "single",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "7.0.3",
             "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "$datasource"
+                        "uid": "${datasource}"
                     },
-                    "expr": "sum by(tag, subnetid) (aws_subnet_exporter_available_ip{tag=~\".*eu.*\"}) ",
-                    "hide": false,
+                    "editorMode": "code",
+                    "exemplar": true,
+                    "expr": "up{cluster=\"$cluster\", job=\"kafka-exporter\"}",
                     "interval": "",
-                    "legendFormat": "availableIP:{{tag}}",
+                    "legendFormat": "{{job}}",
+                    "range": true,
                     "refId": "A"
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "$datasource"
-                    },
-                    "expr": "sum by(tag, subnetid) (aws_subnet_exporter_max_hosts{tag=~\".*eu.*\"})",
-                    "hide": false,
-                    "interval": "",
-                    "legendFormat": "maxHosts:{{tag}}",
-                    "refId": "B"
                 }
             ],
-            "title": "Subnet IP available",
+            "thresholds": [
+                {
+                    "colorMode": "critical",
+                    "op": "lt",
+                    "value": 0.5,
+                    "visible": true
+                }
+            ],
+            "title": "Kafka-exporter up",
             "type": "timeseries"
         }
     ],
     "refresh": "",
     "schemaVersion": 39,
     "tags": [
-        "AWS",
-        "IP",
-        "EKS",
-        "Kubernetes",
-        "subnet"
+        "Exporter",
+        "Kafka",
+        "Kubernetes"
     ],
     "templating": {
         "list": [
@@ -271,7 +335,6 @@
                 "name": "datasource",
                 "options": [],
                 "query": "prometheus",
-                "queryValue": "",
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
@@ -279,7 +342,7 @@
             },
             {
                 "current": {
-                    "selected": false,
+                    "selected": true,
                     "text": "hellman",
                     "value": "hellman"
                 },
@@ -307,25 +370,13 @@
         ]
     },
     "time": {
-        "from": "now-3h",
+        "from": "now-6h",
         "to": "now"
     },
-    "timepicker": {
-        "refresh_intervals": [
-            "10s",
-            "30s",
-            "1m",
-            "5m",
-            "15m",
-            "30m",
-            "1h",
-            "2h",
-            "1d"
-        ]
-    },
+    "timepicker": {},
     "timezone": "",
-    "title": "AWS subnet usage",
-    "uid": "1NxY8ypGk",
-    "version": 12,
+    "title": "Kafka-exporter",
+    "uid": "CoYn_3-nk",
+    "version": 2,
     "weekStart": ""
 }

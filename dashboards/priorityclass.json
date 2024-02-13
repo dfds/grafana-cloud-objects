@@ -15,23 +15,30 @@
             }
         ]
     },
+    "description": "Monitoring distribution of priorityclasses",
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 27,
+    "id": 194,
     "links": [],
     "liveNow": false,
     "panels": [
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
             },
             "fieldConfig": {
                 "defaults": {
+                    "custom": {
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "inspect": false
+                    },
+                    "decimals": 0,
+                    "displayName": "",
                     "mappings": [],
-                    "max": 100,
-                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -40,31 +47,124 @@
                                 "value": null
                             },
                             {
-                                "color": "yellow",
-                                "value": 50
-                            },
-                            {
-                                "color": "orange",
-                                "value": 75
-                            },
-                            {
                                 "color": "red",
-                                "value": 90
+                                "value": 80
                             }
                         ]
                     },
-                    "unit": "percent",
+                    "unit": "short",
+                    "unitScale": true
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Time"
+                        },
+                        "properties": [
+                            {
+                                "id": "displayName",
+                                "value": "Time"
+                            },
+                            {
+                                "id": "unit",
+                                "value": "time: YYYY-MM-DD HH:mm:ss"
+                            },
+                            {
+                                "id": "custom.align"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 17,
+                "w": 10,
+                "x": 0,
+                "y": 0
+            },
+            "id": 2,
+            "links": [],
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true
+            },
+            "pluginVersion": "10.4.0-65875",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "expr": "count(kube_pod_info{cluster=\"$cluster\"}) by (priority_class, namespace)",
+                    "format": "table",
+                    "instant": true,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "title": "Priority class by namespaces",
+            "transformations": [
+                {
+                    "id": "merge",
+                    "options": {
+                        "reducers": []
+                    }
+                }
+            ],
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "max": 100,
+                    "min": 0,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "index": 0,
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "index": 1,
+                                "value": 80
+                            }
+                        ]
+                    },
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 8,
-                "w": 12,
-                "x": 0,
+                "h": 17,
+                "w": 13,
+                "x": 10,
                 "y": 0
             },
             "id": 4,
+            "links": [],
             "options": {
                 "displayMode": "gradient",
                 "maxVizHeight": 300,
@@ -88,17 +188,18 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "$datasource"
+                        "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "(sum by (tag, subnetid) (aws_subnet_exporter_max_hosts{tag=~\".*eu.*\", cluster=\"$cluster\"}) - sum by(tag, subnetid) (aws_subnet_exporter_available_ip{tag=~\".*eu.*\", cluster=\"$cluster\"})) / sum by(tag, subnetid) (aws_subnet_exporter_max_hosts{tag=~\".*eu.*\", cluster=\"$cluster\"}) * 100",
-                    "interval": "",
-                    "legendFormat": "subnet:{{tag}}",
+                    "expr": "count(kube_pod_info{cluster=\"$cluster\"}) by (priority_class)",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{priority_class}}",
                     "range": true,
                     "refId": "A"
                 }
             ],
-            "title": "Subnet ip usage",
+            "title": "Priority class distribution",
             "type": "bargauge"
         },
         {
@@ -108,9 +209,9 @@
                     {
                         "evaluator": {
                             "params": [
-                                500
+                                0.5
                             ],
-                            "type": "lt"
+                            "type": "gt"
                         },
                         "operator": {
                             "type": "and"
@@ -133,16 +234,15 @@
                 "for": "5m",
                 "frequency": "1m",
                 "handler": 1,
-                "message": "One or more subnets has a low count of available IP's < 500.",
-                "name": "Subnet IP usage alert",
+                "message": "Misuse of priority classes detected",
+                "name": "Misuse of priority classes",
                 "noDataState": "ok",
                 "notifications": []
             },
             "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
             },
-            "description": "",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -156,7 +256,7 @@
                         "axisPlacement": "auto",
                         "barAlignment": 0,
                         "drawStyle": "line",
-                        "fillOpacity": 0,
+                        "fillOpacity": 10,
                         "gradientMode": "none",
                         "hideFrom": {
                             "legend": false,
@@ -181,17 +281,16 @@
                         }
                     },
                     "mappings": [],
-                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "red",
+                                "color": "transparent",
                                 "value": null
                             },
                             {
-                                "color": "transparent",
-                                "value": 500
+                                "color": "red",
+                                "value": 0.5
                             }
                         ]
                     },
@@ -202,16 +301,19 @@
             },
             "gridPos": {
                 "h": 9,
-                "w": 12,
+                "w": 10,
                 "x": 0,
-                "y": 8
+                "y": 17
             },
-            "id": 2,
+            "id": 6,
+            "links": [],
             "options": {
                 "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "displayMode": "table",
+                    "placement": "right",
                     "showLegend": true
                 },
                 "tooltip": {
@@ -219,32 +321,64 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "7.0.3",
+            "pluginVersion": "7.2.0",
             "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "$datasource"
+                        "uid": "${datasource}"
                     },
-                    "expr": "sum by(tag, subnetid) (aws_subnet_exporter_available_ip{tag=~\".*eu.*\"}) ",
+                    "editorMode": "code",
+                    "expr": "count(kube_pod_info{cluster=\"$cluster\",priority_class=\"selfservice\", namespace!=\"selfservice\", namespace!=\"selfservice-herald-vbqkr\", namespace!=\"developerautomation-xavgy\", namespace!=\"velero\"}) by (pririty_class, namespace)",
+                    "format": "time_series",
                     "hide": false,
                     "interval": "",
-                    "legendFormat": "availableIP:{{tag}}",
+                    "intervalFactor": 1,
+                    "legendFormat": "Selfservice priority class",
+                    "range": true,
                     "refId": "A"
                 },
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "$datasource"
+                        "uid": "${datasource}"
                     },
-                    "expr": "sum by(tag, subnetid) (aws_subnet_exporter_max_hosts{tag=~\".*eu.*\"})",
-                    "hide": false,
-                    "interval": "",
-                    "legendFormat": "maxHosts:{{tag}}",
+                    "editorMode": "code",
+                    "expr": "count(kube_pod_info{cluster=\"$cluster\",priority_class=\"service-critical\", namespace!=\"kube-system\"}) by (pririty_class, namespace)",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "Service critical priority class",
+                    "range": true,
                     "refId": "B"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "expr": "count(kube_pod_info{cluster=\"$cluster\",priority_class=\"cluster-monitoring\", namespace!=\"alcide\", namespace!=\"kube-system\", namespace!=\"kube-system\", namespace!=\"monitoring\"}) by (pririty_class, namespace)",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "Cluster monitoring priority class",
+                    "range": true,
+                    "refId": "C"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "expr": "count(kube_pod_info{cluster=\"$cluster\",priority_class=\"system-node-critical\", namespace!=\"kube-system\"}) by (pririty_class, namespace)",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "System node critical priority class",
+                    "range": true,
+                    "refId": "D"
                 }
             ],
-            "title": "Subnet IP available",
+            "title": "Alert graph",
             "type": "timeseries"
         }
     ],
@@ -252,10 +386,9 @@
     "schemaVersion": 39,
     "tags": [
         "AWS",
-        "IP",
         "EKS",
         "Kubernetes",
-        "subnet"
+        "Classes"
     ],
     "templating": {
         "list": [
@@ -271,7 +404,6 @@
                 "name": "datasource",
                 "options": [],
                 "query": "prometheus",
-                "queryValue": "",
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
@@ -279,7 +411,7 @@
             },
             {
                 "current": {
-                    "selected": false,
+                    "selected": true,
                     "text": "hellman",
                     "value": "hellman"
                 },
@@ -307,11 +439,12 @@
         ]
     },
     "time": {
-        "from": "now-3h",
+        "from": "now-6h",
         "to": "now"
     },
     "timepicker": {
         "refresh_intervals": [
+            "5s",
             "10s",
             "30s",
             "1m",
@@ -321,11 +454,22 @@
             "1h",
             "2h",
             "1d"
+        ],
+        "time_options": [
+            "5m",
+            "15m",
+            "1h",
+            "6h",
+            "12h",
+            "24h",
+            "2d",
+            "7d",
+            "30d"
         ]
     },
     "timezone": "",
-    "title": "AWS subnet usage",
-    "uid": "1NxY8ypGk",
-    "version": 12,
+    "title": "Priority class",
+    "uid": "W8nct6zGz",
+    "version": 1,
     "weekStart": ""
 }
