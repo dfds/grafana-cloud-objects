@@ -23,37 +23,70 @@ Also replace HOSTED_ZONE_ID with an actual hosted zone id if you also want to ma
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "Lock",
             "Effect": "Allow",
             "Action": [
-                "s3:PutObject",
-                "dynamodb:PutItem",
-                "route53:ChangeResourceRecordSets",
-                "dynamodb:UpdateItem",
-                "s3:ListBucket",
-                "s3:GetObject",
-                "s3:DeleteObject",
+                "dynamodb:DeleteItem",
                 "dynamodb:DescribeTable",
                 "dynamodb:GetItem",
-                "dynamodb:DeleteItem",
-                "route53:GetHostedZone",
-                "route53:ListTagsForResource",
-                "route53:ListResourceRecordSets"
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem"
             ],
             "Resource": [
-                "arn:aws:s3:::<BUCKET_NAME>/*",
-                "arn:aws:route53:::hostedzone/<HOSTED_ZONE_ID>",
-                "arn:aws:dynamodb:eu-central-1:<ACCOUNT_ID>:table/terraform-locks"
+                "arn:aws:dynamodb:eu-central-1:ACCOUNT_ID:table/terraform-locks"
             ]
         },
         {
-            "Sid": "Statement1",
+            "Sid": "DNSZone",
+            "Effect": "Allow",
+            "Action": [
+                "route53:ChangeResourceRecordSets",
+                "route53:GetHostedZone",
+                "route53:ListResourceRecordSets",
+                "route53:ListTagsForResource"
+            ],
+            "Resource": [
+                "arn:aws:route53:::hostedzone/HOSTED_ZONE_ID"
+            ]
+        },
+        {
+            "Sid": "Route53List",
             "Effect": "Allow",
             "Action": [
                 "route53:ListHostedZones"
             ],
             "Resource": [
                 "*"
+            ]
+        },
+        {
+            "Sid": "StateBucket",
+            "Effect": "Allow",
+            "Action": [
+                "s3:CreateBucket",
+                "s3:DeleteObject",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLogging",
+                "s3:GetBucketPolicy",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetBucketVersioning",
+                "s3:GetEncryptionConfiguration",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:PutBucketAcl",
+                "s3:PutBucketLogging",
+                "s3:PutBucketOwnershipControls",
+                "s3:PutBucketPolicy",
+                "s3:PutBucketPublicAccessBlock",
+                "s3:PutBucketTagging",
+                "s3:PutBucketVersioning",
+                "s3:PutEncryptionConfiguration",
+                "s3:PutLifecycleConfiguration",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::BUCKET_NAME",
+                "arn:aws:s3:::BUCKET_NAME/*"
             ]
         }
     ]
