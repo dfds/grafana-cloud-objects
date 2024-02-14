@@ -4,7 +4,7 @@ Terraform state and locks are stored on AWS. We are using OIDC trust to authenti
 
 ## GitHub Actions secret
 
-In the GitHub Actions workflow this is achieved using a secret called ROLE_TO_ASSUME, which contains the ARN for the IAM role.
+In the GitHub Actions workflow this is achieved using a secret called AWS_CORE_ROLE_TO_ASSUME, which contains the ARN for the IAM role.
 
 ## AWS IAM
 

@@ -12,6 +12,10 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  id-token: write # This is required for requesting the JWT from OIDC provider
+  contents: read # This is required for actions/checkout
+
 concurrency: terragrunt
 
 defaults:
