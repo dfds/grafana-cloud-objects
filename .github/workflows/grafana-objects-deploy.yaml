@@ -24,6 +24,18 @@ defaults:
 
 jobs:
   deploy-to-grafana-cloud:
+    strategy:
+      matrix:
+        environment:
+          - sandbox
+          - demo
+        include:
+          - environment: sandbox
+            url: ${{ secrets.GRAFANA_CLOUD_URL_FOR_SANDBOX }}
+            auth: ${{ secrets.GRAFANA_CLOUD_SERVICE_ACCOUNT_TOKEN_FOR_SANDBOX }}
+          - environment: demo
+            url: ${{ secrets.GRAFANA_CLOUD_URL_FOR_DEMO }}
+            auth: ${{ secrets.GRAFANA_CLOUD_SERVICE_ACCOUNT_TOKEN_FOR_DEMO }}
     runs-on: ubuntu-latest
     container:
       image: dfdsdk/prime-pipeline:0.6.37
@@ -38,21 +50,15 @@ jobs:
           role-session-name: provision-grafana-objects
           aws-region: eu-central-1
 
-      - name: Deploy resources to Grafana Cloud sandbox environment
+      - name: Deploy resources to Grafana Cloud ${{ matrix.environment }} environment
         env:
-          TF_VAR_grafana_url: ${{ secrets.GRAFANA_CLOUD_URL_FOR_SANDBOX }}
-          TF_VAR_grafana_auth: ${{ secrets.GRAFANA_CLOUD_SERVICE_ACCOUNT_TOKEN_FOR_SANDBOX }}
-        run: terragrunt run-all apply --terragrunt-working-dir ./environments/sandbox --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
+          TF_VAR_grafana_url: ${{ matrix.url }}
+          TF_VAR_grafana_auth: ${{ matrix.auth }}
+        run: terragrunt run-all apply --terragrunt-working-dir ./environments/${{ matrix.environment }} --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
 
-      - name: Deploy resources to Grafana Cloud demo environment
-        env:
-          TF_VAR_grafana_url: ${{ secrets.GRAFANA_CLOUD_URL_FOR_DEMO }}
-          TF_VAR_grafana_auth: ${{ secrets.GRAFANA_CLOUD_SERVICE_ACCOUNT_TOKEN_FOR_DEMO }}
-        run: terragrunt run-all apply --terragrunt-working-dir ./environments/demo --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
-
-      - name: Send alert if job fails
-        if: failure()
-        uses: dfds/shared-workflows/.github/actions/automation-slack-notifier@master
-        with:
-          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
-          slack_message: "Configure Grafana Cloud environment failed."
+      # - name: Send alert if job fails
+      #   if: failure()
+      #   uses: dfds/shared-workflows/.github/actions/automation-slack-notifier@master
+      #   with:
+      #     slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+      #     slack_message: "Configure Grafana Cloud environment failed."
