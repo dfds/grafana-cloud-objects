@@ -35,6 +35,38 @@ module "alerts" {
   alertrule_files = local.alertrule_files
 }
 
+data "aws_ssm_parameter" "sm_url" {
+  name = "/grafana-cloud/${var.environment}/sm-api-url"
+}
+
+data "aws_ssm_parameter" "sm_token" {
+  name = "/grafana-cloud/${var.environment}/sm-access-token"
+}
+
+provider "grafana" {
+  alias           = "sm"
+  sm_access_token = data.aws_ssm_parameter.sm_token.value
+  sm_url          = data.aws_ssm_parameter.sm_url.value
+}
+
+module "checks" {
+  source = "../../../../../../terraform-grafana-cloud//grafana_synthetic_check"
+  #checkov:skip=CKV_TF_1:We rely on release tags
+  job    = "1Password SCIM Bridge"
+  target = "https://1password.hellman.oxygen.dfds.cloud/app"
+  labels = {
+    App = "1Password"
+  }
+  http_check_settings = {
+    method             = "GET"
+    valid_status_codes = [200]
+  }
+
+  providers = {
+    grafana = grafana.sm
+  }
+}
+
 output "dashboard_meta" {
   value = module.dashboards.meta
 }
