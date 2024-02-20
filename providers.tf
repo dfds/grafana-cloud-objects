@@ -1,6 +1,10 @@
+provider "aws" {
+  region = "eu-central-1"
+}
+
 provider "grafana" {
-  auth = var.grafana_auth
-  url  = var.grafana_url
+  auth = data.aws_ssm_parameter.grafana_sa_access_token.value
+  url  = data.aws_ssm_parameter.grafana_url.value
 }
 
 terraform {

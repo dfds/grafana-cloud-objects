@@ -10,5 +10,5 @@ include {
 }
 
 inputs = {
-
+  environment = "demo"
 }
