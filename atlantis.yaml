@@ -1,0 +1,24 @@
+version: 3
+projects:
+  - dir: environments/sandbox
+    workflow: grafana-cloud-objects
+    workspace: grafana-cloud-objects-sandbox-ws-01
+    autoplan:
+      enabled: true
+      when_modified:
+        - "terragrunt.hcl"
+        - "../../**/*.tfvars"
+
+workflows:
+  grafana-cloud-objects:
+    plan:
+      steps:
+        - env:
+            name: AWS_ACCESS_KEY_ID
+            command: "echo $PRODUCTION_AWS_ACCESS_KEY_ID"
+        - env:
+            name: AWS_SECRET_ACCESS_KEY
+            command: "echo $PRODUCTION_AWS_SECRET_ACCESS_KEY"
+        - run: terragrunt init -upgrade
+        - run: terragrunt plan -no-color --terragrunt-non-interactive -input=false -out=$PLANFILE --terragrunt-source-update
+        - run: terragrunt show -json $PLANFILE > $SHOWFILE
