@@ -28,14 +28,7 @@ jobs:
       matrix:
         environment:
           - sandbox
-          - demo
-        include:
-          - environment: sandbox
-            url: GRAFANA_CLOUD_URL_FOR_SANDBOX
-            auth: GRAFANA_CLOUD_SERVICE_ACCOUNT_TOKEN_FOR_SANDBOX
-          - environment: demo
-            url: GRAFANA_CLOUD_URL_FOR_DEMO
-            auth: GRAFANA_CLOUD_SERVICE_ACCOUNT_TOKEN_FOR_DEMO
+#          - demo
     runs-on: ubuntu-latest
     container:
       image: dfdsdk/prime-pipeline:0.6.37
@@ -51,9 +44,6 @@ jobs:
           aws-region: eu-central-1
 
       - name: Deploy resources to Grafana Cloud ${{ matrix.environment }} environment
-        env:
-          TF_VAR_grafana_url: ${{ secrets[matrix.url] }}
-          TF_VAR_grafana_auth: ${{ secrets[matrix.auth] }}
         run: terragrunt run-all apply --terragrunt-working-dir ./environments/${{ matrix.environment }} --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
 
       - name: Send alert if job fails
