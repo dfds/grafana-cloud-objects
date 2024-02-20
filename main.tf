@@ -35,6 +35,8 @@ module "alerts" {
   alertrule_files = local.alertrule_files
 }
 
-output "dashboard_meta" {
-  value = module.dashboards.meta
+module "synthetic_checks" {
+  #checkov:skip=CKV_TF_1:We rely on release tags
+  #source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_synthetic?ref=0.9.0"
+  source = "../../../../../../terraform-grafana-cloud//grafana_synthetic" # Support for local development
 }
