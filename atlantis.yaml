@@ -7,7 +7,17 @@ projects:
       enabled: true
       when_modified:
         - "terragrunt.hcl"
-        - "../../**/*.tfvars"
+        - "../../terragrunt.hcl"
+        - "../../*.tf"
+  - dir: environments/demo
+    workflow: grafana-cloud-objects
+    workspace: grafana-cloud-objects-demo-ws-01
+    autoplan:
+      enabled: true
+      when_modified:
+        - "terragrunt.hcl"
+        - "../../terragrunt.hcl"
+        - "../../*.tf"
 
 workflows:
   grafana-cloud-objects:
