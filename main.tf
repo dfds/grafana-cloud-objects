@@ -1,12 +1,15 @@
 locals {
-  json_files = fileset(path.module, "dashboards/*.json")
-  json_data = [for f in local.json_files : {
+  dashboard_files = fileset(path.module, "dashboards/*.json")
+  dashboard_data = [for f in local.dashboard_files : {
     filename = f
     content  = (file(f))
     }
   ]
 
   alertrule_files = fileset(path.module, "alertrules/*.json")
+
+  synthetic_files = fileset(path.module, "synthetics/${var.environment}/*.json")
+
 }
 
 module "ce_folder" {
@@ -23,7 +26,7 @@ module "dashboards" {
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=0.8.0"
   #source      = "../../../../../../terraform-grafana-cloud//grafana_dashboard" # Support for local development
   folder      = module.ce_folder.id
-  config_json = local.json_data
+  config_json = local.dashboard_data
 }
 
 
@@ -37,6 +40,12 @@ module "alerts" {
 
 module "synthetic_checks" {
   #checkov:skip=CKV_TF_1:We rely on release tags
-  #source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_synthetic?ref=0.9.0"
-  source = "../../../../../../terraform-grafana-cloud//grafana_synthetic" # Support for local development
+  #source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_synthetic_check?ref=0.9.0"
+  source          = "../../../../../../terraform-grafana-cloud//grafana_synthetic_check" # Support for local development
+  synthetic_files = local.synthetic_files
+
+  providers = {
+    grafana = grafana.sm
+  }
+
 }

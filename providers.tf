@@ -7,6 +7,12 @@ provider "grafana" {
   url  = data.aws_ssm_parameter.grafana_url.value
 }
 
+provider "grafana" {
+  alias           = "sm"
+  sm_access_token = data.aws_ssm_parameter.grafana_sm_access_token.value
+  sm_url          = data.aws_ssm_parameter.grafana_sm_api_url.value
+}
+
 terraform {
   backend "s3" {}
 }
