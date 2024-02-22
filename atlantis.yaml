@@ -4,7 +4,7 @@ projects:
     workflow: grafana-cloud-objects
     workspace: grafana-cloud-objects-sandbox-ws-01
     autoplan:
-      enabled: true
+      enabled: false
       when_modified:
         - "terragrunt.hcl"
         - "../../terragrunt.hcl"
@@ -13,7 +13,7 @@ projects:
     workflow: grafana-cloud-objects
     workspace: grafana-cloud-objects-demo-ws-01
     autoplan:
-      enabled: true
+      enabled: false
       when_modified:
         - "terragrunt.hcl"
         - "../../terragrunt.hcl"
