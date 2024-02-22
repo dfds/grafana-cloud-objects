@@ -28,7 +28,7 @@ jobs:
       matrix:
         environment:
           - sandbox
-#          - demo
+          - demo
     runs-on: ubuntu-latest
     container:
       image: dfdsdk/prime-pipeline:0.6.37
