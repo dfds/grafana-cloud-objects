@@ -1341,7 +1341,7 @@
                         "uid": "prometheus"
                     },
                     "exemplar": true,
-                    "expr": "avg by (api)(rate(awscni_aws_api_latency_ms_sum[5m])/rate(awscni_aws_api_latency_ms_count[5m]))",
+                    "expr": "avg by (api)(rate(awscni_aws_api_latency_ms_sum[$__rate_interval])/rate(awscni_aws_api_latency_ms_count[$__rate_interval]))",
                     "interval": "",
                     "legendFormat": "{{api}}",
                     "refId": "A"
@@ -1540,7 +1540,7 @@
                         "uid": "prometheus"
                     },
                     "exemplar": true,
-                    "expr": "sum(rate(awscni_reconcile_count[5m])) by (fn)",
+                    "expr": "sum(rate(awscni_reconcile_count[$__rate_interval])) by (fn)",
                     "instant": false,
                     "interval": "",
                     "legendFormat": "{{fn}}",
