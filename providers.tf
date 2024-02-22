@@ -7,6 +7,10 @@ provider "grafana" {
   url  = data.aws_ssm_parameter.grafana_url.value
 }
 
+provider "aws" {
+  region = "eu-central-1"
+}
+
 terraform {
   backend "s3" {}
 }

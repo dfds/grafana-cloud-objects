@@ -8,3 +8,8 @@ variable "folder_title" {
   default     = "Cloud Engineering"
   description = "Folder title"
 }
+
+variable "environment" {
+  type        = string
+  description = "The environment to deploy to"
+}
