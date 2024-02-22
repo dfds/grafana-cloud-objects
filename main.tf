@@ -42,7 +42,10 @@ module "synthetic_checks" {
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_synthetic_check?ref=0.10.0"
   #source          = "../../../../../../terraform-grafana-cloud//grafana_synthetic_check" # Support for local development
-  synthetic_files = local.synthetic_files
+  synthetic_files  = local.synthetic_files
+  basic_auth       = var.synthetic_basic_auth
+  bearer_token     = var.synthetic_bearer_token
+  synthetic_probes = var.synthetic_probes
 
   providers = {
     grafana = grafana.sm
