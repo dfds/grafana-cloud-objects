@@ -40,12 +40,11 @@ module "alerts" {
 
 module "synthetic_checks" {
   #checkov:skip=CKV_TF_1:We rely on release tags
-  #source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_synthetic_check?ref=0.9.0"
-  source          = "../../../../../../terraform-grafana-cloud//grafana_synthetic_check" # Support for local development
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_synthetic_check?ref=0.9.0"
+  #source          = "../../../../../../terraform-grafana-cloud//grafana_synthetic_check" # Support for local development
   synthetic_files = local.synthetic_files
 
   providers = {
     grafana = grafana.sm
   }
-
 }
