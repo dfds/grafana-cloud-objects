@@ -652,7 +652,7 @@
                         "uid": "${datasources}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(rate(traefik_entrypoint_requests_total{entrypoint=\"web\",cluster=\"$cluster\"}[5m]))",
+                    "expr": "sum(rate(traefik_entrypoint_requests_total{entrypoint=\"web\",cluster=\"$cluster\"}[$__rate_interval]))",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
