@@ -97,4 +97,4 @@ inputs = {
 }
 ```
 
-You can find all the valid values for the synthetic_probes variable in varibles.tf
+You can find all the valid values for the synthetic_probes variable at <https://github.com/dfds/terraform-grafana-cloud/blob/main/grafana_synthetic_check/variables.tf>
