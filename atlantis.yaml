@@ -18,6 +18,7 @@ projects:
         - "terragrunt.hcl"
         - "../../terragrunt.hcl"
         - "../../*.tf"
+        - "../../synthetics/demo/*.json"
 
 workflows:
   grafana-cloud-objects:
