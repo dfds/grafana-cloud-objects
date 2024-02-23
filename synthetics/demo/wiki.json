@@ -1,0 +1,17 @@
+{
+  "job": "DFDS",
+  "target": "https://wiki.dfds.cloud/",
+  "enabled": true,
+  "frequency": 120000,
+  "labels": {
+    "env": "prod",
+    "availability": "high"
+  },
+  "settings": {
+    "method": "GET",
+    "valid_status_codes": [
+      200
+    ],
+    "no_follow_redirects": false
+  }
+}
