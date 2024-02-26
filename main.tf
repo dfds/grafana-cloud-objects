@@ -51,3 +51,12 @@ module "synthetic_checks" {
     grafana = grafana.sm
   }
 }
+
+module "grafana_data_source_cloudwatch" { # This could take a list of AWS data sources
+  source = "../../../../../../terraform-grafana-cloud/grafana_data_source_cloudwatch"
+  cloudwatch_connection = {
+    name          = "cloudwatch_samdi_sandbox_assume"
+    defaultRegion = "eu-west-1"
+    assumeRoleArn = "arn:aws:iam::913649073447:role/GrafanaCloudSamdiSandbox"
+  }
+}
