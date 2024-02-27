@@ -44,6 +44,8 @@ jobs:
           aws-region: eu-central-1
 
       - name: Deploy resources to Grafana Cloud ${{ matrix.environment }} environment
+        env:
+          TF_VAR_synthetic_basic_auth: '{"atlantis_auth": {"username": ${{ secrets.PROD_ATLANTIS_USERNAME }}, "password": ${{ secrets.PROD_ATLANTIS_PASSWORD }} }}'
         run: terragrunt run-all apply --terragrunt-working-dir ./environments/${{ matrix.environment }} --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
 
       - name: Send alert if job fails
