@@ -10,6 +10,8 @@ locals {
 
   synthetic_files = fileset(path.module, "synthetics/${var.environment}/*.json")
 
+  data_sources_aws_cw     = fileset(path.module, "data_sources/aws_cloudwatch/*.json")
+  data_sources_aws_athena = fileset(path.module, "data_sources/aws_athena/*.json")
 }
 
 module "ce_folder" {
@@ -52,11 +54,12 @@ module "synthetic_checks" {
   }
 }
 
-module "grafana_data_source_cloudwatch" { # This could take a list of AWS data sources
-  source = "../../../../../../terraform-grafana-cloud/grafana_data_source_cloudwatch"
-  cloudwatch_connection = {
-    name          = "cloudwatch_samdi_sandbox_assume"
-    defaultRegion = "eu-west-1"
-    assumeRoleArn = "arn:aws:iam::913649073447:role/GrafanaCloudSamdiSandbox"
-  }
+module "grafa_data_source_aws_cw" {
+  source       = "../../../../../../terraform-grafana-cloud//grafana_data_source_cloudwatch"
+  data_sources = local.data_sources_aws_cw
+}
+
+module "grafa_data_source_aws_athena" {
+  source       = "../../../../../../terraform-grafana-cloud//grafana_data_source_athena"
+  data_sources = local.data_sources_aws_athena
 }

@@ -1,0 +1,10 @@
+{
+    "name": "athena_samdi",
+    "assumeRoleArn": "arn:aws:iam::616912401663:role/testing-grafana-cloud",
+    "authType": "grafana_assume_role",
+    "catalog": "AwsDataCatalog",
+    "database": "1password",
+    "defaultRegion": "eu-central-1",
+    "outputLocation": "s3://dfds-1password-collected-metrics-store/athena",
+    "workgroup": "primary"
+}

@@ -1,0 +1,6 @@
+{
+    "name": "cloudwatch_samdi_sandbox_assume",
+    "authType": "grafana_assume_role",
+    "defaultRegion": "eu-west-1",
+    "assumeRoleArn": "arn:aws:iam::913649073447:role/GrafanaCloudSamdiSandbox"
+}
