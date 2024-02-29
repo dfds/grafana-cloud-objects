@@ -10,6 +10,7 @@ locals {
 
   synthetic_files = fileset(path.module, "synthetics/${var.environment}/*.json")
 
+  data_sources_aws_athena = fileset(path.module, "data_sources/aws_athena/*.json")
 }
 
 module "ce_folder" {
@@ -50,4 +51,9 @@ module "synthetic_checks" {
   providers = {
     grafana = grafana.sm
   }
+}
+
+module "grafana_data_source_aws_athena" {
+  source       = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source?ref=0.11.0"
+  data_sources = local.data_sources_aws_athena
 }
