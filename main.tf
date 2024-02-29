@@ -54,6 +54,6 @@ module "synthetic_checks" {
 }
 
 module "grafana_data_source_aws_athena" {
-  source       = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source?ref=0.11.0"
+  source       = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_athena?ref=0.11.0"
   data_sources = local.data_sources_aws_athena
 }
