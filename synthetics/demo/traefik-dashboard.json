@@ -1,6 +1,6 @@
 {
-  "job": "Wiki",
-  "target": "https://wiki.dfds.cloud/",
+  "job": "Traefik dashboard",
+  "target": "https://traefik-blue-variant.hellman.oxygen.dfds.cloud/dashboard/",
   "enabled": true,
   "frequency": 120000,
   "labels": {
