@@ -6,11 +6,10 @@ locals {
     }
   ]
 
-  alertrule_files = fileset(path.module, "alertrules/*.json")
-
-  synthetic_files = fileset(path.module, "synthetics/${var.environment}/*.json")
-
-  data_sources_aws_athena = fileset(path.module, "data_sources/aws_athena/*.json")
+  alertrule_files             = fileset(path.module, "alertrules/*.json")
+  synthetic_files             = fileset(path.module, "synthetics/${var.environment}/*.json")
+  data_sources_aws_athena     = fileset(path.module, "data_sources/aws_athena/*.json")
+  data_sources_aws_cloudwatch = fileset(path.module, "data_sources/aws_cloudwatch/*.json")
 }
 
 module "ce_folder" {
@@ -20,8 +19,6 @@ module "ce_folder" {
   title = var.folder_title
 }
 
-
-
 module "dashboards" {
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=0.11.0"
@@ -29,7 +26,6 @@ module "dashboards" {
   folder      = module.ce_folder.id
   config_json = local.dashboard_data
 }
-
 
 module "alerts" {
   #checkov:skip=CKV_TF_1:We rely on release tags
@@ -54,6 +50,15 @@ module "synthetic_checks" {
 }
 
 module "grafana_data_source_aws_athena" {
-  source       = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_athena?ref=0.11.0"
+  #checkov:skip=CKV_TF_1:We rely on release tags
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_athena?ref=0.11.0"
+  #source      = "../../../../../../terraform-grafana-cloud//grafana_data_source_athena" # Support for local development
   data_sources = local.data_sources_aws_athena
+}
+
+module "grafana_data_source_aws_cloudwatch" {
+  #checkov:skip=CKV_TF_1:We rely on release tags
+  #source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_cloudwatch?ref=0.11.0"
+  source       = "../../../../../../terraform-grafana-cloud//grafana_data_source_cloudwatch" # Support for local development
+  data_sources = local.data_sources_aws_cloudwatch
 }
