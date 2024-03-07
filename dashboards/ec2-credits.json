@@ -19,16 +19,12 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 74,
+    "id": 165,
     "links": [],
     "liveNow": false,
     "panels": [
         {
             "collapsed": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "grafanacloud-prom"
-            },
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -37,21 +33,13 @@
             },
             "id": 13,
             "panels": [],
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "grafanacloud-prom"
-                    },
-                    "refId": "A"
-                }
-            ],
             "title": "Graphs",
             "type": "row"
         },
         {
             "datasource": {
-                "uid": "CloudWatch"
+                "type": "cloudwatch",
+                "uid": "${datasource}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -78,8 +66,7 @@
                                 "value": 2304
                             }
                         ]
-                    },
-                    "unitScale": true
+                    }
                 },
                 "overrides": []
             },
@@ -106,26 +93,30 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.0.0-67746",
             "targets": [
                 {
-                    "alias": "",
                     "datasource": {
-                        "uid": "CloudWatch"
+                        "type": "cloudwatch",
+                        "uid": "${datasource}"
                     },
                     "dimensions": {
                         "InstanceId": "*"
                     },
                     "expression": "",
                     "id": "",
+                    "label": "",
+                    "logGroups": [],
                     "matchExact": true,
                     "metricEditorMode": 0,
                     "metricName": "CPUCreditBalance",
                     "metricQueryType": 0,
                     "namespace": "AWS/EC2",
-                    "period": "300",
+                    "period": "",
+                    "queryMode": "Metrics",
                     "refId": "A",
                     "region": "default",
+                    "sqlExpression": "",
                     "statistic": "Average"
                 }
             ],
@@ -134,7 +125,8 @@
         },
         {
             "datasource": {
-                "uid": "CloudWatch"
+                "type": "cloudwatch",
+                "uid": "${datasource}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -151,8 +143,7 @@
                                 "value": 1
                             }
                         ]
-                    },
-                    "unitScale": true
+                    }
                 },
                 "overrides": []
             },
@@ -179,26 +170,30 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.0.0-67746",
             "targets": [
                 {
-                    "alias": "",
                     "datasource": {
-                        "uid": "CloudWatch"
+                        "type": "cloudwatch",
+                        "uid": "${datasource}"
                     },
                     "dimensions": {
                         "InstanceId": "*"
                     },
                     "expression": "",
                     "id": "",
+                    "label": "",
+                    "logGroups": [],
                     "matchExact": true,
                     "metricEditorMode": 0,
                     "metricName": "CPUSurplusCreditBalance",
                     "metricQueryType": 0,
                     "namespace": "AWS/EC2",
-                    "period": "300",
+                    "period": "",
+                    "queryMode": "Metrics",
                     "refId": "A",
                     "region": "default",
+                    "sqlExpression": "",
                     "statistic": "Average"
                 }
             ],
@@ -207,7 +202,8 @@
         },
         {
             "datasource": {
-                "uid": "CloudWatch"
+                "type": "cloudwatch",
+                "uid": "${datasource}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -261,8 +257,7 @@
                             }
                         ]
                     },
-                    "unit": "short",
-                    "unitScale": true
+                    "unit": "short"
                 },
                 "overrides": []
             },
@@ -281,6 +276,7 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "maxHeight": 600,
                     "mode": "multi",
                     "sort": "none"
                 }
@@ -288,23 +284,27 @@
             "pluginVersion": "7.2.0",
             "targets": [
                 {
-                    "alias": "",
                     "datasource": {
-                        "uid": "CloudWatch"
+                        "type": "cloudwatch",
+                        "uid": "${datasource}"
                     },
                     "dimensions": {
                         "InstanceId": "*"
                     },
                     "expression": "",
                     "id": "",
+                    "label": "",
+                    "logGroups": [],
                     "matchExact": true,
                     "metricEditorMode": 0,
                     "metricName": "CPUCreditUsage",
                     "metricQueryType": 0,
                     "namespace": "AWS/EC2",
-                    "period": "300",
+                    "period": "",
+                    "queryMode": "Metrics",
                     "refId": "A",
                     "region": "default",
+                    "sqlExpression": "",
                     "statistic": "Average"
                 }
             ],
@@ -313,7 +313,8 @@
         },
         {
             "datasource": {
-                "uid": "CloudWatch"
+                "type": "cloudwatch",
+                "uid": "${datasource}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -368,8 +369,7 @@
                             }
                         ]
                     },
-                    "unit": "percent",
-                    "unitScale": true
+                    "unit": "percent"
                 },
                 "overrides": []
             },
@@ -388,6 +388,7 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "maxHeight": 600,
                     "mode": "multi",
                     "sort": "none"
                 }
@@ -395,197 +396,31 @@
             "pluginVersion": "7.2.0",
             "targets": [
                 {
-                    "alias": "",
                     "datasource": {
-                        "uid": "CloudWatch"
+                        "type": "cloudwatch",
+                        "uid": "${datasource}"
                     },
                     "dimensions": {
                         "InstanceId": "*"
                     },
                     "expression": "",
                     "id": "",
+                    "label": "",
+                    "logGroups": [],
                     "matchExact": true,
                     "metricEditorMode": 0,
                     "metricName": "CPUUtilization",
                     "metricQueryType": 0,
                     "namespace": "AWS/EC2",
-                    "period": "60",
+                    "period": "",
+                    "queryMode": "Metrics",
                     "refId": "A",
                     "region": "default",
+                    "sqlExpression": "",
                     "statistic": "Maximum"
                 }
             ],
             "title": "CPU Utilisation",
-            "type": "timeseries"
-        },
-        {
-            "collapsed": false,
-            "datasource": {
-                "type": "prometheus",
-                "uid": "grafanacloud-prom"
-            },
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 25
-            },
-            "id": 15,
-            "panels": [],
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "grafanacloud-prom"
-                    },
-                    "refId": "A"
-                }
-            ],
-            "title": "Alerts",
-            "type": "row"
-        },
-        {
-            "alert": {
-                "alertRuleTags": {},
-                "conditions": [
-                    {
-                        "evaluator": {
-                            "params": [
-                                1
-                            ],
-                            "type": "lt"
-                        },
-                        "operator": {
-                            "type": "and"
-                        },
-                        "query": {
-                            "params": [
-                                "A",
-                                "5m",
-                                "now"
-                            ]
-                        },
-                        "reducer": {
-                            "params": [],
-                            "type": "last"
-                        },
-                        "type": "query"
-                    }
-                ],
-                "executionErrorState": "alerting",
-                "for": "5m",
-                "frequency": "5m",
-                "handler": 1,
-                "message": "An EC2 instance has used its CPU Credit Balance. Performance issues may be encountered on this Kubernetes node, please check node CPU usage and take action to resolve or consider upgrading or changing the node instance type.",
-                "name": "EC2 Worker Node Credit Balance alert",
-                "noDataState": "ok",
-                "notifications": []
-            },
-            "datasource": {
-                "uid": "CloudWatch"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "line+area"
-                        }
-                    },
-                    "links": [],
-                    "mappings": [],
-                    "max": 2304,
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "red",
-                                "value": null
-                            },
-                            {
-                                "color": "transparent",
-                                "value": 1
-                            }
-                        ]
-                    },
-                    "unit": "short",
-                    "unitScale": true
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 7,
-                "w": 24,
-                "x": 0,
-                "y": 26
-            },
-            "id": 16,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "multi",
-                    "sort": "none"
-                }
-            },
-            "pluginVersion": "7.2.0",
-            "targets": [
-                {
-                    "alias": "",
-                    "datasource": {
-                        "uid": "CloudWatch"
-                    },
-                    "dimensions": {
-                        "InstanceId": "*"
-                    },
-                    "expression": "",
-                    "id": "",
-                    "matchExact": true,
-                    "metricEditorMode": 0,
-                    "metricName": "CPUCreditBalance",
-                    "metricQueryType": 0,
-                    "namespace": "AWS/EC2",
-                    "period": "300",
-                    "refId": "A",
-                    "region": "default",
-                    "statistic": "Average"
-                }
-            ],
-            "title": "Credit Balance",
             "type": "timeseries"
         }
     ],
@@ -593,6 +428,7 @@
     "schemaVersion": 39,
     "tags": [
         "AWS",
+        "CloudWatch",
         "EC2"
     ],
     "templating": {
@@ -600,46 +436,20 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "grafanacloud-dfdssandbox-prom",
-                    "value": "grafanacloud-prom"
+                    "text": "CloudWatch-oxygen-eu-west-1",
+                    "value": "cloudwatch-grafana"
                 },
                 "hide": 0,
                 "includeAll": false,
                 "multi": false,
                 "name": "datasource",
                 "options": [],
-                "query": "prometheus",
+                "query": "cloudwatch",
+                "queryValue": "",
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
                 "type": "datasource"
-            },
-            {
-                "current": {
-                    "selected": false,
-                    "text": "hellman",
-                    "value": "hellman"
-                },
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "${datasource}"
-                },
-                "definition": "label_values(cluster)",
-                "hide": 0,
-                "includeAll": false,
-                "multi": false,
-                "name": "cluster",
-                "options": [],
-                "query": {
-                    "qryType": 1,
-                    "query": "label_values(cluster)",
-                    "refId": "PrometheusVariableQueryEditor-VariableQuery"
-                },
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "sort": 0,
-                "type": "query"
             }
         ]
     },
@@ -647,6 +457,7 @@
         "from": "now-3h",
         "to": "now"
     },
+    "timeRangeUpdatedDuringEditOrView": false,
     "timepicker": {
         "refresh_intervals": [
             "10s",
@@ -663,6 +474,6 @@
     "timezone": "",
     "title": "EC2 Credits",
     "uid": "GUakfOpMk",
-    "version": 2,
+    "version": 11,
     "weekStart": ""
 }

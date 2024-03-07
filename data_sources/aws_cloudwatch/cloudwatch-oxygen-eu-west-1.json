@@ -1,0 +1,7 @@
+{
+    "name": "CloudWatch-oxygen-eu-west-1",
+    "type": "cloudwatch",
+    "authType": "grafana_assume_role",
+    "assumeRoleArn": "arn:aws:iam::738063116313:role/grafana-cloud-cloudwatch-integration",
+    "defaultRegion": "eu-west-1"
+}
