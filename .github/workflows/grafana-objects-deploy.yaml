@@ -31,7 +31,7 @@ jobs:
           - demo
     runs-on: ubuntu-latest
     container:
-      image: dfdsdk/prime-pipeline:0.6.37
+      image: dfdsdk/prime-pipeline:0.6.38
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
