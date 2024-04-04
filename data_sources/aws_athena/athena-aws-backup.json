@@ -1,0 +1,10 @@
+{
+    "name": "Athena-AWS-Backup",
+    "assumeRoleArn": "arn:aws:iam::578530104510:role/awsbackup_grafana_cloud_athena",
+    "authType": "grafana_assume_role",
+    "catalog": "AwsDataCatalog",
+    "database": "awsbackup",
+    "defaultRegion": "eu-central-1",
+    "outputLocation": "s3://dfds-awsbackup-collected-metrics-store/athena",
+    "workgroup": "primary"
+}

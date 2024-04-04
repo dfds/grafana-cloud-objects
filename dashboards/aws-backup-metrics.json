@@ -1,0 +1,550 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 203,
+    "links": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "grafana-athena-datasource",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "text": {
+            "valueSize": 100
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.0-68838",
+        "targets": [
+          {
+            "connectionArgs": {
+              "catalog": "__default",
+              "database": "__default",
+              "region": "__default",
+              "resultReuseEnabled": false,
+              "resultReuseMaxAgeInMinutes": 60
+            },
+            "datasource": {
+              "type": "grafana-athena-datasource",
+              "uid": "${datasource}"
+            },
+            "format": 1,
+            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" where \"job_status\" = 'COMPLETED'; ",
+            "refId": "A"
+          }
+        ],
+        "title": "Completed Backup Jobs",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-athena-datasource",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 3,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.0-68838",
+        "targets": [
+          {
+            "connectionArgs": {
+              "catalog": "__default",
+              "database": "__default",
+              "region": "__default",
+              "resultReuseEnabled": false,
+              "resultReuseMaxAgeInMinutes": 60
+            },
+            "datasource": {
+              "type": "grafana-athena-datasource",
+              "uid": "${datasource}"
+            },
+            "format": 1,
+            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" where \"resource_type\" = 'RDS'; ",
+            "refId": "A"
+          }
+        ],
+        "title": "RDS Instances",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-athena-datasource",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.0-68838",
+        "targets": [
+          {
+            "connectionArgs": {
+              "catalog": "__default",
+              "database": "__default",
+              "region": "__default",
+              "resultReuseEnabled": false,
+              "resultReuseMaxAgeInMinutes": 60
+            },
+            "datasource": {
+              "type": "grafana-athena-datasource",
+              "uid": "${datasource}"
+            },
+            "format": 1,
+            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" where \"job_status\" = 'FAILED'; ",
+            "refId": "A"
+          }
+        ],
+        "title": "Failed Backup Jobs",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-athena-datasource",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.0-68838",
+        "targets": [
+          {
+            "connectionArgs": {
+              "catalog": "__default",
+              "database": "__default",
+              "region": "__default",
+              "resultReuseEnabled": false,
+              "resultReuseMaxAgeInMinutes": 60
+            },
+            "datasource": {
+              "type": "grafana-athena-datasource",
+              "uid": "${datasource}"
+            },
+            "format": 1,
+            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" where \"resource_type\" != 'RDS'; ",
+            "refId": "A"
+          }
+        ],
+        "title": "DynamoDB Instances",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-athena-datasource",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "text",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "dthms"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "id": 5,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "/^average_run_time_in_seconds$/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.0-68838",
+        "targets": [
+          {
+            "connectionArgs": {
+              "catalog": "__default",
+              "database": "__default",
+              "region": "__default",
+              "resultReuseEnabled": false,
+              "resultReuseMaxAgeInMinutes": 60
+            },
+            "datasource": {
+              "type": "grafana-athena-datasource",
+              "uid": "${datasource}"
+            },
+            "format": 1,
+            "rawSQL": "SELECT AVG(\n  CAST(SUBSTRING(job_run_time, 1, 2) AS INT) * 3600 +\n  CAST(SUBSTRING(job_run_time, 4, 2) AS INT) * 60 +\n  CAST(SUBSTRING(job_run_time, 7, 2) AS INT)     \n) AS average_run_time_in_seconds\nFROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" WHERE job_run_time <> '';",
+            "refId": "A"
+          }
+        ],
+        "title": "Average Run Time",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-athena-datasource",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        },
+        "id": 6,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.0-68838",
+        "targets": [
+          {
+            "connectionArgs": {
+              "catalog": "__default",
+              "database": "__default",
+              "region": "__default",
+              "resultReuseEnabled": false,
+              "resultReuseMaxAgeInMinutes": 60
+            },
+            "datasource": {
+              "type": "grafana-athena-datasource",
+              "uid": "${datasource}"
+            },
+            "format": 1,
+            "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\"\nWHERE\n  resource_arn LIKE '\"%prod%\"'; ",
+            "refId": "A"
+          }
+        ],
+        "title": "Number of PROD Instances",
+        "transparent": true,
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "grafana-athena-datasource",
+          "uid": "${datasource}"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "dark-purple",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 24
+        },
+        "id": 7,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.0-68838",
+        "targets": [
+          {
+            "connectionArgs": {
+              "catalog": "__default",
+              "database": "__default",
+              "region": "__default",
+              "resultReuseEnabled": false,
+              "resultReuseMaxAgeInMinutes": 60
+            },
+            "datasource": {
+              "type": "grafana-athena-datasource",
+              "uid": "${datasource}"
+            },
+            "format": 1,
+            "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\"\nWHERE\n  resource_arn NOT LIKE '\"%prod%\"'; ",
+            "refId": "A"
+          }
+        ],
+        "title": "Number of NON PROD Instances",
+        "transparent": true,
+        "type": "stat"
+      }
+    ],
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "Athena-AWS-Backup",
+            "value": "athena-grafana-aws-backup"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "multi": false,
+          "name": "datasource",
+          "options": [],
+          "query": "grafana-athena-datasource",
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "type": "datasource"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timeRangeUpdatedDuringEditOrView": false,
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "AWS Backup Metrics",
+    "uid": "aws_backup_metrics",
+    "version": 3,
+    "weekStart": ""
+  }
