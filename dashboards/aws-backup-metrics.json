@@ -85,7 +85,7 @@
               "uid": "${datasource}"
             },
             "format": 1,
-            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" where \"job_status\" = 'COMPLETED'; ",
+            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\" where \"job_status\" = 'COMPLETED'; ",
             "refId": "A"
           }
         ],
@@ -154,7 +154,7 @@
               "uid": "${datasource}"
             },
             "format": 1,
-            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" where \"resource_type\" = 'RDS'; ",
+            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\" where \"resource_type\" = 'RDS'; ",
             "refId": "A"
           }
         ],
@@ -227,7 +227,7 @@
               "uid": "${datasource}"
             },
             "format": 1,
-            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" where \"job_status\" = 'FAILED'; ",
+            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\" where \"job_status\" = 'FAILED'; ",
             "refId": "A"
           }
         ],
@@ -296,7 +296,7 @@
               "uid": "${datasource}"
             },
             "format": 1,
-            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" where \"resource_type\" != 'RDS'; ",
+            "rawSQL": "SELECT COUNT(account_id) FROM \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\" where \"resource_type\" != 'RDS'; ",
             "refId": "A"
           }
         ],
@@ -366,7 +366,7 @@
               "uid": "${datasource}"
             },
             "format": 1,
-            "rawSQL": "SELECT AVG(\n  CAST(SUBSTRING(job_run_time, 1, 2) AS INT) * 3600 +\n  CAST(SUBSTRING(job_run_time, 4, 2) AS INT) * 60 +\n  CAST(SUBSTRING(job_run_time, 7, 2) AS INT)     \n) AS average_run_time_in_seconds\nFROM \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\" WHERE job_run_time <> '';",
+            "rawSQL": "SELECT AVG(\n  CAST(SUBSTRING(job_run_time, 1, 2) AS INT) * 3600 +\n  CAST(SUBSTRING(job_run_time, 4, 2) AS INT) * 60 +\n  CAST(SUBSTRING(job_run_time, 7, 2) AS INT)     \n) AS average_run_time_in_seconds\nFROM \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\" WHERE job_run_time <> '';",
             "refId": "A"
           }
         ],
@@ -435,7 +435,7 @@
               "uid": "${datasource}"
             },
             "format": 1,
-            "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\"\nWHERE\n  resource_arn LIKE '\"%prod%\"'; ",
+            "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\"\nWHERE\n  resource_arn LIKE '\"%prod%\"'; ",
             "refId": "A"
           }
         ],
@@ -504,7 +504,7 @@
               "uid": "${datasource}"
             },
             "format": 1,
-            "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackup\".\"awsbackup_service_metrics\"\nWHERE\n  resource_arn NOT LIKE '\"%prod%\"'; ",
+            "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\"\nWHERE\n  resource_arn NOT LIKE '\"%prod%\"'; ",
             "refId": "A"
           }
         ],
