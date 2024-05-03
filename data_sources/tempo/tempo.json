@@ -1,0 +1,6 @@
+{
+    "name": "grafanacloud-dfds-traces",
+    "url": "https://tempo-prod-10-prod-eu-west-2.grafana.net/tempo",
+    "user": "*",
+    "AuthPassword": "${{ secrets.AuthPassword }}"
+}

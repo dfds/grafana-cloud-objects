@@ -51,14 +51,32 @@ module "synthetic_checks" {
 
 module "grafana_data_source_aws_athena" {
   #checkov:skip=CKV_TF_1:We rely on release tags
-  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_athena?ref=0.12.0"
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_athena?ref=0.13.0"
   #source      = "../../../../../../terraform-grafana-cloud//grafana_data_source_athena" # Support for local development
   data_sources = local.data_sources_aws_athena
 }
 
 module "grafana_data_source_aws_cloudwatch" {
   #checkov:skip=CKV_TF_1:We rely on release tags
-  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_cloudwatch?ref=0.12.0"
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_cloudwatch?ref=0.13.0"
   #source       = "../../../../../../terraform-grafana-cloud//grafana_data_source_cloudwatch" # Support for local development
   data_sources = local.data_sources_aws_cloudwatch
+}
+
+module "grafana_data_source_loki" {
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_loki?ref=0.13.0"
+  #source = "../../../../../../terraform-grafana-cloud//grafana_data_source_loki" # Support for local development
+  data_sources = local.data_sources_loki
+}
+
+module "grafana_data_source_prometheus" {
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_prometheus?ref=0.13.0"
+  #source = "../../../../../../terraform-grafana-cloud//grafana_data_source_prometheus" # Support for local development
+  data_sources = local.data_sources_prometheus
+}
+
+module "grafana_data_source_tempo" {
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_tempo?ref=0.13.0"
+  #source = "../../../../../../terraform-grafana-cloud//grafana_data_source_tempo" # Support for local development
+  data_sources = local.data_sources_tempo
 }
