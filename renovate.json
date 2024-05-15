@@ -15,7 +15,7 @@
                 "patch",
                 "lockFileMaintenance"
             ],
-            "stabilityDays": 0,
+            "minimumReleaseAge": null,
             "automerge": true,
             "automergeType": "branch",
             "matchCurrentVersion": "!/^0/",
@@ -26,7 +26,7 @@
                 "minor",
                 "major"
             ],
-            "stabilityDays": 5,
+            "minimumReleaseAge": "5 days",
             "automerge": false,
             "automergeType": "branch",
             "matchCurrentVersion": "!/^0/",
