@@ -7,7 +7,6 @@ locals {
   ]
 
   alertrule_files             = fileset(path.module, "alertrules/*.json")
-  synthetic_files             = fileset(path.module, "synthetics/${var.environment}/*.json")
   data_sources_aws_athena     = fileset(path.module, "data_sources/aws_athena/*.json")
   data_sources_aws_cloudwatch = fileset(path.module, "data_sources/aws_cloudwatch/*.json")
 }
@@ -33,20 +32,6 @@ module "alerts" {
   # source          = "../../../../../../terraform-grafana-cloud//grafana_alert" # Support for local development
   folder          = module.ce_folder.uid
   alertrule_files = local.alertrule_files
-}
-
-module "synthetic_checks" {
-  #checkov:skip=CKV_TF_1:We rely on release tags
-  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_synthetic_check?ref=0.16.1"
-  #source          = "../../../../../../terraform-grafana-cloud//grafana_synthetic_check" # Support for local development
-  synthetic_files  = local.synthetic_files
-  basic_auth       = var.synthetic_basic_auth
-  bearer_token     = var.synthetic_bearer_token
-  synthetic_probes = var.synthetic_probes
-
-  providers = {
-    grafana = grafana.sm
-  }
 }
 
 module "grafana_data_source_aws_athena" {
