@@ -47,3 +47,18 @@ module "grafana_data_source_aws_cloudwatch" {
   #source       = "../../../../../../terraform-grafana-cloud//grafana_data_source_cloudwatch" # Support for local development
   data_sources = local.data_sources_aws_cloudwatch
 }
+
+module "grafana_notification" {
+  #checkov:skip=CKV_TF_1:We rely on release tags
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_notification?ref=0.17.0"
+  #source               = "../../../../../../terraform-grafana-cloud//grafana_notification" # Support for local development
+  notification_enabled = true
+  name                 = "Cloud Engineering Slack"
+  slack_webhook_url    = var.notification_slack_webhook_url
+  policy_enabled       = false
+  policy_matcher = [{
+    label = "grafana_folder"
+    match = "="
+    value = "Cloud Engineering"
+  }]
+}
