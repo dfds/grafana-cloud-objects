@@ -8,3 +8,10 @@ variable "folder_title" {
   default     = "Cloud Engineering"
   description = "Folder title"
 }
+
+variable "notification_slack_webhook_url" {
+  type        = string
+  default     = ""
+  description = "Slack webhook URL."
+  sensitive   = true
+}
