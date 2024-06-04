@@ -1,0 +1,83 @@
+{
+    "apiVersion": 1,
+    "groups": [
+        {
+            "orgId": 1,
+            "name": "Goldpinger alert",
+            "folder": "General Alerting",
+            "interval": "1m",
+            "rules": [
+                {
+                    "uid": "ddc49fdf-cf2b-40a3-b121-2f60bddbfe23",
+                    "title": "Goldpinger alert",
+                    "condition": "B",
+                    "data": [
+                        {
+                            "refId": "A",
+                            "relativeTimeRange": {
+                                "from": 300,
+                                "to": 0
+                            },
+                            "datasourceUid": "grafanacloud-prom",
+                            "model": {
+                                "expr": "sum(goldpinger_nodes_health_total{status=\"unhealthy\"}) by (goldpinger_instance)",
+                                "format": "time_series",
+                                "intervalFactor": 1,
+                                "legendFormat": "{{ goldpinger_instance }}",
+                                "refId": "A"
+                            }
+                        },
+                        {
+                            "refId": "B",
+                            "datasourceUid": "__expr__",
+                            "relativeTimeRange": {
+                                "from": 0,
+                                "to": 0
+                            },
+                            "model": {
+                                "conditions": [
+                                    {
+                                        "evaluator": {
+                                            "params": [
+                                                0.5
+                                            ],
+                                            "type": "gt"
+                                        },
+                                        "operator": {
+                                            "type": "and"
+                                        },
+                                        "query": {
+                                            "params": [
+                                                "A"
+                                            ]
+                                        },
+                                        "reducer": {
+                                            "type": "avg"
+                                        }
+                                    }
+                                ],
+                                "refId": "B",
+                                "type": "classic_conditions"
+                            }
+                        }
+                    ],
+                    "dashboardUid": "D4EyPQTWk",
+                    "panelId": 25,
+                    "noDataState": "OK",
+                    "execErrState": "Alerting",
+                    "for": "5m",
+                    "annotations": {
+                        "__alertId__": "165",
+                        "__dashboardUid__": "D4EyPQTWk",
+                        "__panelId__": "25",
+                        "message": "Goldpinger instance has been reporting unhealthy nodes for at least 5 minutes."
+                    },
+                    "labels": {
+                        "rule_uid": "ddc49fdf-cf2b-40a3-b121-2f60bddbfe23"
+                    },
+                    "isPaused": false
+                }
+            ]
+        }
+    ]
+}
