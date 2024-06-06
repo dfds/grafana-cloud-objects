@@ -357,7 +357,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "count(kube_pod_info{cluster=\"$cluster\",priority_class=\"cluster-monitoring\", namespace!=\"alcide\", namespace!=\"kube-system\", namespace!=\"kube-system\", namespace!=\"monitoring\"}) by (pririty_class, namespace)",
+                    "expr": "count(kube_pod_info{cluster=\"$cluster\",priority_class=\"cluster-monitoring\", namespace!=\"alcide\", namespace!=\"kube-system\", namespace!=\"kube-system\", namespace!=\"monitoring\", namespace!=\"grafana\"}) by (pririty_class, namespace)",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "Cluster monitoring priority class",

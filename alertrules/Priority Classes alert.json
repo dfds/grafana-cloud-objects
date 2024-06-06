@@ -55,7 +55,7 @@
                             },
                             "datasourceUid": "grafanacloud-prom",
                             "model": {
-                                "expr": "count(kube_pod_info{priority_class=~\"cluster-monitoring\",namespace!~\"kube-system|monitoring|fluentd\"}) OR on() vector(0)",
+                                "expr": "count(kube_pod_info{priority_class=~\"cluster-monitoring\",namespace!~\"kube-system|monitoring|grafana|fluentd\"}) OR on() vector(0)",
                                 "format": "time_series",
                                 "interval": "",
                                 "intervalFactor": 2,
