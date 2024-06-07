@@ -60,7 +60,7 @@
                                     "uid": "prometheus"
                                 },
                                 "editorMode": "code",
-                                "expr": "sum(namespace_memory:kube_pod_container_resource_requests:sum{}) / sum(kube_node_status_allocatable{job=\"kube-state-metrics\",resource=\"memory\"})",
+                                "expr": "sum(namespace_memory:kube_pod_container_resource_requests:sum{}) / sum(kube_node_status_allocatable{resource=\"memory\"})",
                                 "intervalMs": 1000,
                                 "legendFormat": "Memory Capacity Utilization",
                                 "maxDataPoints": 43200,
