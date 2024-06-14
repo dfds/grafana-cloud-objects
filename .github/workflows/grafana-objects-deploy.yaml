@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         environment:
-          - sandbox
+          # - sandbox
           - demo
           - platform
     runs-on: ubuntu-latest
