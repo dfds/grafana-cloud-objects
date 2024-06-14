@@ -29,6 +29,7 @@ jobs:
         environment:
           - sandbox
           - demo
+          - platform
     runs-on: ubuntu-latest
     container:
       image: dfdsdk/prime-pipeline:0.6.39

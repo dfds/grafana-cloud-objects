@@ -18,7 +18,15 @@ projects:
         - "terragrunt.hcl"
         - "../../terragrunt.hcl"
         - "../../*.tf"
-
+  - dir: environments/platform
+    workflow: grafana-cloud-objects
+    workspace: grafana-cloud-objects-platform-ws-01
+    autoplan:
+      enabled: false
+      when_modified:
+        - "terragrunt.hcl"
+        - "../../terragrunt.hcl"
+        - "../../*.tf"
 workflows:
   grafana-cloud-objects:
     plan:
