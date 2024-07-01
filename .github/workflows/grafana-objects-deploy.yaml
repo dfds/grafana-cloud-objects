@@ -30,6 +30,11 @@ jobs:
           # - sandbox
           - demo
           - platform
+        include:
+          - environment: demo
+            slack_alert_webhook: GRAFANA_CLOUD_SLACK_WEBHOOK_DEMO
+          - environment: platform
+            slack_alert_webhook: GRAFANA_CLOUD_SLACK_WEBHOOK
     runs-on: ubuntu-latest
     container:
       image: dfdsdk/prime-pipeline:0.6.39
@@ -47,7 +52,7 @@ jobs:
       - name: Deploy resources to Grafana Cloud ${{ matrix.environment }} environment
         env:
           TF_VAR_synthetic_basic_auth: '{"atlantis_auth": {"username": "${{ secrets.PROD_ATLANTIS_USERNAME }}", "password": "${{ secrets.PROD_ATLANTIS_PASSWORD }}" }}'
-          TF_VAR_notification_slack_webhook_url: "${{ secrets.GRAFANA_CLOUD_SLACK_WEBHOOK }}"
+          TF_VAR_notification_slack_webhook_url: ${{ secrets[matrix.slack_alert_webhook] }}
         run: terragrunt run-all apply --terragrunt-working-dir ./environments/${{ matrix.environment }} --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
 
       - name: Send alert if job fails
