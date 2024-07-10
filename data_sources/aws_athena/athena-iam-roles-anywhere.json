@@ -1,5 +1,5 @@
 {
-  "name": "Athena-AWS-Backup",
+  "name": "Athena-IAM-roles-anywhere",
   "assumeRoleArn": "arn:aws:iam::303242044692:role/grafana-cloud-athena",
   "authType": "grafana_assume_role",
   "catalog": "iam-rolesanywhere-pca-observability",
