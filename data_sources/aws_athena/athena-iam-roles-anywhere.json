@@ -1,6 +1,6 @@
 {
   "name": "Athena-IAM-roles-anywhere",
-  "assumeRoleArn": "arn:aws:iam::303242044692:role/grafana-cloud-athena",
+  "assumeRoleArn": "arn:aws:iam::303242044692:role/grafana-cloud-observability",
   "authType": "grafana_assume_role",
   "catalog": "iam-rolesanywhere-pca-observability",
   "database": "iam_rolesanywhere_pca_observability",
