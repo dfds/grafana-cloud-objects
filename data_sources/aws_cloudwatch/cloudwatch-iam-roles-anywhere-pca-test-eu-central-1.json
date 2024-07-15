@@ -1,0 +1,7 @@
+{
+    "name": "CloudWatch-iam-roles-anywhere-pca-test-eu-central-1",
+    "type": "cloudwatch",
+    "authType": "grafana_assume_role",
+    "assumeRoleArn": "arn:aws:iam::381922248812:role/grafana-cloud-cloudwatch-integration",
+    "defaultRegion": "eu-central-1"
+}
