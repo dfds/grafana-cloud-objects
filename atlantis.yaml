@@ -32,6 +32,12 @@ workflows:
     plan:
       steps:
         - env:
+            name: TF_IN_AUTOMATION
+            value: "true"
+        - env:
+            name: TERRAGRUNT_TFPATH
+            value: /usr/local/bin/terraform
+        - env:
             name: AWS_ACCESS_KEY_ID
             command: "echo $PRODUCTION_AWS_ACCESS_KEY_ID"
         - env:
