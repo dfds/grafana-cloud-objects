@@ -38,7 +38,7 @@ jobs:
             slack_alert_webhook: GRAFANA_CLOUD_SLACK_WEBHOOK
     runs-on: ubuntu-latest
     container:
-      image: dfdsdk/prime-pipeline:0.6.39
+      image: dfdsdk/prime-pipeline:0.6.40
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
