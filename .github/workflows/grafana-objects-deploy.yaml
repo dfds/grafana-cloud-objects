@@ -9,6 +9,7 @@ on:
       - LICENSE
       - "*.md"
       - renovate.json
+      - atlantis.yaml
 
   workflow_dispatch:
 
