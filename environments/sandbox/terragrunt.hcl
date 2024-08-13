@@ -1,6 +1,6 @@
 # Include all settings from the root terraform.tfvars file
-include "root" {
-  path = find_in_parent_folders()
+include {
+  path = "${find_in_parent_folders()}"
 }
 
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
