@@ -9,11 +9,7 @@ terraform {
   source = "./"
 }
 
-dependency "variables" {
-  config_path = "../../variables.tf"
-}
-
 inputs = {
   environment = "sandbox"
-  folder_title = dependency.variables.outputs.folder_title
+  folder_title = "Cloud Engineering"
 }
