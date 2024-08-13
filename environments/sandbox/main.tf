@@ -1,3 +1,7 @@
+terraform {
+  backend "s3" {}
+}
+
 locals {
   dashboard_files = fileset(path.module, "dashboards/*.json")
   dashboard_data = [for f in local.dashboard_files : {
