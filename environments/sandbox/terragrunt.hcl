@@ -11,4 +11,5 @@ terraform {
 
 inputs = {
   environment = "sandbox"
+  folder_title = "Cloud Engineering"
 }
