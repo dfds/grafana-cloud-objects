@@ -81,7 +81,7 @@ module "dashboards" {
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=2.1.0"
   #source      = "../../../../../../terraform-grafana-cloud//grafana_dashboard" # Support for local development
   folder = module.ce_folder[0].id
-  title = var.folder_title
+  config_json = local.dashboard_data
 }
 
 module "alerts" {
