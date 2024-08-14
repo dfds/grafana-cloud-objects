@@ -11,12 +11,12 @@ locals {
   data_sources_aws_cloudwatch = fileset(path.module, "data_sources/aws_cloudwatch/*.json")
 
   modules_to_enable = {
-    "ce_folder"                     = var.enable_ce_folder
-    "dashboards"                    = var.enable_dashboards && var.enable_ce_folder
-    "alerts"                        = var.enable_alerts && var.enable_ce_folder
-    "grafana_data_source_aws_athena"= var.enable_grafana_data_source_aws_athena
+    "ce_folder"                          = var.enable_ce_folder
+    "dashboards"                         = var.enable_dashboards && var.enable_ce_folder
+    "alerts"                             = var.enable_alerts && var.enable_ce_folder
+    "grafana_data_source_aws_athena"     = var.enable_grafana_data_source_aws_athena
     "grafana_data_source_aws_cloudwatch" = var.enable_grafana_data_source_aws_cloudwatch
-    "grafana_notification"          = var.enable_grafana_notification
+    "grafana_notification"               = var.enable_grafana_notification
   }
 }
 
@@ -81,7 +81,7 @@ module "ce_folder" {
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_folder?ref=2.1.0"
   #source = "../../../../../../terraform-grafana-cloud//grafana_folder" # Support for local development
-  title  = var.folder_title
+  title = var.folder_title
 }
 
 module "dashboards" {
@@ -89,7 +89,7 @@ module "dashboards" {
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=2.1.0"
   #source      = "../../../../../../terraform-grafana-cloud//grafana_dashboard" # Support for local development
-  folder = module.ce_folder["enabled"].id
+  folder      = module.ce_folder["enabled"].id
   config_json = local.dashboard_data
 }
 
@@ -98,7 +98,7 @@ module "alerts" {
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_alert?ref=2.1.0"
   # source          = "../../../../../../terraform-grafana-cloud//grafana_alert" # Support for local development
-  folder = module.ce_folder["enabled"].uid
+  folder          = module.ce_folder["enabled"].uid
   alertrule_files = local.alertrule_files
 }
 
