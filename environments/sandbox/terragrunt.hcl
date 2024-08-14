@@ -6,12 +6,12 @@ include {
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 terraform {
-  source = "./"
+  source = "${path_relative_from_include()}//."
 }
 
 inputs = {
   environment = "sandbox"
-   # Toggle variables
+  # Toggle variables
   enable_ce_folder                     = true
   enable_dashboards                    = true
   enable_alerts                        = true

@@ -86,12 +86,10 @@ module "dashboards" {
 
 module "alerts" {
   count = var.enable_alerts && var.enable_ce_folder ? 1 : 0
-  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_alert?ref=2.1.0"
   folder = module.ce_folder[0].uid
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_alert?ref=2.1.0"
   # source          = "../../../../../../terraform-grafana-cloud//grafana_alert" # Support for local development
-  folder          = module.ce_folder.uid
   alertrule_files = local.alertrule_files
 }
 
