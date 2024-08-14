@@ -65,7 +65,7 @@ locals {
 
 
 
-# Refactored modules
+# Refactored modules testing
 
 module "ce_folder" {
   count = var.enable_ce_folder ? 1 : 0
