@@ -68,7 +68,7 @@ locals {
 # Refactored modules testing
 
 module "ce_folder" {
-  count = var.enable_ce_folder ? 1 : 0
+  for_each = var.enable_ce_folder ? toset(["enabled"]) : toset([])
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_folder?ref=2.1.0"
   #source = "../../../../../../terraform-grafana-cloud//grafana_folder" # Support for local development
@@ -76,7 +76,7 @@ module "ce_folder" {
 }
 
 module "dashboards" {
-  count = var.enable_dashboards && var.enable_ce_folder ? 1 : 0
+  for_each = var.enable_dashboards ? toset(["enabled"]) : toset([])
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=2.1.0"
   #source      = "../../../../../../terraform-grafana-cloud//grafana_dashboard" # Support for local development
@@ -85,7 +85,7 @@ module "dashboards" {
 }
 
 module "alerts" {
-  count = var.enable_alerts && var.enable_ce_folder ? 1 : 0
+  for_each = var.enable_alerts ? toset(["enabled"]) : toset([])
   folder = module.ce_folder[0].uid
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_alert?ref=2.1.0"
@@ -94,7 +94,7 @@ module "alerts" {
 }
 
 module "grafana_data_source_aws_athena" {
-  count = var.enable_grafana_data_source_aws_athena ? 1 : 0
+  for_each = var.enable_grafana_data_source_aws_athena ? toset(["enabled"]) : toset([])
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_athena?ref=2.1.0"
   #checkov:skip=CKV_TF_1:We rely on release tags
   #source      = "../../../../../../terraform-grafana-cloud//grafana_data_source_athena" # Support for local development
@@ -102,7 +102,7 @@ module "grafana_data_source_aws_athena" {
 }
 
 module "grafana_data_source_aws_cloudwatch" {
-  count = var.enable_grafana_data_source_aws_cloudwatch ? 1 : 0
+  for_each = var.enable_grafana_data_source_aws_cloudwatch ? toset(["enabled"]) : toset([])
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_cloudwatch?ref=2.1.0"
   #checkov:skip=CKV_TF_1:We rely on release tags
   #source       = "../../../../../../terraform-grafana-cloud//grafana_data_source_cloudwatch" # Support for local development
@@ -110,7 +110,7 @@ module "grafana_data_source_aws_cloudwatch" {
 }
 
 module "grafana_notification" {
-  count = var.enable_grafana_notification ? 1 : 0
+  for_each = var.enable_grafana_notification ? toset(["enabled"]) : toset([])
   #checkov:skip=CKV_TF_1:We rely on release tags
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_notification?ref=2.1.0"
   #source               = "../../../../../../terraform-grafana-cloud//grafana_notification" # Support for local development
