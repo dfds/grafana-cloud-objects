@@ -1,3 +1,3 @@
 output "dashboard_meta" {
-  value = module.dashboards.meta
+  value = length(module.dashboards) > 0 ? module.dashboards[0].meta : null
 }
