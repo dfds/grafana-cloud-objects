@@ -19,6 +19,3 @@ inputs = {
   enable_grafana_data_source_aws_cloudwatch = true
   enable_grafana_notification          = true
 }
-
-
-
