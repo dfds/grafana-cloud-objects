@@ -9,6 +9,15 @@ locals {
   alertrule_files             = fileset(path.module, "alertrules/*.json")
   data_sources_aws_athena     = fileset(path.module, "data_sources/aws_athena/*.json")
   data_sources_aws_cloudwatch = fileset(path.module, "data_sources/aws_cloudwatch/*.json")
+
+  modules_to_enable = {
+    "ce_folder"                     = var.enable_ce_folder
+    "dashboards"                    = var.enable_dashboards && var.enable_ce_folder
+    "alerts"                        = var.enable_alerts && var.enable_ce_folder
+    "grafana_data_source_aws_athena"= var.enable_grafana_data_source_aws_athena
+    "grafana_data_source_aws_cloudwatch" = var.enable_grafana_data_source_aws_cloudwatch
+    "grafana_notification"          = var.enable_grafana_notification
+  }
 }
 
 # module "ce_folder" {
