@@ -25,7 +25,7 @@ defaults:
 
 env:
   TF_IN_AUTOMATION: "true"
-  TERRAGRUNT_TFPATH: /usr/local/bin/terraform
+  TERRAGRUNT_TFPATH: /usr/local/bin/tofu
 
 jobs:
   deploy-to-grafana-cloud:
