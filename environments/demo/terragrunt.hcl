@@ -7,9 +7,8 @@ terraform {
     arguments = [
       "-var=prevent_destroy=true"
     ]
-
-  source = "${path_relative_from_include()}//."
   }
+  source = "${path_relative_from_include()}//."
 }
 
 # Include all settings from the root terraform.tfvars file
