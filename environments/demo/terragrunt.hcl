@@ -10,6 +10,7 @@ terraform {
 
   source = "${path_relative_from_include()}//."
   }
+}
 
 # Include all settings from the root terraform.tfvars file
 include {
