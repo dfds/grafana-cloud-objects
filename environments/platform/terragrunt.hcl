@@ -10,8 +10,7 @@ include {
 }
 
 inputs = {
-  environment = "dfdsplatformservices"
-  # Toggle variables
+  environment                          = "dfdsplatformservices"
   enable_ce_folder                     = true
   enable_dashboards                    = true
   enable_alerts                        = true

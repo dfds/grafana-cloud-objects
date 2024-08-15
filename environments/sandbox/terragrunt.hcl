@@ -10,8 +10,7 @@ include {
 }
 
 inputs = {
-  environment = "sandbox"
-  # Toggle variables
+  environment                          = "sandbox"
   enable_ce_folder                     = true
   enable_dashboards                    = true
   enable_alerts                        = false
