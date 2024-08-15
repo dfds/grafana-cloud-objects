@@ -83,10 +83,6 @@ module "ce_folder" {
   count  = var.enable_ce_folder ? 1 : 0
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_folder?ref=2.1.0"
   title  = var.folder_title
-  
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 module "dashboards" {
@@ -94,10 +90,6 @@ module "dashboards" {
   source      = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=2.1.0"
   folder      = module.ce_folder[0].id
   config_json = local.dashboard_data
-  
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 module "alerts" {
@@ -105,30 +97,18 @@ module "alerts" {
   source          = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_alert?ref=2.1.0"
   folder          = module.ce_folder[0].uid
   alertrule_files = local.alertrule_files
-  
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 module "grafana_data_source_aws_athena" {
   count        = var.enable_grafana_data_source_aws_athena ? 1 : 0
   source       = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_athena?ref=2.1.0"
   data_sources = local.data_sources_aws_athena
-  
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 module "grafana_data_source_aws_cloudwatch" {
   count        = var.enable_grafana_data_source_aws_cloudwatch ? 1 : 0
   source       = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_cloudwatch?ref=2.1.0"
   data_sources = local.data_sources_aws_cloudwatch
-  
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 module "grafana_notification" {
@@ -143,8 +123,4 @@ module "grafana_notification" {
     match = "="
     value = "Cloud Engineering"
   }]
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }

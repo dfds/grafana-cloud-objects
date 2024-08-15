@@ -1,13 +1,6 @@
 # Terragrunt will copy the Terraform configurations specified by the source parameter, along with any files in the
 # working directory, into a temporary folder, and execute your Terraform commands in that folder.
 terraform {
-  extra_arguments "prevent_destroy_protection" {
-    commands = ["apply", "destroy"]
-
-    arguments = [
-      "-var=prevent_destroy=true"
-    ]
-  }
   source = "${path_relative_from_include()}//."
 }
 
