@@ -1,3 +1,3 @@
 output "dashboard_meta" {
-  value = length(module.dashboards) > 0 ? module.dashboards[0].meta : null
+  value = var.enable_dashboards && var.enable_ce_folder ? module.dashboards[0].meta : null
 }

@@ -19,35 +19,35 @@ variable "notification_slack_webhook_url" {
 variable "enable_ce_folder" {
   type        = bool
   default     = true
-  description = "Enable the ce_folder module."
+  description = "Enable the CE Folder module."
 }
 
 variable "enable_dashboards" {
   type        = bool
   default     = true
-  description = "Enable the dashboards module."
+  description = "Enable the Dashboards module."
 }
 
 variable "enable_alerts" {
   type        = bool
   default     = true
-  description = "Enable the alerts module."
+  description = "Enable the Alerts module."
 }
 
 variable "enable_grafana_data_source_aws_athena" {
   type        = bool
   default     = true
-  description = "Enable the Grafana AWS Athena data source module."
+  description = "Enable the Grafana AWS Athena Data Source module."
 }
 
 variable "enable_grafana_data_source_aws_cloudwatch" {
   type        = bool
   default     = true
-  description = "Enable the Grafana AWS Cloudwatch data source module."
+  description = "Enable the Grafana AWS CloudWatch Data Source module."
 }
 
 variable "enable_grafana_notification" {
   type        = bool
   default     = true
-  description = "Enable the Grafana notification module."
+  description = "Enable the Grafana Notification module."
 }
