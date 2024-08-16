@@ -124,3 +124,18 @@ module "grafana_notification" {
     value = "Cloud Engineering"
   }]
 }
+
+moved {
+  from = module.old_ce_folder
+  to   = module.ce_folder
+}
+
+moved {
+  from = module.old_dashboards
+  to   = module.dashboards
+}
+
+moved {
+  from = module.old_alerts
+  to   = module.alerts
+}
