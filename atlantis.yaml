@@ -1,14 +1,14 @@
 version: 3
 projects:
-  - dir: environments/sandbox
-    workflow: grafana-cloud-objects
-    workspace: grafana-cloud-objects-sandbox-ws-01
-    autoplan:
-      enabled: false
-      when_modified:
-        - "terragrunt.hcl"
-        - "../../terragrunt.hcl"
-        - "../../*.tf"
+  # - dir: environments/sandbox
+  #   workflow: grafana-cloud-objects
+  #   workspace: grafana-cloud-objects-sandbox-ws-01
+  #   autoplan:
+  #     enabled: false
+  #     when_modified:
+  #       - "terragrunt.hcl"
+  #       - "../../terragrunt.hcl"
+  #       - "../../*.tf"
   - dir: environments/demo
     workflow: grafana-cloud-objects
     workspace: grafana-cloud-objects-demo-ws-01
