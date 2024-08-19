@@ -48,6 +48,6 @@ variable "enable_grafana_data_source_aws_cloudwatch" {
 
 variable "enable_grafana_notification" {
   type        = bool
-  default     = true
+  default     = false
   description = "Enable the Grafana Notification module."
 }
