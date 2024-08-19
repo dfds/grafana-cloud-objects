@@ -139,3 +139,18 @@ moved {
   from = module.alerts
   to   = module.alerts[0]
 }
+
+moved {
+  from = module.grafana_data_source_aws_athena
+  to   = module.grafana_data_source_aws_athena[0] 
+}
+
+moved {
+  from = module.grafana_data_source_aws_cloudwatch
+  to   = module.grafana_data_source_aws_cloudwatch[0]
+}
+
+moved {
+  from = module.grafana_notification
+  to   = module.grafana_notification[0]
+}
