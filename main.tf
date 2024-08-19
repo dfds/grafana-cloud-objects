@@ -126,16 +126,16 @@ module "grafana_notification" {
 }
 
 moved {
-  from = module.old_ce_folder
-  to   = module.ce_folder
+  from = module.ce_folder
+  to   = module.ce_folder[0]
 }
 
 moved {
-  from = module.old_dashboards
-  to   = module.dashboards
+  from = module.dashboards
+  to   = module.dashboards[0]
 }
 
 moved {
-  from = module.old_alerts
-  to   = module.alerts
+  from = module.alerts
+  to   = module.alerts[0]
 }
