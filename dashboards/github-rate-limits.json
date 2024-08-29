@@ -106,24 +106,24 @@
                                                 "color": "green",
                                                 "index": 0
                                             },
-                                            "to": 100
+                                            "to": 4500
                                         },
                                         "type": "range"
                                     },
                                     {
                                         "options": {
-                                            "from": 101,
+                                            "from": 4501,
                                             "result": {
                                                 "color": "yellow",
                                                 "index": 1
                                             },
-                                            "to": 500
+                                            "to": 4900
                                         },
                                         "type": "range"
                                     },
                                     {
                                         "options": {
-                                            "from": 501,
+                                            "from": 4901,
                                             "result": {
                                                 "color": "red",
                                                 "index": 2
