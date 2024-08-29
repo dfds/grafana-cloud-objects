@@ -1,12 +1,10 @@
 {
-    "name": "test-infinity-ds",
+    "name": "test-infinity-ds2",
     "type": "yesoreyeram-infinity-datasource",
-    "jsonData": {
-        "allowedHosts": [
-            "https://api.github.com/"
-        ],
-        "auth_method": "bearerToken",
-        "customHealthCheckEnabled": true,
-        "customHealthCheckUrl": "https://api.github.com/"
-    }
+    "allowedHosts": [
+        "https://api.github.com/"
+    ],
+    "auth_method": "bearerToken",
+    "customHealthCheckEnabled": true,
+    "customHealthCheckUrl": "https://api.github.com/"
 }

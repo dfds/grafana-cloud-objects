@@ -8,6 +8,7 @@ locals {
   alertrule_files             = fileset(path.module, "alertrules/*.json")
   data_sources_aws_athena     = fileset(path.module, "data_sources/aws_athena/*.json")
   data_sources_aws_cloudwatch = fileset(path.module, "data_sources/aws_cloudwatch/*.json")
+  data_sources_infinity       = fileset(path.module, "data_sources/infinity/*.json")
 }
 
 module "ce_folder" {
@@ -53,10 +54,11 @@ module "grafana_data_source_aws_cloudwatch" {
 }
 
 module "grafana_data_source_infinity" {
-  count = var.enable_grafana_data_source_infinity ? 1 : 0
-  #source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_infinity?ref=2.1.0"
-  source = "../../../../../../terraform-grafana-cloud//grafana_data_source_infinity" # Support for local development
+  count  = var.enable_grafana_data_source_infinity ? 1 : 0
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_infinity?ref=2.1.0"
+  #source = "../../../../../../terraform-grafana-cloud//grafana_data_source_infinity" # Support for local development
   #checkov:skip=CKV_TF_1:We rely on release tags
+  bearer_token = var.infinity_bearer_token
   data_sources = local.data_sources_infinity
 }
 
