@@ -51,3 +51,16 @@ variable "enable_grafana_notification" {
   default     = true
   description = "Enable the Grafana Notification module."
 }
+
+variable "enable_grafana_data_source_infinity" {
+  type        = bool
+  default     = true
+  description = "Enable the Infinity Data Source module."
+}
+
+variable "infinity_bearer_token" {
+  description = "Should be passed in through an environment variable from a secret management system when needed."
+  type        = string
+  default     = ""
+  sensitive   = true
+}
