@@ -46,6 +46,12 @@ variable "enable_grafana_data_source_aws_cloudwatch" {
   description = "Enable the Grafana AWS CloudWatch Data Source module."
 }
 
+variable "enable_grafana_data_source_infinity" {
+  type        = bool
+  default     = true
+  description = "Enable the Infinity Data Source module."
+}
+
 variable "enable_grafana_notification" {
   type        = bool
   default     = true
