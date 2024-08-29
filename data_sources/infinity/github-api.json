@@ -1,5 +1,5 @@
 {
-    "name": "test-infinity-ds2",
+    "name": "infinity-github-dfds-org",
     "type": "yesoreyeram-infinity-datasource",
     "allowedHosts": [
         "https://api.github.com/"

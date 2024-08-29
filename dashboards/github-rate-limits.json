@@ -1,0 +1,793 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 235,
+    "links": [],
+    "panels": [
+        {
+            "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${datasource}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "fixed"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unit": "none"
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "A Limit"
+                        },
+                        "properties": [
+                            {
+                                "id": "mappings",
+                                "value": [
+                                    {
+                                        "options": {
+                                            "from": 501,
+                                            "result": {
+                                                "color": "green",
+                                                "index": 0
+                                            },
+                                            "to": 5000
+                                        },
+                                        "type": "range"
+                                    },
+                                    {
+                                        "options": {
+                                            "from": 101,
+                                            "result": {
+                                                "color": "yellow",
+                                                "index": 1
+                                            },
+                                            "to": 500
+                                        },
+                                        "type": "range"
+                                    },
+                                    {
+                                        "options": {
+                                            "from": 0,
+                                            "result": {
+                                                "color": "red",
+                                                "index": 2
+                                            },
+                                            "to": 100
+                                        },
+                                        "type": "range"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "B Used"
+                        },
+                        "properties": [
+                            {
+                                "id": "mappings",
+                                "value": [
+                                    {
+                                        "options": {
+                                            "from": 0,
+                                            "result": {
+                                                "color": "green",
+                                                "index": 0
+                                            },
+                                            "to": 100
+                                        },
+                                        "type": "range"
+                                    },
+                                    {
+                                        "options": {
+                                            "from": 101,
+                                            "result": {
+                                                "color": "yellow",
+                                                "index": 1
+                                            },
+                                            "to": 500
+                                        },
+                                        "type": "range"
+                                    },
+                                    {
+                                        "options": {
+                                            "from": 501,
+                                            "result": {
+                                                "color": "red",
+                                                "index": 2
+                                            },
+                                            "to": 5000
+                                        },
+                                        "type": "range"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 1,
+            "interval": "1m",
+            "maxDataPoints": 1000,
+            "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "/.*/",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto"
+            },
+            "pluginVersion": "11.3.0-74991",
+            "targets": [
+                {
+                    "columns": [
+                        {
+                            "selector": "rate.limit",
+                            "text": "Limit",
+                            "type": "number"
+                        }
+                    ],
+                    "computed_columns": [],
+                    "datasource": {
+                        "type": "yesoreyeram-infinity-datasource",
+                        "uid": "${datasource}"
+                    },
+                    "filters": [],
+                    "format": "timeseries",
+                    "global_query_id": "",
+                    "parser": "backend",
+                    "refId": "A",
+                    "root_selector": "",
+                    "source": "url",
+                    "summarizeExpression": "",
+                    "type": "json",
+                    "url": "https://api.github.com/rate_limit",
+                    "url_options": {
+                        "data": "",
+                        "method": "GET"
+                    }
+                },
+                {
+                    "columns": [
+                        {
+                            "selector": "rate.used",
+                            "text": "Used",
+                            "type": "number"
+                        }
+                    ],
+                    "datasource": {
+                        "type": "yesoreyeram-infinity-datasource",
+                        "uid": "${datasource}"
+                    },
+                    "filters": [],
+                    "format": "timeseries",
+                    "global_query_id": "",
+                    "hide": false,
+                    "parser": "backend",
+                    "refId": "B",
+                    "root_selector": "",
+                    "source": "url",
+                    "type": "json",
+                    "url": "https://api.github.com/rate_limit",
+                    "url_options": {
+                        "data": "",
+                        "method": "GET"
+                    }
+                }
+            ],
+            "title": "Core Available Request %",
+            "type": "gauge"
+        },
+        {
+            "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${datasource}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        }
+                    },
+                    "mappings": [
+                        {
+                            "options": {
+                                "from": 501,
+                                "result": {
+                                    "color": "green",
+                                    "index": 0,
+                                    "text": "Perfect"
+                                },
+                                "to": 5000
+                            },
+                            "type": "range"
+                        },
+                        {
+                            "options": {
+                                "from": 101,
+                                "result": {
+                                    "color": "yellow",
+                                    "index": 1,
+                                    "text": "Warning"
+                                },
+                                "to": 500
+                            },
+                            "type": "range"
+                        },
+                        {
+                            "options": {
+                                "from": 0,
+                                "result": {
+                                    "color": "red",
+                                    "index": 2,
+                                    "text": "Critical"
+                                },
+                                "to": 100
+                            },
+                            "type": "range"
+                        }
+                    ],
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 9
+            },
+            "id": 7,
+            "options": {
+                "displayLabels": [
+                    "percent"
+                ],
+                "legend": {
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "pieType": "pie",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.0-74991",
+            "targets": [
+                {
+                    "columns": [
+                        {
+                            "selector": "resources.graphql.limit",
+                            "text": "Limit",
+                            "type": "number"
+                        },
+                        {
+                            "selector": "resources.graphql.used",
+                            "text": "Used",
+                            "type": "number"
+                        }
+                    ],
+                    "computed_columns": [
+                        {
+                            "selector": "Remaining",
+                            "text": "Remaining",
+                            "type": "string"
+                        }
+                    ],
+                    "datasource": {
+                        "type": "yesoreyeram-infinity-datasource",
+                        "uid": "${datasource}"
+                    },
+                    "filters": [],
+                    "format": "timeseries",
+                    "global_query_id": "",
+                    "parser": "backend",
+                    "refId": "A",
+                    "root_selector": "",
+                    "source": "url",
+                    "summarizeExpression": "last(Limit) - last(Used)",
+                    "type": "json",
+                    "url": "https://api.github.com/rate_limit",
+                    "url_options": {
+                        "data": "",
+                        "method": "GET"
+                    }
+                }
+            ],
+            "title": "GraphQL Available Requests %",
+            "type": "piechart"
+        },
+        {
+            "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${datasource}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        }
+                    },
+                    "mappings": [
+                        {
+                            "options": {
+                                "from": 0,
+                                "result": {
+                                    "color": "red",
+                                    "index": 0,
+                                    "text": "Critical"
+                                },
+                                "to": 5
+                            },
+                            "type": "range"
+                        },
+                        {
+                            "options": {
+                                "from": 6,
+                                "result": {
+                                    "color": "yellow",
+                                    "index": 1,
+                                    "text": "Warning"
+                                },
+                                "to": 10
+                            },
+                            "type": "range"
+                        },
+                        {
+                            "options": {
+                                "from": 11,
+                                "result": {
+                                    "color": "green",
+                                    "index": 2,
+                                    "text": "Perfect"
+                                },
+                                "to": 30
+                            },
+                            "type": "range"
+                        }
+                    ],
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 9
+            },
+            "id": 6,
+            "options": {
+                "displayLabels": [
+                    "percent"
+                ],
+                "legend": {
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "pieType": "pie",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "tooltip": {
+                    "mode": "multi",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.0-74991",
+            "targets": [
+                {
+                    "columns": [
+                        {
+                            "selector": "resources.search.limit",
+                            "text": "Limit",
+                            "type": "number"
+                        },
+                        {
+                            "selector": "resources.search.used",
+                            "text": "Used",
+                            "type": "number"
+                        }
+                    ],
+                    "computed_columns": [
+                        {
+                            "selector": "Remaining",
+                            "text": "Remaining",
+                            "type": "string"
+                        }
+                    ],
+                    "datasource": {
+                        "type": "yesoreyeram-infinity-datasource",
+                        "uid": "${datasource}"
+                    },
+                    "filterExpression": "",
+                    "filters": [],
+                    "format": "timeseries",
+                    "global_query_id": "",
+                    "parser": "backend",
+                    "refId": "A",
+                    "root_selector": "",
+                    "source": "url",
+                    "summarizeExpression": "last(Limit) - last(Used)",
+                    "type": "json",
+                    "url": "https://api.github.com/rate_limit",
+                    "url_options": {
+                        "data": "",
+                        "method": "GET"
+                    }
+                }
+            ],
+            "title": "Search Available Request %",
+            "type": "piechart"
+        },
+        {
+            "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${datasource}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        }
+                    },
+                    "mappings": [
+                        {
+                            "options": {
+                                "from": 5001,
+                                "result": {
+                                    "color": "green",
+                                    "index": 0,
+                                    "text": "Perfect"
+                                },
+                                "to": 15000
+                            },
+                            "type": "range"
+                        },
+                        {
+                            "options": {
+                                "from": 1001,
+                                "result": {
+                                    "color": "yellow",
+                                    "index": 1,
+                                    "text": "Warning"
+                                },
+                                "to": 5000
+                            },
+                            "type": "range"
+                        },
+                        {
+                            "options": {
+                                "from": 0,
+                                "result": {
+                                    "color": "red",
+                                    "index": 2,
+                                    "text": "Critical"
+                                },
+                                "to": 1000
+                            },
+                            "type": "range"
+                        }
+                    ]
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 17
+            },
+            "id": 9,
+            "options": {
+                "displayLabels": [
+                    "percent"
+                ],
+                "legend": {
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "pieType": "pie",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "tooltip": {
+                    "mode": "multi",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.0-74991",
+            "targets": [
+                {
+                    "columns": [
+                        {
+                            "selector": "resources.scim.limit",
+                            "text": "Limit",
+                            "type": "number"
+                        },
+                        {
+                            "selector": "resources.scim.used",
+                            "text": "Used",
+                            "type": "number"
+                        }
+                    ],
+                    "computed_columns": [
+                        {
+                            "selector": "sum",
+                            "text": "Remaining",
+                            "type": "string"
+                        }
+                    ],
+                    "datasource": {
+                        "type": "yesoreyeram-infinity-datasource",
+                        "uid": "${datasource}"
+                    },
+                    "filters": [],
+                    "format": "timeseries",
+                    "global_query_id": "",
+                    "parser": "backend",
+                    "refId": "A",
+                    "root_selector": "",
+                    "source": "url",
+                    "summarizeExpression": "last(Limit) - last(Used)",
+                    "type": "json",
+                    "url": "https://api.github.com/rate_limit",
+                    "url_options": {
+                        "data": "",
+                        "method": "GET"
+                    }
+                }
+            ],
+            "title": "SCIM Available Requests %",
+            "type": "piechart"
+        },
+        {
+            "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${datasource}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        }
+                    },
+                    "mappings": [
+                        {
+                            "options": {
+                                "from": 0,
+                                "result": {
+                                    "color": "red",
+                                    "index": 0,
+                                    "text": "Critical"
+                                },
+                                "to": 1000
+                            },
+                            "type": "range"
+                        },
+                        {
+                            "options": {
+                                "from": 1001,
+                                "result": {
+                                    "color": "yellow",
+                                    "index": 1,
+                                    "text": "Warning"
+                                },
+                                "to": 5000
+                            },
+                            "type": "range"
+                        },
+                        {
+                            "options": {
+                                "from": 5001,
+                                "result": {
+                                    "color": "green",
+                                    "index": 2,
+                                    "text": "Perfect"
+                                },
+                                "to": 10000
+                            },
+                            "type": "range"
+                        }
+                    ],
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 17
+            },
+            "id": 8,
+            "options": {
+                "displayLabels": [
+                    "percent"
+                ],
+                "legend": {
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "pieType": "pie",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "tooltip": {
+                    "mode": "multi",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.3.0-74991",
+            "targets": [
+                {
+                    "columns": [
+                        {
+                            "selector": "resources.actions_runner_registration.limit",
+                            "text": "Limit",
+                            "type": "number"
+                        },
+                        {
+                            "selector": "resources.actions_runner_registration.used",
+                            "text": "Used",
+                            "type": "number"
+                        }
+                    ],
+                    "computed_columns": [
+                        {
+                            "selector": "Remaining",
+                            "text": "Remaining",
+                            "type": "string"
+                        }
+                    ],
+                    "datasource": {
+                        "type": "yesoreyeram-infinity-datasource",
+                        "uid": "${datasource}"
+                    },
+                    "filterExpression": "",
+                    "filters": [],
+                    "format": "timeseries",
+                    "global_query_id": "",
+                    "parser": "backend",
+                    "refId": "A",
+                    "root_selector": "",
+                    "source": "url",
+                    "summarizeExpression": "last(Limit) - last(Used)",
+                    "type": "json",
+                    "url": "https://api.github.com/rate_limit",
+                    "url_options": {
+                        "data": "",
+                        "method": "GET"
+                    }
+                }
+            ],
+            "title": "Actions Runner Registration Available Requests %",
+            "type": "piechart"
+        }
+    ],
+    "preload": false,
+    "schemaVersion": 39,
+    "tags": [
+        "github",
+        "infinity"
+    ],
+    "templating": {
+        "list": [
+            {
+                "current": {
+                    "selected": false,
+                    "text": "infinity-github-dfds-org",
+                    "value": "$__all"
+                },
+                "name": "datasource",
+                "options": [],
+                "query": "yesoreyeram-infinity-datasource",
+                "refresh": 1,
+                "regex": "",
+                "type": "datasource"
+            }
+        ]
+    },
+    "time": {
+        "from": "now-6h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "GitHub Rate Limits",
+    "uid": "boo",
+    "version": 7,
+    "weekStart": ""
+}
