@@ -1,0 +1,10 @@
+{
+    "name": "infinity-github-dfds-org",
+    "type": "yesoreyeram-infinity-datasource",
+    "allowedHosts": [
+        "https://api.github.com/"
+    ],
+    "auth_method": "bearerToken",
+    "customHealthCheckEnabled": true,
+    "customHealthCheckUrl": "https://api.github.com/"
+}

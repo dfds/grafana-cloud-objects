@@ -10,5 +10,11 @@ include {
 }
 
 inputs = {
-  environment = "dfdsplatformservices"
+  environment                          = "dfdsplatformservices"
+  enable_ce_folder                     = true
+  enable_dashboards                    = true
+  enable_alerts                        = true
+  enable_grafana_data_source_aws_athena = true
+  enable_grafana_data_source_aws_cloudwatch = true
+  enable_grafana_notification          = true
 }

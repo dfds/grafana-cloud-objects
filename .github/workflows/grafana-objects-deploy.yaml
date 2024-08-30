@@ -9,6 +9,7 @@ on:
       - LICENSE
       - "*.md"
       - renovate.json
+      - atlantis.yaml
 
   workflow_dispatch:
 
@@ -21,6 +22,10 @@ concurrency: terragrunt
 defaults:
   run:
     shell: bash
+
+env:
+  TF_IN_AUTOMATION: "true"
+  TERRAGRUNT_TFPATH: /usr/local/bin/tofu
 
 jobs:
   deploy-to-grafana-cloud:
@@ -37,7 +42,7 @@ jobs:
             slack_alert_webhook: GRAFANA_CLOUD_SLACK_WEBHOOK
     runs-on: ubuntu-latest
     container:
-      image: dfdsdk/prime-pipeline:0.6.39
+      image: dfdsdk/prime-pipeline:2.0.0
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
@@ -53,6 +58,7 @@ jobs:
         env:
           TF_VAR_synthetic_basic_auth: '{"atlantis_auth": {"username": "${{ secrets.PROD_ATLANTIS_USERNAME }}", "password": "${{ secrets.PROD_ATLANTIS_PASSWORD }}" }}'
           TF_VAR_notification_slack_webhook_url: ${{ secrets[matrix.slack_alert_webhook] }}
+          TF_VAR_infinity_bearer_token: ${{ secrets.GRAFANA_CLOUD_INFINITY_DATASOURCE_GITHUB }}
         run: terragrunt run-all apply --terragrunt-working-dir ./environments/${{ matrix.environment }} --terragrunt-source-update --terragrunt-non-interactive -input=false -auto-approve
 
       - name: Send alert if job fails
