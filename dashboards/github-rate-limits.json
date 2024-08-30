@@ -18,7 +18,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 235,
+    "id": 89,
     "links": [],
     "panels": [
         {
@@ -47,7 +47,7 @@
                     {
                         "matcher": {
                             "id": "byName",
-                            "options": "A Limit"
+                            "options": "Remaining"
                         },
                         "properties": [
                             {
@@ -93,7 +93,7 @@
                     {
                         "matcher": {
                             "id": "byName",
-                            "options": "B Used"
+                            "options": "Used"
                         },
                         "properties": [
                             {
@@ -162,42 +162,19 @@
                 "showThresholdMarkers": true,
                 "sizing": "auto"
             },
-            "pluginVersion": "11.3.0-74991",
+            "pluginVersion": "11.3.0-75221",
             "targets": [
-                {
-                    "columns": [
-                        {
-                            "selector": "rate.limit",
-                            "text": "Limit",
-                            "type": "number"
-                        }
-                    ],
-                    "computed_columns": [],
-                    "datasource": {
-                        "type": "yesoreyeram-infinity-datasource",
-                        "uid": "${datasource}"
-                    },
-                    "filters": [],
-                    "format": "timeseries",
-                    "global_query_id": "",
-                    "parser": "backend",
-                    "refId": "A",
-                    "root_selector": "",
-                    "source": "url",
-                    "summarizeExpression": "",
-                    "type": "json",
-                    "url": "https://api.github.com/rate_limit",
-                    "url_options": {
-                        "data": "",
-                        "method": "GET"
-                    }
-                },
                 {
                     "columns": [
                         {
                             "selector": "rate.used",
                             "text": "Used",
                             "type": "number"
+                        },
+                        {
+                            "selector": "rate.remaining",
+                            "text": "Remaining",
+                            "type": "number"
                         }
                     ],
                     "datasource": {
@@ -205,11 +182,11 @@
                         "uid": "${datasource}"
                     },
                     "filters": [],
-                    "format": "timeseries",
+                    "format": "table",
                     "global_query_id": "",
                     "hide": false,
                     "parser": "backend",
-                    "refId": "B",
+                    "refId": "C",
                     "root_selector": "",
                     "source": "url",
                     "type": "json",
@@ -240,44 +217,7 @@
                             "viz": false
                         }
                     },
-                    "mappings": [
-                        {
-                            "options": {
-                                "from": 501,
-                                "result": {
-                                    "color": "green",
-                                    "index": 0,
-                                    "text": "Perfect"
-                                },
-                                "to": 5000
-                            },
-                            "type": "range"
-                        },
-                        {
-                            "options": {
-                                "from": 101,
-                                "result": {
-                                    "color": "yellow",
-                                    "index": 1,
-                                    "text": "Warning"
-                                },
-                                "to": 500
-                            },
-                            "type": "range"
-                        },
-                        {
-                            "options": {
-                                "from": 0,
-                                "result": {
-                                    "color": "red",
-                                    "index": 2,
-                                    "text": "Critical"
-                                },
-                                "to": 100
-                            },
-                            "type": "range"
-                        }
-                    ],
+                    "mappings": [],
                     "unit": "none"
                 },
                 "overrides": []
@@ -290,9 +230,6 @@
             },
             "id": 7,
             "options": {
-                "displayLabels": [
-                    "percent"
-                ],
                 "legend": {
                     "displayMode": "list",
                     "placement": "bottom",
@@ -311,40 +248,34 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0-74991",
+            "pluginVersion": "11.3.0-75221",
             "targets": [
                 {
                     "columns": [
                         {
-                            "selector": "resources.graphql.limit",
-                            "text": "Limit",
-                            "type": "number"
-                        },
-                        {
                             "selector": "resources.graphql.used",
                             "text": "Used",
                             "type": "number"
-                        }
-                    ],
-                    "computed_columns": [
+                        },
                         {
-                            "selector": "Remaining",
+                            "selector": "resources.graphql.remaining",
                             "text": "Remaining",
-                            "type": "string"
+                            "type": "number"
                         }
                     ],
+                    "computed_columns": [],
                     "datasource": {
                         "type": "yesoreyeram-infinity-datasource",
                         "uid": "${datasource}"
                     },
                     "filters": [],
-                    "format": "timeseries",
+                    "format": "table",
                     "global_query_id": "",
                     "parser": "backend",
                     "refId": "A",
                     "root_selector": "",
                     "source": "url",
-                    "summarizeExpression": "last(Limit) - last(Used)",
+                    "summarizeExpression": "",
                     "type": "json",
                     "url": "https://api.github.com/rate_limit",
                     "url_options": {
@@ -373,44 +304,7 @@
                             "viz": false
                         }
                     },
-                    "mappings": [
-                        {
-                            "options": {
-                                "from": 0,
-                                "result": {
-                                    "color": "red",
-                                    "index": 0,
-                                    "text": "Critical"
-                                },
-                                "to": 5
-                            },
-                            "type": "range"
-                        },
-                        {
-                            "options": {
-                                "from": 6,
-                                "result": {
-                                    "color": "yellow",
-                                    "index": 1,
-                                    "text": "Warning"
-                                },
-                                "to": 10
-                            },
-                            "type": "range"
-                        },
-                        {
-                            "options": {
-                                "from": 11,
-                                "result": {
-                                    "color": "green",
-                                    "index": 2,
-                                    "text": "Perfect"
-                                },
-                                "to": 30
-                            },
-                            "type": "range"
-                        }
-                    ],
+                    "mappings": [],
                     "unit": "none"
                 },
                 "overrides": []
@@ -444,28 +338,22 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0-74991",
+            "pluginVersion": "11.3.0-75221",
             "targets": [
                 {
                     "columns": [
                         {
-                            "selector": "resources.search.limit",
-                            "text": "Limit",
-                            "type": "number"
-                        },
-                        {
                             "selector": "resources.search.used",
                             "text": "Used",
                             "type": "number"
-                        }
-                    ],
-                    "computed_columns": [
+                        },
                         {
-                            "selector": "Remaining",
+                            "selector": "resources.search.remaining",
                             "text": "Remaining",
-                            "type": "string"
+                            "type": "number"
                         }
                     ],
+                    "computed_columns": [],
                     "datasource": {
                         "type": "yesoreyeram-infinity-datasource",
                         "uid": "${datasource}"
@@ -478,7 +366,7 @@
                     "refId": "A",
                     "root_selector": "",
                     "source": "url",
-                    "summarizeExpression": "last(Limit) - last(Used)",
+                    "summarizeExpression": "",
                     "type": "json",
                     "url": "https://api.github.com/rate_limit",
                     "url_options": {
@@ -507,44 +395,7 @@
                             "viz": false
                         }
                     },
-                    "mappings": [
-                        {
-                            "options": {
-                                "from": 5001,
-                                "result": {
-                                    "color": "green",
-                                    "index": 0,
-                                    "text": "Perfect"
-                                },
-                                "to": 15000
-                            },
-                            "type": "range"
-                        },
-                        {
-                            "options": {
-                                "from": 1001,
-                                "result": {
-                                    "color": "yellow",
-                                    "index": 1,
-                                    "text": "Warning"
-                                },
-                                "to": 5000
-                            },
-                            "type": "range"
-                        },
-                        {
-                            "options": {
-                                "from": 0,
-                                "result": {
-                                    "color": "red",
-                                    "index": 2,
-                                    "text": "Critical"
-                                },
-                                "to": 1000
-                            },
-                            "type": "range"
-                        }
-                    ]
+                    "mappings": []
                 },
                 "overrides": []
             },
@@ -577,13 +428,13 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0-74991",
+            "pluginVersion": "11.3.0-75221",
             "targets": [
                 {
                     "columns": [
                         {
-                            "selector": "resources.scim.limit",
-                            "text": "Limit",
+                            "selector": "resources.scim.remaining",
+                            "text": "Remaining",
                             "type": "number"
                         },
                         {
@@ -592,25 +443,19 @@
                             "type": "number"
                         }
                     ],
-                    "computed_columns": [
-                        {
-                            "selector": "sum",
-                            "text": "Remaining",
-                            "type": "string"
-                        }
-                    ],
+                    "computed_columns": [],
                     "datasource": {
                         "type": "yesoreyeram-infinity-datasource",
                         "uid": "${datasource}"
                     },
                     "filters": [],
-                    "format": "timeseries",
+                    "format": "dataframe",
                     "global_query_id": "",
                     "parser": "backend",
                     "refId": "A",
                     "root_selector": "",
                     "source": "url",
-                    "summarizeExpression": "last(Limit) - last(Used)",
+                    "summarizeExpression": "",
                     "type": "json",
                     "url": "https://api.github.com/rate_limit",
                     "url_options": {
@@ -639,44 +484,7 @@
                             "viz": false
                         }
                     },
-                    "mappings": [
-                        {
-                            "options": {
-                                "from": 0,
-                                "result": {
-                                    "color": "red",
-                                    "index": 0,
-                                    "text": "Critical"
-                                },
-                                "to": 1000
-                            },
-                            "type": "range"
-                        },
-                        {
-                            "options": {
-                                "from": 1001,
-                                "result": {
-                                    "color": "yellow",
-                                    "index": 1,
-                                    "text": "Warning"
-                                },
-                                "to": 5000
-                            },
-                            "type": "range"
-                        },
-                        {
-                            "options": {
-                                "from": 5001,
-                                "result": {
-                                    "color": "green",
-                                    "index": 2,
-                                    "text": "Perfect"
-                                },
-                                "to": 10000
-                            },
-                            "type": "range"
-                        }
-                    ],
+                    "mappings": [],
                     "unit": "none"
                 },
                 "overrides": []
@@ -710,13 +518,13 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "11.3.0-74991",
+            "pluginVersion": "11.3.0-75221",
             "targets": [
                 {
                     "columns": [
                         {
-                            "selector": "resources.actions_runner_registration.limit",
-                            "text": "Limit",
+                            "selector": "resources.actions_runner_registration.remaining",
+                            "text": "Remaining",
                             "type": "number"
                         },
                         {
@@ -725,26 +533,20 @@
                             "type": "number"
                         }
                     ],
-                    "computed_columns": [
-                        {
-                            "selector": "Remaining",
-                            "text": "Remaining",
-                            "type": "string"
-                        }
-                    ],
+                    "computed_columns": [],
                     "datasource": {
                         "type": "yesoreyeram-infinity-datasource",
                         "uid": "${datasource}"
                     },
                     "filterExpression": "",
                     "filters": [],
-                    "format": "timeseries",
+                    "format": "table",
                     "global_query_id": "",
                     "parser": "backend",
                     "refId": "A",
                     "root_selector": "",
                     "source": "url",
-                    "summarizeExpression": "last(Limit) - last(Used)",
+                    "summarizeExpression": "",
                     "type": "json",
                     "url": "https://api.github.com/rate_limit",
                     "url_options": {
@@ -788,6 +590,6 @@
     "timezone": "browser",
     "title": "GitHub Rate Limits",
     "uid": "boo",
-    "version": 7,
+    "version": 16,
     "weekStart": ""
 }
