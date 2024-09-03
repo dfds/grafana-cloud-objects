@@ -32,12 +32,8 @@ jobs:
     strategy:
       matrix:
         environment:
-          # - sandbox
-          - demo
           - platform
         include:
-          - environment: demo
-            slack_alert_webhook: GRAFANA_CLOUD_SLACK_WEBHOOK_DEMO
           - environment: platform
             slack_alert_webhook: GRAFANA_CLOUD_SLACK_WEBHOOK
     runs-on: ubuntu-latest
