@@ -9,6 +9,7 @@ locals {
   data_sources_aws_athena     = fileset(path.module, "data_sources/aws_athena/*.json")
   data_sources_aws_cloudwatch = fileset(path.module, "data_sources/aws_cloudwatch/*.json")
   data_sources_infinity       = fileset(path.module, "data_sources/infinity/*.json")
+  prometheus_rule_files       = fileset(path.module, "prometheus_rules/*.yaml")
 }
 
 module "ce_folder" {
@@ -76,6 +77,17 @@ module "grafana_notification" {
     match = "="
     value = "Cloud Engineering"
   }]
+}
+
+module "prometheus_rules" {
+  count  = var.enable_prometheus_rules ? 1 : 0
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//prometheus_rules?ref=2.5.0"
+  #source = "../../../../../../terraform-grafana-cloud//grafana_prometheus_rules" # Support for local development
+  #checkov:skip=CKV_TF_1:We rely on release tags
+  prometheus_rule_files         = local.prometheus_rule_files
+  prometheus_url                = data.aws_ssm_parameter.prometheus_url.value
+  prometheus_user_id            = data.aws_ssm_parameter.prometheus_user_id.value
+  rules_management_access_token = data.aws_ssm_parameter.prometheus_rules_management_token.value
 }
 
 moved {
