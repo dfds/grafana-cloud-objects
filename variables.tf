@@ -64,3 +64,9 @@ variable "infinity_bearer_token" {
   default     = ""
   sensitive   = true
 }
+
+variable "enable_prometheus_rules" {
+  type        = bool
+  default     = true
+  description = "Enable the Prometheus rules module."
+}
