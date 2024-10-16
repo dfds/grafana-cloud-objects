@@ -81,7 +81,7 @@ module "grafana_notification" {
 
 module "prometheus_rules" {
   count  = var.enable_prometheus_rules ? 1 : 0
-  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//prometheus_rules?ref=2.5.0"
+  source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_prometheus_rules?ref=2.5.0"
   #source = "../../../../../../terraform-grafana-cloud//grafana_prometheus_rules" # Support for local development
   #checkov:skip=CKV_TF_1:We rely on release tags
   prometheus_rule_files         = local.prometheus_rule_files
