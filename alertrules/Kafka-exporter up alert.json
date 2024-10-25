@@ -25,7 +25,7 @@
                                     "uid": "prometheus"
                                 },
                                 "exemplar": true,
-                                "expr": "up{job=\"kafka-exporter\"}",
+                                "expr": "up{job=\"kafka-exporter-lkc-4npj6\"}",
                                 "interval": "",
                                 "intervalMs": 1000,
                                 "legendFormat": "{{job}}",

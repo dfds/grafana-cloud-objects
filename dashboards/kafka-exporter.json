@@ -295,7 +295,7 @@
                     },
                     "editorMode": "code",
                     "exemplar": true,
-                    "expr": "up{cluster=\"$cluster\", job=\"kafka-exporter\"}",
+                    "expr": "up{cluster=\"$cluster\", job=\"kafka-exporter-lkc-4npj6\"}",
                     "interval": "",
                     "legendFormat": "{{job}}",
                     "range": true,
