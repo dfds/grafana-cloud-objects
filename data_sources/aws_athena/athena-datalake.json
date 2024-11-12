@@ -1,0 +1,10 @@
+{
+    "name": "Athena-DataLake",
+    "assumeRoleArn": "arn:aws:iam::120569647597:role/grafana-cloud-athena",
+    "authType": "grafana_assume_role",
+    "catalog": "AwsDataCatalog",
+    "database": "ce_datalake",
+    "defaultRegion": "eu-west-1",
+    "outputLocation": "s3://ce-datalake-query-results/athena",
+    "workgroup": "primary"
+}
