@@ -43,7 +43,10 @@ module "grafana_data_source_aws_athena" {
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_data_source_athena?ref=2.6.0"
   #source = "../../../../../../terraform-grafana-cloud//grafana_data_source_athena" # Support for local development
   #checkov:skip=CKV_TF_1:We rely on release tags
-  data_sources = local.data_sources_aws_athena
+  data_sources   = local.data_sources_aws_athena
+  grafana_url    = data.aws_ssm_parameter.grafana_url.value
+  bearer_token   = data.aws_ssm_parameter.grafana_sa_access_token.value
+  enable_caching = true
 }
 
 module "grafana_data_source_aws_cloudwatch" {
