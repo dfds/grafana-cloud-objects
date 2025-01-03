@@ -147,7 +147,7 @@
                   "type": "prometheus",
                   "uid": "${datasource}"
                },
-               "expr": "1 - sum(:node_memory_MemAvailable_bytes:sum{cluster=\"$cluster\"}) / sum(node_memory_MemTotal_bytes{job=\"node-exporter\",cluster=\"$cluster\"})",
+               "expr": "1 - sum(:node_memory_MemAvailable_bytes:sum{cluster=\"$cluster\"}) / sum(node_memory_MemTotal_bytes{job=\"integrations/node_exporter\",cluster=\"$cluster\"})",
                "instant": true
             }
          ],
