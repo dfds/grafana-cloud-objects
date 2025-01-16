@@ -78,7 +78,7 @@ module "grafana_notification" {
   policy_matcher = [{
     label = "grafana_folder"
     match = "="
-    value = "Cloud Engineering"
+    value = "Cloud Engineering 2"
   }]
   additional_policies = [
     {
