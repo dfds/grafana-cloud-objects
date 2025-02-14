@@ -18,9 +18,8 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 160,
+    "id": 50,
     "links": [],
-    "liveNow": false,
     "panels": [
         {
             "collapsed": false,
@@ -52,6 +51,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 25,
                         "gradientMode": "opacity",
@@ -88,8 +88,7 @@
                             }
                         ]
                     },
-                    "unit": "short",
-                    "unitScale": true
+                    "unit": "short"
                 },
                 "overrides": []
             },
@@ -111,10 +110,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -151,6 +152,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 50,
                         "gradientMode": "opacity",
@@ -190,8 +192,7 @@
                             }
                         ]
                     },
-                    "unit": "short",
-                    "unitScale": true
+                    "unit": "short"
                 },
                 "overrides": []
             },
@@ -215,10 +216,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -257,8 +260,7 @@
                             }
                         ]
                     },
-                    "unit": "topics",
-                    "unitScale": true
+                    "unit": "topics"
                 },
                 "overrides": []
             },
@@ -274,6 +276,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -285,7 +288,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -320,6 +323,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 50,
                         "gradientMode": "opacity",
@@ -356,8 +360,7 @@
                             }
                         ]
                     },
-                    "unit": "short",
-                    "unitScale": true
+                    "unit": "short"
                 },
                 "overrides": []
             },
@@ -381,10 +384,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -420,8 +425,7 @@
                         }
                     },
                     "mappings": [],
-                    "unit": "short",
-                    "unitScale": true
+                    "unit": "short"
                 },
                 "overrides": []
             },
@@ -451,11 +455,12 @@
                     "values": false
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "10.2.2",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -520,8 +525,7 @@
                             }
                         ]
                     },
-                    "unit": "developers",
-                    "unitScale": true
+                    "unit": "developers"
                 },
                 "overrides": []
             },
@@ -537,6 +541,7 @@
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -548,7 +553,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -587,8 +592,7 @@
                             }
                         ]
                     },
-                    "unit": "sign-ins",
-                    "unitScale": true
+                    "unit": "sign-ins"
                 },
                 "overrides": []
             },
@@ -604,6 +608,7 @@
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -615,7 +620,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -654,8 +659,7 @@
                             }
                         ]
                     },
-                    "unit": "capabilities",
-                    "unitScale": true
+                    "unit": "capabilities"
                 },
                 "overrides": []
             },
@@ -672,6 +676,7 @@
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -683,7 +688,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -722,8 +727,7 @@
                             }
                         ]
                     },
-                    "unit": "articles",
-                    "unitScale": true
+                    "unit": "articles"
                 },
                 "overrides": []
             },
@@ -739,6 +743,7 @@
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -750,7 +755,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -798,6 +803,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 50,
                         "gradientMode": "opacity",
@@ -839,8 +845,7 @@
                             }
                         ]
                     },
-                    "unit": "percent",
-                    "unitScale": true
+                    "unit": "percent"
                 },
                 "overrides": []
             },
@@ -859,11 +864,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "10.2.2",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -871,7 +877,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "(sum(blueprints_aws_rds_db_total{cluster=\"$cluster\"})) / (sum(aws_rds_db_total{cluster=\"$cluster\"}) / 100)",
+                    "expr": "(sum(aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"})) / (sum(aws_rds_db_total{cluster=\"$cluster\"}) / 100)",
                     "instant": false,
                     "legendFormat": "RDS Blueprints Coverage %",
                     "range": true,
@@ -901,8 +907,7 @@
                                 "value": null
                             }
                         ]
-                    },
-                    "unitScale": true
+                    }
                 },
                 "overrides": []
             },
@@ -918,6 +923,7 @@
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -929,7 +935,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -967,8 +973,7 @@
                                 "value": null
                             }
                         ]
-                    },
-                    "unitScale": true
+                    }
                 },
                 "overrides": []
             },
@@ -984,6 +989,7 @@
                 "graphMode": "none",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -995,7 +1001,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -1034,8 +1040,7 @@
                             }
                         ]
                     },
-                    "unit": "services",
-                    "unitScale": true
+                    "unit": "services"
                 },
                 "overrides": []
             },
@@ -1052,6 +1057,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "vertical",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -1066,7 +1072,7 @@
                 "textMode": "value",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -1085,8 +1091,9 @@
             "type": "stat"
         }
     ],
+    "preload": false,
     "refresh": "",
-    "schemaVersion": 39,
+    "schemaVersion": 40,
     "tags": [
         "Adoption"
     ],
@@ -1094,24 +1101,19 @@
         "list": [
             {
                 "current": {
-                    "selected": false,
-                    "text": "grafanacloud-dfdsdemo-prom",
+                    "text": "grafanacloud-dfdsplatformservices-prom",
                     "value": "grafanacloud-prom"
                 },
-                "hide": 0,
                 "includeAll": false,
-                "multi": false,
                 "name": "datasource",
                 "options": [],
                 "query": "prometheus",
                 "refresh": 1,
                 "regex": "",
-                "skipUrlSync": false,
                 "type": "datasource"
             },
             {
                 "current": {
-                    "selected": false,
                     "text": "hellman",
                     "value": "hellman"
                 },
@@ -1120,9 +1122,7 @@
                     "uid": "grafanacloud-prom"
                 },
                 "definition": "label_values(cluster)",
-                "hide": 0,
                 "includeAll": false,
-                "multi": false,
                 "name": "cluster",
                 "options": [],
                 "query": {
@@ -1132,8 +1132,6 @@
                 },
                 "refresh": 1,
                 "regex": "",
-                "skipUrlSync": false,
-                "sort": 0,
                 "type": "query"
             }
         ]
@@ -1146,6 +1144,6 @@
     "timezone": "",
     "title": "Kiosk",
     "uid": "b8e019c1-27b7-4e4b-b880-28da9911f046",
-    "version": 1,
+    "version": 2,
     "weekStart": ""
 }
