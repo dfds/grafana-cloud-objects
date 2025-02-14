@@ -18,9 +18,8 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 185,
+    "id": 70,
     "links": [],
-    "liveNow": false,
     "panels": [
         {
             "datasource": {
@@ -46,8 +45,7 @@
                             }
                         ]
                     },
-                    "unit": "percent",
-                    "unitScale": true
+                    "unit": "percent"
                 },
                 "overrides": []
             },
@@ -73,7 +71,7 @@
                 "showThresholdMarkers": true,
                 "sizing": "auto"
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -81,7 +79,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "(sum(blueprints_aws_rds_db_total{cluster=\"$cluster\"})) / (sum(aws_rds_db_total{cluster=\"$cluster\"}) / 100)",
+                    "expr": "(sum(aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"})) / (sum(aws_rds_db_total{cluster=\"$cluster\"}) / 100)",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -116,8 +114,7 @@
                             }
                         ]
                     },
-                    "unit": "none",
-                    "unitScale": true
+                    "unit": "none"
                 },
                 "overrides": []
             },
@@ -133,6 +130,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -144,7 +142,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -152,7 +150,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "sum(blueprints_aws_rds_db_total{cluster=\"$cluster\"})",
+                    "expr": "sum(aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"})",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -187,8 +185,7 @@
                             }
                         ]
                     },
-                    "unit": "none",
-                    "unitScale": true
+                    "unit": "none"
                 },
                 "overrides": []
             },
@@ -204,6 +201,7 @@
                 "graphMode": "area",
                 "justifyMode": "auto",
                 "orientation": "auto",
+                "percentChangeColorMode": "standard",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -215,7 +213,7 @@
                 "textMode": "auto",
                 "wideLayout": true
             },
-            "pluginVersion": "10.4.0-65875",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -250,6 +248,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 0,
                         "gradientMode": "none",
@@ -276,7 +275,6 @@
                         }
                     },
                     "mappings": [],
-                    "noValue": "0",
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -289,9 +287,7 @@
                                 "value": 80
                             }
                         ]
-                    },
-                    "unit": "percent",
-                    "unitScale": true
+                    }
                 },
                 "overrides": [
                     {
@@ -301,22 +297,13 @@
                             "options": {
                                 "mode": "exclude",
                                 "names": [
-                                    "(sum(blueprints_aws_rds_db_total)) / (sum(aws_rds_db_total) / 100)"
+                                    "(sum(aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"})) / (sum(aws_rds_db_total) / 100)"
                                 ],
                                 "prefix": "All except:",
                                 "readOnly": true
                             }
                         },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": false,
-                                    "tooltip": false,
-                                    "viz": true
-                                }
-                            }
-                        ]
+                        "properties": []
                     }
                 ]
             },
@@ -335,11 +322,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "10.2.2",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -347,7 +335,8 @@
                         "uid": "prometheus"
                     },
                     "editorMode": "code",
-                    "expr": "(sum(blueprints_aws_rds_db_total)) / (sum(aws_rds_db_total) / 100)",
+                    "exemplar": false,
+                    "expr": "(sum(aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"})) / (sum(aws_rds_db_total) / 100)",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -374,6 +363,7 @@
                         "axisLabel": "",
                         "axisPlacement": "auto",
                         "barAlignment": 0,
+                        "barWidthFactor": 0.6,
                         "drawStyle": "line",
                         "fillOpacity": 0,
                         "gradientMode": "none",
@@ -414,8 +404,7 @@
                             }
                         ]
                     },
-                    "unit": "none",
-                    "unitScale": true
+                    "unit": "none"
                 },
                 "overrides": []
             },
@@ -434,11 +423,12 @@
                     "showLegend": true
                 },
                 "tooltip": {
+                    "hideZeros": false,
                     "mode": "single",
                     "sort": "none"
                 }
             },
-            "pluginVersion": "10.2.2",
+            "pluginVersion": "11.5.0-81938",
             "targets": [
                 {
                     "datasource": {
@@ -446,7 +436,7 @@
                         "uid": "prometheus"
                     },
                     "editorMode": "code",
-                    "expr": "blueprints_aws_rds_db_total{cluster=\"$cluster\"}",
+                    "expr": "aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"}",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -457,8 +447,9 @@
             "type": "timeseries"
         }
     ],
+    "preload": false,
     "refresh": "",
-    "schemaVersion": 39,
+    "schemaVersion": 40,
     "tags": [
         "AWS",
         "RDS",
@@ -468,24 +459,19 @@
         "list": [
             {
                 "current": {
-                    "selected": false,
-                    "text": "grafanacloud-dfdsdemo-prom",
+                    "text": "grafanacloud-dfdsplatformservices-prom",
                     "value": "grafanacloud-prom"
                 },
-                "hide": 0,
                 "includeAll": false,
-                "multi": false,
                 "name": "datasource",
                 "options": [],
                 "query": "prometheus",
                 "refresh": 1,
                 "regex": "",
-                "skipUrlSync": false,
                 "type": "datasource"
             },
             {
                 "current": {
-                    "selected": false,
                     "text": "hellman",
                     "value": "hellman"
                 },
@@ -494,9 +480,7 @@
                     "uid": "${datasource}"
                 },
                 "definition": "label_values(cluster)",
-                "hide": 0,
                 "includeAll": false,
-                "multi": false,
                 "name": "cluster",
                 "options": [],
                 "query": {
@@ -506,8 +490,6 @@
                 },
                 "refresh": 1,
                 "regex": "",
-                "skipUrlSync": false,
-                "sort": 0,
                 "type": "query"
             }
         ]
@@ -520,6 +502,6 @@
     "timezone": "",
     "title": "Blueprints RDS Adoption",
     "uid": "a9c79f60-fdde-4e66-9009-b3863c3e0eda",
-    "version": 1,
+    "version": 4,
     "weekStart": ""
 }
