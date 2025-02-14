@@ -372,6 +372,75 @@
             "gridPos": {
                 "h": 8,
                 "w": 12,
+                "x": 0,
+                "y": 8
+            },
+            "id": 6,
+            "options": {
+                "legend": {
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "pieType": "pie",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "tooltip": {
+                    "hideZeros": false,
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "11.5.0-81938",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "prometheus"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(aws_resource{type=\"rds:db\",dfds_library_name=\"blueprints\"}) by (dfds_cost_centre)",
+                    "instant": false,
+                    "interval": "",
+                    "legendFormat": "{{AccountId}}",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "RDS Blueprints Adoption - Per Cost Centre",
+            "type": "piechart"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "grafanacloud-prom"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        }
+                    },
+                    "mappings": [],
+                    "noValue": "0",
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
                 "x": 12,
                 "y": 8
             },
@@ -464,13 +533,13 @@
         ]
     },
     "time": {
-        "from": "now-6h",
+        "from": "now-24h",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "Blueprints RDS Adoption",
     "uid": "a9c79f60-fdde-4e66-9009-b3863c3e0eda",
-    "version": 6,
+    "version": 7,
     "weekStart": ""
 }
