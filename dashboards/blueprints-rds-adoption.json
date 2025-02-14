@@ -79,7 +79,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "(sum(aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"})) / (sum(aws_rds_db_total{cluster=\"$cluster\"}) / 100)",
+                    "expr": "(sum(aws_resource{type=\"rds:db\",dfds_library_name=\"blueprints\"})) / (sum(aws_rds_db_total{cluster=\"$cluster\"}) / 100)",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -336,7 +336,7 @@
                     },
                     "editorMode": "code",
                     "exemplar": false,
-                    "expr": "(sum(aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"})) / (sum(aws_rds_db_total) / 100)",
+                    "expr": "(sum(aws_resource{type=\"rds:db\",dfds_library_name=\"blueprints\"})) / (sum(aws_rds_db_total) / 100)",
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
@@ -357,53 +357,14 @@
                         "mode": "palette-classic"
                     },
                     "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "barWidthFactor": 0.6,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
                             "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
                         }
                     },
                     "mappings": [],
                     "noValue": "0",
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
                     "unit": "none"
                 },
                 "overrides": []
@@ -417,10 +378,17 @@
             "id": 2,
             "options": {
                 "legend": {
-                    "calcs": [],
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true
+                },
+                "pieType": "pie",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
                 },
                 "tooltip": {
                     "hideZeros": false,
@@ -436,15 +404,16 @@
                         "uid": "prometheus"
                     },
                     "editorMode": "code",
-                    "expr": "aws_resource{cluster=\"$cluster\",type=\"rds:db\",dfds_library_name=\"blueprints\"}",
+                    "expr": "sum(aws_resource{type=\"rds:db\",dfds_library_name=\"blueprints\"}) by (AccountId)",
                     "instant": false,
-                    "legendFormat": "__auto",
+                    "interval": "",
+                    "legendFormat": "{{AccountId}}",
                     "range": true,
                     "refId": "A"
                 }
             ],
             "title": "RDS Blueprints Adoption - Per Account",
-            "type": "timeseries"
+            "type": "piechart"
         }
     ],
     "preload": false,
@@ -502,6 +471,6 @@
     "timezone": "",
     "title": "Blueprints RDS Adoption",
     "uid": "a9c79f60-fdde-4e66-9009-b3863c3e0eda",
-    "version": 4,
+    "version": 6,
     "weekStart": ""
 }
