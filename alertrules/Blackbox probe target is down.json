@@ -1,87 +1,95 @@
 {
-    "apiVersion": 1,
-    "groups": [
+  "apiVersion": 1,
+  "groups": [
+    {
+      "orgId": 1,
+      "name": "Blackbox probe target is down",
+      "folder": "Cloud Engineering",
+      "interval": "1m",
+      "rules": [
         {
-            "orgId": 1,
-            "name": "Blackbox probe target is down",
-            "folder": "General Alerting",
-            "interval": "1m",
-            "rules": [
-                {
-                    "uid": "c2b67b94-5272-4421-9bcc-b72ea73ec41d",
-                    "title": "Blackbox probe target is down",
-                    "condition": "B",
-                    "data": [
-                        {
-                            "refId": "A",
-                            "relativeTimeRange": {
-                                "from": 300,
-                                "to": 0
-                            },
-                            "datasourceUid": "grafanacloud-prom",
-                            "model": {
-                                "exemplar": true,
-                                "expr": "probe_success",
-                                "interval": "",
-                                "intervalMs": 1000,
-                                "legendFormat": "{{  instance }}",
-                                "maxDataPoints": 43200,
-                                "refId": "A"
-                            }
-                        },
-                        {
-                            "refId": "B",
-                            "relativeTimeRange": {
-                                "from": 0,
-                                "to": 0
-                            },
-                            "datasourceUid": "__expr__",
-                            "model": {
-                                "conditions": [
-                                    {
-                                        "evaluator": {
-                                            "params": [
-                                                0.5
-                                            ],
-                                            "type": "lt"
-                                        },
-                                        "operator": {
-                                            "type": "and"
-                                        },
-                                        "query": {
-                                            "params": [
-                                                "A"
-                                            ]
-                                        },
-                                        "reducer": {
-                                            "type": "avg"
-                                        }
-                                    }
-                                ],
-                                "intervalMs": 1000,
-                                "maxDataPoints": 43200,
-                                "refId": "B",
-                                "type": "classic_conditions"
-                            }
-                        }
-                    ],
-                    "dasboardUid": "bXDq_ZNnz",
-                    "panelId": 190,
-                    "noDataState": "Alerting",
-                    "execErrState": "Alerting",
-                    "for": "1m",
-                    "annotations": {
-                        "__alertId__": "176",
-                        "__dashboardUid__": "bXDq_ZNnz",
-                        "__panelId__": "190",
-                        "message": ""
+          "uid": "cdp232nznumf5e",
+          "title": "Blackbox probe target is down",
+          "condition": "A",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 300,
+                "to": 0
+              },
+              "datasourceUid": "grafanacloud-prom",
+              "model": {
+                "editorMode": "code",
+                "exemplar": true,
+                "expr": "probe_success{namespace!=\"platform-secrets-manag-yjeap\"}",
+                "instant": true,
+                "interval": "",
+                "intervalMs": 1000,
+                "legendFormat": "{{  instance }}",
+                "maxDataPoints": 43200,
+                "range": false,
+                "refId": "A"
+              }
+            },
+            {
+              "refId": "B",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "params": [
+                        1,
+                        0
+                      ],
+                      "type": "lt"
                     },
-                    "labels": {
-                        "rule_uid": "c2b67b94-5272-4421-9bcc-b72ea73ec41d"
+                    "operator": {
+                      "type": "and"
                     },
-                    "isPaused": false
-                }
-            ]
+                    "query": {
+                      "params": []
+                    },
+                    "reducer": {
+                      "params": [],
+                      "type": "avg"
+                    },
+                    "type": "query"
+                  }
+                ],
+                "datasource": {
+                  "name": "Expression",
+                  "type": "__expr__",
+                  "uid": "__expr__"
+                },
+                "expression": "A",
+                "hide": false,
+                "refId": "B",
+                "type": "threshold"
+              }
+            }
+          ],
+          "dashboardUid": "bXDq_ZNnz",
+          "panelId": 190,
+          "noDataState": "Alerting",
+          "execErrState": "Alerting",
+          "for": "1m",
+          "annotations": {
+            "__alertId__": "176",
+            "__dashboardUid__": "bXDq_ZNnz",
+            "__panelId__": "190"
+          },
+          "labels": {
+            "rule_uid": "c2b67b94-5272-4421-9bcc-b72ea73ec41d"
+          },
+          "isPaused": false
         }
-    ]
+      ]
+    }
+  ]
 }
