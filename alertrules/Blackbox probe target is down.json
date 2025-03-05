@@ -22,7 +22,7 @@
               "model": {
                 "editorMode": "code",
                 "exemplar": true,
-                "expr": "probe_success{namespace!=\"platform-secrets-manag-yjeap\"}",
+                "expr": "probe_success{job!=\"prometheus-blackbox-exporter\"}",
                 "instant": true,
                 "interval": "",
                 "intervalMs": 1000,
