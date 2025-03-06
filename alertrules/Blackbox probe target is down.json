@@ -47,7 +47,7 @@
                         1,
                         0
                       ],
-                      "type": "lt"
+                      "type": "ne"
                     },
                     "operator": {
                       "type": "and"
