@@ -22,7 +22,7 @@
               "model": {
                 "editorMode": "code",
                 "exemplar": true,
-                "expr": "probe_success{job!=\"prometheus-blackbox-exporter\"}",
+                "expr": "probe_success{job=\"prometheus-blackbox-exporter\"}",
                 "instant": true,
                 "interval": "",
                 "intervalMs": 1000,
