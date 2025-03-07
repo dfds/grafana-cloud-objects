@@ -5,7 +5,7 @@
       "orgId": 1,
       "name": "Blackbox probe target is down",
       "folder": "Cloud Engineering",
-      "interval": "1m",
+      "interval": "5m",
       "rules": [
         {
           "uid": "cdp232nznumf5e",
@@ -22,7 +22,7 @@
               "model": {
                 "editorMode": "code",
                 "exemplar": true,
-                "expr": "probe_success{job=\"prometheus-blackbox-exporter\"}",
+                "expr": "count(probe_success{job=\"prometheus-blackbox-exporter\"})-sum(probe_success{job=\"prometheus-blackbox-exporter\"})",
                 "instant": true,
                 "interval": "",
                 "intervalMs": 1000,
@@ -33,7 +33,7 @@
               }
             },
             {
-              "refId": "C",
+              "refId": "B",
               "relativeTimeRange": {
                 "from": 0,
                 "to": 0
@@ -70,48 +70,6 @@
                 "expression": "A",
                 "intervalMs": 1000,
                 "maxDataPoints": 43200,
-                "reducer": "last",
-                "refId": "C",
-                "type": "reduce"
-              }
-            },
-            {
-              "refId": "B",
-              "relativeTimeRange": {
-                "from": 0,
-                "to": 0
-              },
-              "datasourceUid": "__expr__",
-              "model": {
-                "conditions": [
-                  {
-                    "evaluator": {
-                      "params": [
-                        1,
-                        0
-                      ],
-                      "type": "lt"
-                    },
-                    "operator": {
-                      "type": "and"
-                    },
-                    "query": {
-                      "params": []
-                    },
-                    "reducer": {
-                      "params": [],
-                      "type": "avg"
-                    },
-                    "type": "query"
-                  }
-                ],
-                "datasource": {
-                  "name": "Expression",
-                  "type": "__expr__",
-                  "uid": "__expr__"
-                },
-                "expression": "A",
-                "hide": false,
                 "refId": "B",
                 "type": "threshold"
               }
@@ -121,7 +79,7 @@
           "panelId": 190,
           "noDataState": "Alerting",
           "execErrState": "Alerting",
-          "for": "1m",
+          "for": "5m",
           "annotations": {
             "__alertId__": "176",
             "__dashboardUid__": "bXDq_ZNnz",
