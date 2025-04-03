@@ -70,7 +70,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-84846",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "connectionArgs": {
@@ -139,7 +139,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-84846",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "column": "account_id",
@@ -214,7 +214,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-84846",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "connectionArgs": {
@@ -229,7 +229,7 @@
             "uid": "${datasource}"
           },
           "format": 1,
-          "rawSQL": "SELECT COUNT(DISTINCT account_id) \nFROM \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\" \nWHERE \"job_status\" = 'FAILED';",
+          "rawSQL": "SELECT COUNT(DISTINCT account_id) \nFROM \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\" \nWHERE \"job_status\" = 'FAILED'\nAND substr(TRIM(\"report_time_period_end\"), 1, 10) = CAST(CURRENT_DATE AS VARCHAR);",
           "refId": "A"
         }
       ],
@@ -283,7 +283,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-84846",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "connectionArgs": {
@@ -353,7 +353,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-84846",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "connectionArgs": {
@@ -422,7 +422,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-84846",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "connectionArgs": {
@@ -437,7 +437,7 @@
             "uid": "${datasource}"
           },
           "format": 1,
-          "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\"\nWHERE\n  resource_arn LIKE '\"%prod%\"'\nAND substr(TRIM(\"report_time_period_end\"), 1, 10) = CAST(CURRENT_DATE AS VARCHAR);\n",
+          "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\"\nWHERE\n  resource_arn LIKE '%prod%'\nAND substr(TRIM(\"report_time_period_end\"), 1, 10) = CAST(CURRENT_DATE AS VARCHAR);\n",
           "refId": "A"
         }
       ],
@@ -491,7 +491,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-84846",
+      "pluginVersion": "12.0.0-85518.patch3-85676",
       "targets": [
         {
           "connectionArgs": {
@@ -506,7 +506,7 @@
             "uid": "${datasource}"
           },
           "format": 1,
-          "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\"\nWHERE\n  resource_arn NOT LIKE '\"%prod%\"'\nAND substr(TRIM(\"report_time_period_end\"), 1, 10) = CAST(CURRENT_DATE AS VARCHAR);",
+          "rawSQL": "SELECT\n  COUNT(*) AS number_of_prod_arns\nFROM\n  \"AwsDataCatalog\".\"awsbackupobservability\".\"aws-backup-dashboards_service_metrics\"\nWHERE\n  resource_arn NOT LIKE '%prod%'\nAND substr(TRIM(\"report_time_period_end\"), 1, 10) = CAST(CURRENT_DATE AS VARCHAR);",
           "refId": "A"
         }
       ],
@@ -544,5 +544,5 @@
   "timezone": "browser",
   "title": "AWS Backup Metrics",
   "uid": "aws_backup_metrics",
-  "version": 8
+  "version": 12
 }
