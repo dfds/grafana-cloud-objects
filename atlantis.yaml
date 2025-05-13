@@ -17,7 +17,7 @@ workflows:
             name: TF_IN_AUTOMATION
             value: "true"
         - env:
-            name: TERRAGRUNT_TFPATH
+            name: TG_TF_PATH
             value: /usr/local/bin/tofu
         - env:
             name: AWS_ACCESS_KEY_ID
@@ -26,5 +26,5 @@ workflows:
             name: AWS_SECRET_ACCESS_KEY
             command: "echo $PRODUCTION_AWS_SECRET_ACCESS_KEY"
         - run: terragrunt init -upgrade
-        - run: terragrunt plan -no-color --terragrunt-non-interactive -input=false -out=$PLANFILE --terragrunt-source-update
+        - run: terragrunt plan -no-color --non-interactive -input=false -out=$PLANFILE --source-update
         - run: terragrunt show -json $PLANFILE > $SHOWFILE
