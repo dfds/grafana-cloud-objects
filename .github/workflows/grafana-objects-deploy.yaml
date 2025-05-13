@@ -62,4 +62,4 @@ jobs:
         uses: dfds/shared-workflows/.github/actions/automation-slack-notifier@master
         with:
           slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
-          slack_message: "Configure Grafana Cloud environment failed."
+          slack_message: "Configure Grafana Cloud objects failed."
