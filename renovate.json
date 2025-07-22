@@ -2,9 +2,9 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "branchPrefix": "feature/renovate/",
     "terraform": {
-        "fileMatch": [
-            "\\.tf$",
-            "\\.tofu$"
+        "managerFilePatterns": [
+            "/\\.tf$/",
+            "/\\.tofu$/"
         ]
     },
     "packageRules": [
