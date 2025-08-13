@@ -41,7 +41,7 @@ jobs:
       image: dfdsdk/prime-pipeline:2.2.0
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
