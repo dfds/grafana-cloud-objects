@@ -25,6 +25,11 @@ workflows:
         - env:
             name: AWS_SECRET_ACCESS_KEY
             command: "echo $PRODUCTION_AWS_SECRET_ACCESS_KEY"
-        - run: terragrunt init -upgrade
-        - run: terragrunt plan -no-color --non-interactive -input=false -out=$PLANFILE --source-update
-        - run: terragrunt show -json $PLANFILE > $SHOWFILE
+        - run:
+            command: terragrunt init -upgrade
+            output: hide
+        - run:
+            command: terragrunt plan --non-interactive -input=false -out=$PLANFILE
+            output: hide
+        - run:
+            command: terragrunt show $PLANFILE
