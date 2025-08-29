@@ -77,9 +77,9 @@ jobs:
           tg_dir: ./environments/${{ matrix.environment }}
           tg_command: apply
 
-      - name: Send alert if job fails
-        if: failure()
-        uses: dfds/shared-workflows/.github/actions/automation-slack-notifier@master
-        with:
-          slack_webhook: ${{ env.SLACK_WEBHOOK }}
-          slack_message: "Configure Grafana Cloud objects failed."
+      # - name: Send alert if job fails
+      #   if: failure()
+      #   uses: dfds/shared-workflows/.github/actions/automation-slack-notifier@master
+      #   with:
+      #     slack_webhook: ${{ env.SLACK_WEBHOOK }}
+      #     slack_message: "Configure Grafana Cloud objects failed."
