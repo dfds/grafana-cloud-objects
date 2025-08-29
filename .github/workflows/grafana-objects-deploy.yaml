@@ -73,8 +73,9 @@ jobs:
           TF_VAR_synthetic_basic_auth: '{"atlantis_auth": {"username": "${{ env.PROD_ATLANTIS_USERNAME }}", "password": "${{ env.PROD_ATLANTIS_PASSWORD }}" }}'
           TF_VAR_notification_slack_webhook_url: ${{ secrets[matrix.slack_alert_webhook] }}
           TF_VAR_infinity_bearer_token: ${{ env.GRAFANA_CLOUD_INFINITY_DATASOURCE_GITHUB }}
+          TRACE: 1
         with:
-          tg_dir: ./environments/${{ matrix.environment }}
+          tg_dir: environments/${{ matrix.environment }}
           tg_command: apply
 
       # - name: Send alert if job fails
