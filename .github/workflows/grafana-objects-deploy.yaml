@@ -75,7 +75,7 @@ jobs:
           TF_VAR_infinity_bearer_token: ${{ env.GRAFANA_CLOUD_INFINITY_DATASOURCE_GITHUB }}
         with:
           tg_dir: ./environments/${{ matrix.environment }}
-          tg_command: apply --all --source-update --non-interactive -input=false -auto-approve
+          tg_command: apply
 
       - name: Send alert if job fails
         if: failure()
