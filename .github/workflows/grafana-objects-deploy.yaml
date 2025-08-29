@@ -1,4 +1,7 @@
 name: Grafana Cloud resources
+permissions:
+  id-token: write # This is required for requesting the JWT from OIDC provider
+  contents: read # This is required for actions/checkout
 
 on:
   push:
@@ -10,12 +13,9 @@ on:
       - "*.md"
       - renovate.json
       - atlantis.yaml
+      - mise.toml
 
   workflow_dispatch:
-
-permissions:
-  id-token: write # This is required for requesting the JWT from OIDC provider
-  contents: read # This is required for actions/checkout
 
 concurrency: terragrunt
 
@@ -23,12 +23,10 @@ defaults:
   run:
     shell: bash
 
-env:
-  TF_IN_AUTOMATION: "true"
-  TG_TF_PATH: /usr/local/bin/tofu
-
 jobs:
   deploy-to-grafana-cloud:
+    env:
+      TF_IN_AUTOMATION: "true"
     strategy:
       matrix:
         environment:
@@ -43,6 +41,17 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v5
 
+      - name: Load credentials from 1Password
+        uses: 1password/load-secrets-action@v3
+        with:
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_GITHUB_TOKEN }}
+          SLACK_WEBHOOK: op://CloudEng-General/Slack dfds.slack.com webhooks/jdm5vktylqnczrlkkbvsveyp5e
+          PROD_ATLANTIS_USERNAME: op://CloudEng-General/Atlantis Secrets Prod/username
+          PROD_ATLANTIS_PASSWORD: op://CloudEng-General/Atlantis Secrets Prod/password
+          GRAFANA_CLOUD_INFINITY_DATASOURCE_GITHUB: op://CloudEng-General/Github account devex-sa/Tokens/grafana-cloud-infinity-datasource-github
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -50,16 +59,27 @@ jobs:
           role-session-name: provision-grafana-objects
           aws-region: eu-central-1
 
-      - name: Deploy resources to Grafana Cloud ${{ matrix.environment }} environment
+      - name: Install Terragrunt and OpenTofu
         env:
-          TF_VAR_synthetic_basic_auth: '{"atlantis_auth": {"username": "${{ secrets.PROD_ATLANTIS_USERNAME }}", "password": "${{ secrets.PROD_ATLANTIS_PASSWORD }}" }}'
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 60s
+        uses: gruntwork-io/terragrunt-action@v3
+        with:
+          github_token: ${{ secrets.SHARED_WORKFLOW_HOUSEKEEPING }}
+
+      - name: Apply
+        id: apply
+        uses: gruntwork-io/terragrunt-action@v3
+        env:
+          TF_VAR_synthetic_basic_auth: '{"atlantis_auth": {"username": "${{ env.PROD_ATLANTIS_USERNAME }}", "password": "${{ env.PROD_ATLANTIS_PASSWORD }}" }}'
           TF_VAR_notification_slack_webhook_url: ${{ secrets[matrix.slack_alert_webhook] }}
-          TF_VAR_infinity_bearer_token: ${{ secrets.GRAFANA_CLOUD_INFINITY_DATASOURCE_GITHUB }}
-        run: terragrunt apply --all --working-dir ./environments/${{ matrix.environment }} --source-update --non-interactive -input=false -auto-approve
+          TF_VAR_infinity_bearer_token: ${{ env.GRAFANA_CLOUD_INFINITY_DATASOURCE_GITHUB }}
+        with:
+          tg_dir: ./environments/${{ matrix.environment }}
+          tg_command: apply --all --source-update --non-interactive -input=false -auto-approve
 
       - name: Send alert if job fails
         if: failure()
         uses: dfds/shared-workflows/.github/actions/automation-slack-notifier@master
         with:
-          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+          slack_webhook: ${{ env.SLACK_WEBHOOK }}
           slack_message: "Configure Grafana Cloud objects failed."
