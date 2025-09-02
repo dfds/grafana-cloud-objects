@@ -20,6 +20,7 @@ module "ce_folder" {
   title = var.folder_title
 }
 
+
 module "dashboards" {
   count  = var.enable_dashboards && var.enable_ce_folder ? 1 : 0
   source = "git::https://github.com/dfds/terraform-grafana-cloud.git//grafana_dashboard?ref=feature/add-tofu-10-compliancy"
