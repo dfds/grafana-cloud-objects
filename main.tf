@@ -44,7 +44,7 @@ module "grafana_data_source_aws_athena" {
   #source = "../../../../../../terraform-grafana-cloud//grafana_data_source_athena" # Support for local development
   #checkov:skip=CKV_TF_1:We rely on release tags
   data_sources   = local.data_sources_aws_athena
-  grafana_url    = data.aws_ssm_parameter.grafana_url.value
+  grafana_url    = nonsensitive(data.aws_ssm_parameter.grafana_url.value)
   bearer_token   = data.aws_ssm_parameter.grafana_sa_access_token.value
   enable_caching = true
 }
@@ -82,15 +82,15 @@ module "grafana_notification" {
   }]
   additional_policies = [
     {
-      contact_point = "Cloud Engineering - SSU Slack"
-      group_by = ["grafana_folder"]
-      repeat_interval = "24h"
+      contact_point   = "Cloud Engineering - SSU Slack"
+      group_by        = ["grafana_folder"]
+      repeat_interval = "1d"
       matcher = [
         {
           label = "grafana_folder"
           match = "="
           value = "Cloud Engineering - SSU"
-        }]
+      }]
     }
   ]
 }
