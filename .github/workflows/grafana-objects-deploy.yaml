@@ -51,7 +51,7 @@ jobs:
           GRAFANA_CLOUD_INFINITY_DATASOURCE_GITHUB: op://CloudEng-General/Github account devex-sa/Tokens/grafana-cloud-infinity-datasource-github
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.AWS_CORE_ROLE_TO_ASSUME }}
           role-session-name: provision-grafana-objects
