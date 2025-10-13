@@ -80,7 +80,7 @@
                         "__alertId__": "174",
                         "__dashboardUid__": "GGodmXAVz",
                         "__panelId__": "2",
-                        "message": "Sockets used per node has reached an unusually high level."
+                        "message": "Sockets used per node has reached an unusually high level. This alert is anomaly detection related, e.g. a large number of pods was added to the cluster (like a daemonset)."
                     },
                     "labels": {
                         "rule_uid": "e5600b97-49cc-4daa-9016-5bae3c84a365"

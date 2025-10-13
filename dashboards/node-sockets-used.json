@@ -61,7 +61,7 @@
                 "frequency": "1m",
                 "handler": 1,
                 "message": "Sockets used per node has reached an unusually high level. This alert is anomaly detection related, e.g. a large number of pods was added to the cluster (like a daemonset).",
-                "name": "Sockets used per node alert",
+                "name": "Sockets used per node alert (anomaly)",
                 "noDataState": "no_data",
                 "notifications": []
             },
