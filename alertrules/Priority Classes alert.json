@@ -20,7 +20,7 @@
                             },
                             "datasourceUid": "grafanacloud-prom",
                             "model": {
-                                "expr": "count(kube_pod_info{priority_class=~\"system.*\",namespace!~\"kube-system|monitoring|flux-system|nvidia-device-plugin|metrics-server|druid-operator-system|keda\"}) OR on() vector(0)",
+                                "expr": "count(kube_pod_info{priority_class=~\"system.*\",namespace!~\"kube-system|monitoring|flux-system|nvidia-device-plugin|metrics-server|druid-operator-system|keda|karpenter\"}) OR on() vector(0)",
                                 "format": "time_series",
                                 "intervalFactor": 2,
                                 "intervalMs": 1000,
