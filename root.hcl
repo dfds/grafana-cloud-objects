@@ -12,11 +12,17 @@ remote_state {
   }
 }
 
-retryable_errors = [
-  ".*timeout.*",
-  ".*connection timed out.*",
-  ".*connection reset.*"
-]
+errors {
+  retry "transient_errors" {
+    retryable_errors = [
+      ".*timeout.*",
+      ".*connection timed out.*",
+      ".*connection reset.*",
+    ]
+    max_attempts = 3
+    sleep_interval_sec = 5
+  }
+}
 
 # Configure Terragrunt to use common var files to help you keep often-repeated variables (e.g., account ID) DRY.
 # Note that even though Terraform automatically pulls in terraform.tfvars, we include it explicitly at the end of the
