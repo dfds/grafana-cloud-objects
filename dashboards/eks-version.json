@@ -100,7 +100,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "count(eks_version_exporter{cluster=\"$cluster\"}) by (server_current_version)",
+                    "expr": "count(count_over_time(eks_version_exporter{cluster=\"$cluster\"}[1h])) by (server_current_version)",
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
@@ -183,7 +183,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "count(eks_version_exporter{cluster=\"$cluster\"}) by (k8s_latest_available_version)",
+                    "expr": "count(count_over_time(eks_version_exporter{cluster=\"$cluster\"}[1h])) by (k8s_latest_available_version)",
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
@@ -266,7 +266,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "count(eks_version_exporter{cluster=\"$cluster\"}) by (eks_latest_available_version)",
+                    "expr": "count(count_over_time(eks_version_exporter{cluster=\"$cluster\"}[1h])) by (eks_latest_available_version)",
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
@@ -349,7 +349,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "count(eks_version_exporter{cluster=\"$cluster\"}) by (eol_latest_available_version)",
+                    "expr": "count(count_over_time(eks_version_exporter{cluster=\"$cluster\"}[1h])) by (eol_latest_available_version)",
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
@@ -432,7 +432,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "count(eks_version_exporter{cluster=\"$cluster\"}) by (last_updated_text)",
+                    "expr": "count(count_over_time(eks_version_exporter{cluster=\"$cluster\"}[1h])) by (last_updated_text)",
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
@@ -567,7 +567,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "eks_version_exporter_is_outdated{cluster=\"$cluster\"}",
+                    "expr": "avg_over_time(eks_version_exporter_is_outdated{cluster=\"$cluster\"}[1h])",
                     "format": "time_series",
                     "instant": false,
                     "intervalFactor": 1,
@@ -702,7 +702,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "eks_version_exporter_is_past_eol{cluster=\"$cluster\"}",
+                    "expr": "avg_over_time(eks_version_exporter_is_outdated{cluster=\"$cluster\"}[1h])",
                     "format": "time_series",
                     "instant": false,
                     "intervalFactor": 1,
