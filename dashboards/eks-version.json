@@ -727,8 +727,8 @@
             {
                 "current": {
                     "selected": false,
-                    "text": "grafanacloud-dfdssandbox-prom",
-                    "value": "grafanacloud-prom"
+                    "text": "ssu-poc-vm",
+                    "value": "ef5wi2tc2ayo0d"
                 },
                 "hide": 0,
                 "includeAll": false,
